@@ -13,8 +13,8 @@ import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 
 // Map
-import Map from '../component';
-import { CustomMapProps } from '../types';
+import Map from '../../component';
+import { CustomMapProps } from '../../types';
 
 import LAYERS from './layers';
 
