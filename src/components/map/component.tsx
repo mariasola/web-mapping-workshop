@@ -6,7 +6,6 @@ import cx from 'classnames';
 
 import isEmpty from 'lodash/isEmpty';
 
-import MapLibreGL from 'maplibre-gl';
 import { useDebouncedCallback } from 'use-debounce';
 
 // * If you plan to use Mapbox (and not a fork):
@@ -149,10 +148,8 @@ export const CustomMap: FC<CustomMapProps> = ({
     >
       <ReactMapGL
         id={id}
-        // ! if you're using Mapbox (and not a fork), remove the below property
-        // ! and replace with the according map styles
-        mapLib={MapLibreGL}
-        mapStyle="https://demotiles.maplibre.org/style.json"
+        mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
+        mapStyle="mapbox://styles/mapbox/light-v10"
         initialViewState={initialViewState}
         dragPan={!isFlying && dragPan}
         dragRotate={!isFlying && dragRotate}
