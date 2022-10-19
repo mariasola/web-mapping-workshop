@@ -24,7 +24,7 @@ export const CustomMap: FC<CustomMapProps> = ({
   mapboxAccessToken,
   children,
   className,
-  viewState = {},
+  viewState,
   initialViewState,
   bounds,
   onMapReady,
@@ -112,10 +112,12 @@ export const CustomMap: FC<CustomMapProps> = ({
   }, [loaded, bounds, handleFitBounds]);
 
   useEffect(() => {
-    setLocalViewState((prevViewState) => ({
-      ...prevViewState,
-      ...viewState,
-    }));
+    if (viewState) {
+      setLocalViewState((prevViewState) => ({
+        ...prevViewState,
+        ...viewState,
+      }));
+    }
   }, [viewState]);
 
   useEffect(() => {
