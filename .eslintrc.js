@@ -105,7 +105,7 @@ module.exports = {
             position: 'before',
           },
           {
-            pattern: 'containers/**',
+            pattern: 'exercises/**',
             group: 'internal',
             position: 'before',
           },

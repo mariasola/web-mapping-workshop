@@ -7,10 +7,6 @@ const lineClamp = require('@tailwindcss/line-clamp');
  */
 
 module.exports = {
-  content: [
-    './src/components/**/*.@(tsx|ts)',
-    './src/containers/**/*.@(tsx|ts)',
-    './src/pages/**/*.tsx',
-  ],
+  content: ['./src/components/**/*.@(tsx|ts)', './src/exercises/**/*.@(tsx|ts)'],
   plugins: [aspectRatio, forms, lineClamp],
 };
