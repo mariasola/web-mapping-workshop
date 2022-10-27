@@ -18,6 +18,7 @@ export interface CustomMapProps extends MapProps {
    */
   viewState?: Partial<ViewState>;
 
+  viewport?: Partial<ViewportProps>;
   /** An object that defines the bounds */
   bounds?: Bounds;
 

@@ -1,0 +1,1524 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [101.713886, 2.747513] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Kuala Lumpur Int'l",
+        "abbrev": "KUL",
+        "location": "terminal",
+        "gps_code": "WMKK",
+        "iata_code": "KUL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Kuala_Lumpur_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 814,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-115.151324, 36.08496] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Mccarran Int'l",
+        "abbrev": "LAS",
+        "location": "terminal",
+        "gps_code": "KLAS",
+        "iata_code": "LAS",
+        "wikipedia": "http://en.wikipedia.org/wiki/McCarran_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 815,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-81.307371, 28.431151] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Orlando Int'l",
+        "abbrev": "MCO",
+        "location": "terminal",
+        "gps_code": "KMCO",
+        "iata_code": "MCO",
+        "wikipedia": "http://en.wikipedia.org/wiki/Orlando_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 816,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-93.2081, 44.882026] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Minneapolis St. Paul Int'l",
+        "abbrev": "MSP",
+        "location": "terminal",
+        "gps_code": "KMSP",
+        "iata_code": "MSP",
+        "wikipedia": "http://en.wikipedia.org/wiki/Minneapolis-Saint_Paul_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 817,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [11.788063, 48.353837] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Franz-Josef-Strauss",
+        "abbrev": "MUC",
+        "location": "terminal",
+        "gps_code": "EDDM",
+        "iata_code": "MUC",
+        "wikipedia": "http://en.wikipedia.org/wiki/Munich_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 818,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.242986, 39.876087] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Philadelphia Int'l",
+        "abbrev": "PHL",
+        "location": "terminal",
+        "gps_code": "KPHL",
+        "iata_code": "PHL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Philadelphia_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 819,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-112.013635, 33.435861] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Sky Harbor Int'l",
+        "abbrev": "PHX",
+        "location": "terminal",
+        "gps_code": "KPHX",
+        "iata_code": "PHX",
+        "wikipedia": "http://en.wikipedia.org/wiki/Phoenix_Sky_Harbor_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 820,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-111.981985, 40.786729] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Salt Lake City Int'l",
+        "abbrev": "SLC",
+        "location": "terminal",
+        "gps_code": "KSLC",
+        "iata_code": "SLC",
+        "wikipedia": "http://en.wikipedia.org/wiki/Salt_Lake_City_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 821,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-90.365955, 38.742716] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Lambert St Louis Int'l",
+        "abbrev": "STL",
+        "location": "terminal",
+        "gps_code": "KSTL",
+        "iata_code": "STL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Lambert-St._Louis_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 822,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [20.972726, 52.171027] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Okecie Int'l",
+        "abbrev": "WAW",
+        "location": "terminal",
+        "gps_code": "EPWA",
+        "iata_code": "WAW",
+        "wikipedia": "http://en.wikipedia.org/wiki/Warsaw_Frederic_Chopin_Airport",
+        "natlscale": 75,
+        "cartodb_id": 823,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [4.454374, 50.45713] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "mid",
+        "name": "Gosselies",
+        "abbrev": "CRL",
+        "location": "terminal",
+        "gps_code": "EBCI",
+        "iata_code": "CRL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Brussels_South_Charleroi_Airport",
+        "natlscale": 75,
+        "cartodb_id": 825,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [11.769483, 48.349796] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Munich Freight Terminal",
+        "abbrev": "MUCf",
+        "location": "freight",
+        "gps_code": "EDDMf",
+        "iata_code": "MUCf",
+        "wikipedia": "http://en.wikipedia.org/wiki/Munich_Airport",
+        "natlscale": 75,
+        "cartodb_id": 826,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [2.078003, 41.303155] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Barcelona",
+        "abbrev": "BCN",
+        "location": "terminal",
+        "gps_code": "LEBL",
+        "iata_code": "BCN",
+        "wikipedia": "http://en.wikipedia.org/wiki/Barcelona_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 827,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [14.267485, 50.107651] },
+      "properties": {
+        "scalerank": 3,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Ruzyn",
+        "abbrev": "PRG",
+        "location": "terminal",
+        "gps_code": "LKPR",
+        "iata_code": "PRG",
+        "wikipedia": "http://en.wikipedia.org/wiki/Ruzyn%C4%9B_International_Airport",
+        "natlscale": 75,
+        "cartodb_id": 828,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [113.935016, 22.315333] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Hong Kong Int'l",
+        "abbrev": "HKG",
+        "location": "terminal",
+        "gps_code": "VHHH",
+        "iata_code": "HKG",
+        "wikipedia": "http://en.wikipedia.org/wiki/Hong_Kong_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 829,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [121.23137, 25.076741] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Taoyuan",
+        "abbrev": "TPE",
+        "location": "terminal",
+        "gps_code": "RCTP",
+        "iata_code": "TPE",
+        "wikipedia": "http://en.wikipedia.org/wiki/Taiwan_Taoyuan_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 830,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [4.764377, 52.308932] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Schiphol",
+        "abbrev": "AMS",
+        "location": "terminal",
+        "gps_code": "EHAM",
+        "iata_code": "AMS",
+        "wikipedia": "http://en.wikipedia.org/wiki/Amsterdam_Schiphol_Airport",
+        "natlscale": 150,
+        "cartodb_id": 831,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [103.986414, 1.356161] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Singapore Changi",
+        "abbrev": "SIN",
+        "location": "terminal",
+        "gps_code": "WSSS",
+        "iata_code": "SIN",
+        "wikipedia": "http://en.wikipedia.org/wiki/Singapore_Changi_Airport",
+        "natlscale": 150,
+        "cartodb_id": 832,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-0.453157, 51.470996] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "London Heathrow",
+        "abbrev": "LHR",
+        "location": "parking",
+        "gps_code": "EGLL",
+        "iata_code": "LHR",
+        "wikipedia": "http://en.wikipedia.org/wiki/London_Heathrow_Airport",
+        "natlscale": 150,
+        "cartodb_id": 833,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [174.791719, -37.006355] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Auckland Int'l",
+        "abbrev": "AKL",
+        "location": "terminal",
+        "gps_code": "NZAA",
+        "iata_code": "AKL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Auckland_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 834,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-149.981725, 61.172894] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Anchorage Int'l",
+        "abbrev": "ANC",
+        "location": "terminal",
+        "gps_code": "PALH",
+        "iata_code": "ANC",
+        "wikipedia": "http://en.wikipedia.org/wiki/Lake_Hood_Seaplane_Base",
+        "natlscale": 150,
+        "cartodb_id": 835,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-84.425397, 33.640529] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Hartsfield-Jackson Atlanta Int'l",
+        "abbrev": "ATL",
+        "location": "terminal",
+        "gps_code": "KATL",
+        "iata_code": "ATL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Hartsfield-Jackson_Atlanta_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 836,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [116.588174, 40.078766] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Beijing Capital",
+        "abbrev": "PEK",
+        "location": "terminal",
+        "gps_code": "ZBAA",
+        "iata_code": "PEK",
+        "wikipedia": "http://en.wikipedia.org/wiki/Beijing_Capital_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 837,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-74.143372, 4.698833] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Eldorado Int'l",
+        "abbrev": "BOG",
+        "location": "terminal",
+        "gps_code": "SKBO",
+        "iata_code": "BOG",
+        "wikipedia": "http://en.wikipedia.org/wiki/El_Dorado_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 838,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [72.874564, 19.095102] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Chhatrapati Shivaji Int'l",
+        "abbrev": "BOM",
+        "location": "terminal",
+        "gps_code": "VABB",
+        "iata_code": "BOM",
+        "wikipedia": "http://en.wikipedia.org/wiki/Chhatrapati_Shivaji_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 839,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-71.016407, 42.366566] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Gen E L Logan Int'l",
+        "abbrev": "BOS",
+        "location": "terminal",
+        "gps_code": "KBOS",
+        "iata_code": "BOS",
+        "wikipedia": "http://en.wikipedia.org/wiki/Logan_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 840,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.668643, 39.179394] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Baltimore-Washington Int'l Thurgood Marshall",
+        "abbrev": "BWI",
+        "location": "terminal",
+        "gps_code": "KBWI",
+        "iata_code": "BWI",
+        "wikipedia": "http://en.wikipedia.org/wiki/Baltimore-Washington_International_Thurgood_Marshall_Airport",
+        "natlscale": 150,
+        "cartodb_id": 841,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [31.399743, 30.11199] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Cairo Int'l",
+        "abbrev": "CAI",
+        "location": "terminal",
+        "gps_code": "HECA",
+        "iata_code": "CAI",
+        "wikipedia": "http://en.wikipedia.org/wiki/Cairo_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 842,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.663219, 33.562788] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "mid",
+        "name": "Casablanca-Anfa",
+        "abbrev": "CAS",
+        "location": "terminal",
+        "gps_code": "GMMC",
+        "iata_code": "CAS",
+        "wikipedia": "http://en.wikipedia.org/wiki/Casablanca-Anfa_Airport",
+        "natlscale": 150,
+        "cartodb_id": 843,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [18.597657, -33.970447] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Cape Town Int'l",
+        "abbrev": "CPT",
+        "location": "terminal",
+        "gps_code": "FACT",
+        "iata_code": "CPT",
+        "wikipedia": "http://en.wikipedia.org/wiki/Cape_Town_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 845,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [103.956136, 30.581071] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Chengdushuang Liu",
+        "abbrev": "CTU",
+        "location": "terminal",
+        "gps_code": "ZUUU",
+        "iata_code": "CTU",
+        "wikipedia": "http://en.wikipedia.org/wiki/Chengdu_Shuangliu_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 846,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.087836, 28.559204] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Indira Gandhi Int'l",
+        "abbrev": "DEL",
+        "location": "terminal",
+        "gps_code": "VIDP",
+        "iata_code": "DEL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Indira_Gandhi_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 847,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-104.673797, 39.849461] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Denver Int'l",
+        "abbrev": "DEN",
+        "location": "terminal",
+        "gps_code": "KDEN",
+        "iata_code": "DEN",
+        "wikipedia": "http://en.wikipedia.org/wiki/Denver_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 848,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-97.040371, 32.900151] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Dallas-Ft. Worth Int'l",
+        "abbrev": "DFW",
+        "location": "parking",
+        "gps_code": "KDFW",
+        "iata_code": "DFW",
+        "wikipedia": "http://en.wikipedia.org/wiki/Dallas-Fort_Worth_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 849,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [100.602579, 13.920277] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Don Muang Int'l",
+        "abbrev": "DMK",
+        "location": "terminal",
+        "gps_code": "VTBD",
+        "iata_code": "DMK",
+        "wikipedia": "http://en.wikipedia.org/wiki/Don_Mueang_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 850,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [55.354077, 25.252566] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Dubai Int'l",
+        "abbrev": "DXB",
+        "location": "terminal",
+        "gps_code": "OMDB",
+        "iata_code": "DXB",
+        "wikipedia": "http://en.wikipedia.org/wiki/Dubai_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 851,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-74.177147, 40.69048] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Newark Int'l",
+        "abbrev": "EWR",
+        "location": "terminal",
+        "gps_code": "KEWR",
+        "iata_code": "EWR",
+        "wikipedia": "http://en.wikipedia.org/wiki/Newark_Liberty_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 852,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.541246, -34.813647] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Ministro Pistarini Int'l",
+        "abbrev": "EZE",
+        "location": "terminal",
+        "gps_code": "SAEZ",
+        "iata_code": "EZE",
+        "wikipedia": "http://en.wikipedia.org/wiki/Ministro_Pistarini_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 853,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-80.145259, 26.07171] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Fort Lauderdale Hollywood Int'l",
+        "abbrev": "FLL",
+        "location": "terminal",
+        "gps_code": "KFLL",
+        "iata_code": "FLL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Fort_Lauderdale-Hollywood_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 854,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-95.333705, 29.986591] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "George Bush Intercontinental",
+        "abbrev": "IAH",
+        "location": "terminal",
+        "gps_code": "KIAH",
+        "iata_code": "IAH",
+        "wikipedia": "http://en.wikipedia.org/wiki/George_Bush_Intercontinental_Airport",
+        "natlscale": 150,
+        "cartodb_id": 855,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [28.819549, 40.977839] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Ataturk Hava Limani",
+        "abbrev": "IST",
+        "location": "terminal",
+        "gps_code": "LTBA",
+        "iata_code": "IST",
+        "wikipedia": "http://en.wikipedia.org/wiki/Atat%C3%BCrk_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 856,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [28.231989, -26.132095] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "OR Tambo Int'l",
+        "abbrev": "JNB",
+        "location": "terminal",
+        "gps_code": "FAJS",
+        "iata_code": "JNB",
+        "wikipedia": "http://en.wikipedia.org/wiki/OR_Tambo_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 857,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-134.583573, 58.358944] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "mid",
+        "name": "Juneau Int'l",
+        "abbrev": "JNU",
+        "location": "terminal",
+        "gps_code": "PAJN",
+        "iata_code": "JNU",
+        "wikipedia": "http://en.wikipedia.org/wiki/Juneau_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 858,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-118.402469, 33.944174] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Los Angeles Int'l",
+        "abbrev": "LAX",
+        "location": "terminal",
+        "gps_code": "KLAX",
+        "iata_code": "LAX",
+        "wikipedia": "http://en.wikipedia.org/wiki/Los_Angeles_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 859,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [9.279966, 45.460394] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Linate",
+        "abbrev": "LIN",
+        "location": "terminal",
+        "gps_code": "LIML",
+        "iata_code": "LIN",
+        "wikipedia": "http://en.wikipedia.org/wiki/Linate_Airport",
+        "natlscale": 150,
+        "cartodb_id": 860,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [144.848998, -37.669941] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Melbourne Int'l",
+        "abbrev": "MEL",
+        "location": "terminal",
+        "gps_code": "YMML",
+        "iata_code": "MEL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Melbourne_Airport",
+        "natlscale": 150,
+        "cartodb_id": 861,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-99.082608, 19.43547] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Lic Benito Juarez Int'l",
+        "abbrev": "MEX",
+        "location": "terminal",
+        "gps_code": "MMMX",
+        "iata_code": "MEX",
+        "wikipedia": "http://en.wikipedia.org/wiki/Mexico_City_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 862,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [121.004122, 14.506832] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Ninoy Aquino Int'l",
+        "abbrev": "MNL",
+        "location": "terminal",
+        "gps_code": "RPLL",
+        "iata_code": "MNL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Ninoy_Aquino_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 863,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [36.925089, -1.33053] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Jomo Kenyatta Int'l",
+        "abbrev": "NBO",
+        "location": "terminal",
+        "gps_code": "HKJK",
+        "iata_code": "NBO",
+        "wikipedia": "http://en.wikipedia.org/wiki/Jomo_Kenyatta_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 864,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-157.919783, 21.332022] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Honolulu Int'l",
+        "abbrev": "HNL",
+        "location": "terminal",
+        "gps_code": "PHNL",
+        "iata_code": "HNL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Honolulu_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 865,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-87.905134, 41.976529] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Chicago O'Hare Int'l",
+        "abbrev": "ORD",
+        "location": "terminal",
+        "gps_code": "KORD",
+        "iata_code": "ORD",
+        "wikipedia": "http://en.wikipedia.org/wiki/O'Hare_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 866,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [46.701829, 24.959032] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "King Khalid Int'l",
+        "abbrev": "RUH",
+        "location": "terminal",
+        "gps_code": "OERK",
+        "iata_code": "RUH",
+        "wikipedia": "http://en.wikipedia.org/wiki/King_Khalid_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 867,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-70.793686, -33.396834] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Arturo Merino Benitez Int'l",
+        "abbrev": "SCL",
+        "location": "terminal",
+        "gps_code": "SCEL",
+        "iata_code": "SCL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Comodoro_Arturo_Merino_Ben%C3%ADtez_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 868,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-122.30229, 47.443582] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Tacoma Int'l",
+        "abbrev": "SEA",
+        "location": "terminal",
+        "gps_code": "KSEA",
+        "iata_code": "SEA",
+        "wikipedia": "http://en.wikipedia.org/wiki/Seattle-Tacoma_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 869,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-122.38347, 37.617025] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "San Francisco Int'l",
+        "abbrev": "SFO",
+        "location": "terminal",
+        "gps_code": "KSFO",
+        "iata_code": "SFO",
+        "wikipedia": "http://en.wikipedia.org/wiki/San_Francisco_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 870,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [121.341184, 31.187257] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Hongqiao",
+        "abbrev": "SHA",
+        "location": "terminal",
+        "gps_code": "ZSSS",
+        "iata_code": "SHA",
+        "wikipedia": "http://en.wikipedia.org/wiki/Shanghai_Hongqiao_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 871,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [37.415969, 55.966447] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Sheremtyevo",
+        "abbrev": "SVO",
+        "location": "terminal",
+        "gps_code": "UUEE",
+        "iata_code": "SVO",
+        "wikipedia": "http://en.wikipedia.org/wiki/Sheremetyevo_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 872,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-79.611419, 43.68096] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Toronto-Pearson Int'l",
+        "abbrev": "YYZ",
+        "location": "terminal",
+        "gps_code": "CYYZ",
+        "iata_code": "YYZ",
+        "wikipedia": "http://en.wikipedia.org/wiki/Toronto_Pearson_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 873,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [151.166067, -33.936583] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Kingsford Smith",
+        "abbrev": "SYD",
+        "location": "terminal",
+        "gps_code": "YSSY",
+        "iata_code": "SYD",
+        "wikipedia": "http://en.wikipedia.org/wiki/Kingsford_Smith_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 874,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [24.968208, 60.318716] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Helsinki Vantaa",
+        "abbrev": "HEL",
+        "location": "terminal",
+        "gps_code": "EFHK",
+        "iata_code": "HEL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Helsinki-Vantaa_Airport",
+        "natlscale": 150,
+        "cartodb_id": 875,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [2.541868, 49.01442] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Charles de Gaulle Int'l",
+        "abbrev": "CDG",
+        "location": "terminal",
+        "gps_code": "LFPG",
+        "iata_code": "CDG",
+        "wikipedia": "http://en.wikipedia.org/wiki/Charles_de_Gaulle_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 876,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [13.290309, 52.554429] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Berlin-Tegel Int'l",
+        "abbrev": "TXL",
+        "location": "terminal",
+        "gps_code": "EDDT",
+        "iata_code": "TXL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Berlin-Tegel_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 877,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [16.560768, 48.119756] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Vienna Schwechat Int'l",
+        "abbrev": "VIE",
+        "location": "terminal",
+        "gps_code": "LOWW",
+        "iata_code": "VIE",
+        "wikipedia": "http://en.wikipedia.org/wiki/Vienna_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 878,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [8.571823, 50.050677] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Frankfurt Int'l",
+        "abbrev": "FRA",
+        "location": "terminal",
+        "gps_code": "EDDF",
+        "iata_code": "FRA",
+        "wikipedia": "http://en.wikipedia.org/wiki/Frankfurt_Airport",
+        "natlscale": 150,
+        "cartodb_id": 879,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [12.250101, 41.795079] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Leonardo da Vinci Int'l",
+        "abbrev": "FCO",
+        "location": "terminal",
+        "gps_code": "LIRF",
+        "iata_code": "FCO",
+        "wikipedia": "http://en.wikipedia.org/wiki/Leonardo_da_Vinci_Airport",
+        "natlscale": 150,
+        "cartodb_id": 880,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [135.442475, 34.790198] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Osaka Int'l",
+        "abbrev": "ITM",
+        "location": "terminal",
+        "gps_code": "RJOO",
+        "iata_code": "ITM",
+        "wikipedia": "http://en.wikipedia.org/wiki/Osaka_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 881,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [126.802393, 37.557301] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Gimpo Int'l",
+        "abbrev": "GMP",
+        "location": "terminal",
+        "gps_code": "RKSS",
+        "iata_code": "GMP",
+        "wikipedia": "http://en.wikipedia.org/wiki/Gimpo_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 882,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [11.099103, 60.193578] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Oslo Gardermoen",
+        "abbrev": "OSL",
+        "location": "terminal",
+        "gps_code": "ENGM",
+        "iata_code": "OSL",
+        "wikipedia": "http://en.wikipedia.org/wiki/Gardermoen_Air_Station",
+        "natlscale": 150,
+        "cartodb_id": 883,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-47.920789, -15.869999] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Juscelino Kubitschek Int'l",
+        "abbrev": "BSB",
+        "location": "terminal",
+        "gps_code": "SBBR",
+        "iata_code": "BSB",
+        "wikipedia": "http://en.wikipedia.org/wiki/Bras%C3%ADlia_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 884,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-46.659116, -23.626859] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Congonhas Int'l",
+        "abbrev": "CGH",
+        "location": "terminal",
+        "gps_code": "SBSP",
+        "iata_code": "CGH",
+        "wikipedia": "http://en.wikipedia.org/wiki/Congonhas-S%C3%A3o_Paulo_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 885,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-43.248381, -22.812344] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Rio de Janeiro-Antonio Carlos Jobim Int'l",
+        "abbrev": "GIG",
+        "location": "terminal",
+        "gps_code": "SBGL",
+        "iata_code": "GIG",
+        "wikipedia": "http://en.wikipedia.org/wiki/Rio_de_Janeiro-Gale%C3%A3o_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 886,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-3.569027, 40.468128] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Madrid Barajas",
+        "abbrev": "MAD",
+        "location": "terminal",
+        "gps_code": "LEMD",
+        "iata_code": "MAD",
+        "wikipedia": "http://en.wikipedia.org/wiki/Madrid_Barajas_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 887,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-66.00423, 18.438077] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Luis Munoz Marin",
+        "abbrev": "SJU",
+        "location": "terminal",
+        "gps_code": "TJSJ",
+        "iata_code": "SJU",
+        "wikipedia": "http://en.wikipedia.org/wiki/Luis_Mu%C3%B1oz_Mar%C3%ADn_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 888,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [17.93073, 59.65112] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Arlanda",
+        "abbrev": "ARN",
+        "location": "terminal",
+        "gps_code": "ESSA",
+        "iata_code": "ARN",
+        "wikipedia": "http://en.wikipedia.org/wiki/Stockholm-Arlanda_Airport",
+        "natlscale": 150,
+        "cartodb_id": 889,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [106.654296, -6.126603] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Soekarno-Hatta Int'l",
+        "abbrev": "CGK",
+        "location": "parking",
+        "gps_code": "WIII",
+        "iata_code": "CGK",
+        "wikipedia": "http://en.wikipedia.org/wiki/Soekarno-Hatta_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 890,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [23.947116, 37.936233] },
+      "properties": {
+        "scalerank": 2,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Eleftherios Venizelos Int'l",
+        "abbrev": "ATH",
+        "location": "terminal",
+        "gps_code": "LGAV",
+        "iata_code": "ATH",
+        "wikipedia": "http://en.wikipedia.org/wiki/Athens_International_Airport",
+        "natlscale": 150,
+        "cartodb_id": 891,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-10-19T00:00:00Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [-97.428739, 37.652928],
+          [-94.715915, 39.297896]
+        ]
+      },
+      "properties": {
+        "scalerank": 8,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Kansas City Int'l",
+        "abbrev": "ICT",
+        "location": "terminal",
+        "gps_code": "KICT",
+        "iata_code": "ICT",
+        "wikipedia": "http://en.wikipedia.org/wiki/Kansas_City_International_Airport",
+        "natlscale": 10,
+        "cartodb_id": 120,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-12-25T02:32:39Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [-86.752377, 33.561867],
+          [-1.733732, 52.452909]
+        ]
+      },
+      "properties": {
+        "scalerank": 8,
+        "featurecla": "Airport",
+        "type": "major",
+        "name": "Birmingham Int'l",
+        "abbrev": "BHM",
+        "location": "terminal",
+        "gps_code": "KBHM",
+        "iata_code": "BHM",
+        "wikipedia": "http://en.wikipedia.org/wiki/Birmingham_International_Airport_(US)",
+        "natlscale": 10,
+        "cartodb_id": 58,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-12-25T02:33:59Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [-79.88701, -2.158338],
+          [-67.005749, 10.597355]
+        ]
+      },
+      "properties": {
+        "scalerank": 4,
+        "featurecla": "Airport",
+        "type": "mid",
+        "name": "Simon Bolivar Int'l",
+        "abbrev": "GYE",
+        "location": "terminal",
+        "gps_code": "SEGU",
+        "iata_code": "GYE",
+        "wikipedia": "http://en.wikipedia.org/wiki/Jos%C3%A9_Joaqu%C3%ADn_de_Olmedo_International_Airport",
+        "natlscale": 50,
+        "cartodb_id": 679,
+        "created_at": "2014-10-19T00:00:00Z",
+        "updated_at": "2014-12-25T02:34:10Z"
+      }
+    }
+  ]
+}
