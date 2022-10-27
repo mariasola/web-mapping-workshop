@@ -9,7 +9,6 @@ import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
 import AIRPORTS_DATA from 'data/points.json';
-import { useGeoJsonLayer } from 'hooks';
 
 const StoryMap = {
   title: 'Exercises/Geojson/Points',
@@ -24,11 +23,32 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const [viewState, setViewState] = useState(initialViewState);
 
-  const LAYER = useGeoJsonLayer({
+  const AIRPORTS_LAYER = {
     id: 'airports',
-    active: true,
-    data: AIRPORTS_DATA,
-  });
+    type: 'geojson',
+    source: {
+      type: 'geojson',
+      data: AIRPORTS_DATA,
+    },
+    render: {
+      layers: [
+        {
+          type: 'circle',
+          paint: {
+            'circle-color': '#FFCC00',
+            'circle-opacity': 0.5,
+          },
+        },
+        {
+          type: 'line',
+          paint: {
+            'line-color': '#FF0000',
+            'line-width': 3,
+          },
+        },
+      ],
+    },
+  };
 
   return (
     <div className="relative w-full h-screen">
@@ -46,7 +66,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={LAYER.id} {...LAYER} />
+                <Layer key={AIRPORTS_LAYER.id} {...AIRPORTS_LAYER} />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
