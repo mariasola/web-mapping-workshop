@@ -38,14 +38,19 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const aiportTypes = useMemo(() => uniq(AIRPORTS_DATA.features.map((f) => f.properties.type)), []);
 
-  const rampTypeAirports = aiportTypes
-    .map((a, i) => {
-      return {
-        [a]: colors[i],
-      };
-    })
-    .map((item) => Object.entries(item))
-    .flat(2);
+  const typeAirportsRamp = useMemo(
+    () =>
+      aiportTypes
+        .map((a, i) => {
+          return {
+            [a]: colors[i],
+          };
+        })
+        .map((item) => Object.entries(item))
+        .flat(2),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [aiportTypes]
+  );
 
   const AIRPORTS_LAYER = {
     id: 'airports',
@@ -59,10 +64,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'circle',
           paint: {
-            'circle-color': ['match', ['get', 'type'], ...rampTypeAirports, '#DDD'],
+            'circle-color': ['match', ['get', 'type'], ...typeAirportsRamp, '#DDD'],
             'circle-opacity': 0.5,
             'circle-radius': 5,
-            'circle-stroke-color': ['match', ['get', 'type'], ...rampTypeAirports, '#DDD'],
+            'circle-stroke-color': ['match', ['get', 'type'], ...typeAirportsRamp, '#DDD'],
             'circle-stroke-width': 1,
           },
         },
@@ -98,4 +103,23 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 };
 
 export const Points03 = Template.bind({});
-Points03.args = {};
+Points03.args = {
+  id: 'airports-map',
+  className: '',
+  viewport: {},
+  initialViewState: {},
+  bounds: {
+    bbox: [10.9588623046875, 10.5194091796875, 44.01257086123085, 43.6499881760459],
+    options: { padding: 50 },
+    viewportOptions: { transitionDuration: 0 },
+  },
+  onMapViewportChange: (viewport) => {
+    console.info('onMapViewportChange: ', viewport);
+  },
+  onMapReady: ({ map, mapContainer }) => {
+    console.info('onMapReady: ', map, mapContainer);
+  },
+  onMapLoad: ({ map, mapContainer }) => {
+    console.info('onMapLoad: ', map, mapContainer);
+  },
+};
