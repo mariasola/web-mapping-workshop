@@ -98,8 +98,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const Points02 = Template.bind({});
-Points02.args = {
+export const AirportScaleranks02 = Template.bind({});
+AirportScaleranks02.args = {
   id: 'airports-map',
   className: '',
   viewport: {},

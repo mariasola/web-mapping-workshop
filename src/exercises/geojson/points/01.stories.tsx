@@ -74,8 +74,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const Points01 = Template.bind({});
-Points01.args = {
+export const Airports01 = Template.bind({});
+Airports01.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
