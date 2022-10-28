@@ -11,6 +11,7 @@ import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
 import AIRPORTS_DATA from 'data/points.json';
+
 const StoryMap = {
   title: 'Exercises/Geojson/Points',
   argTypes: {},
@@ -35,6 +36,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     '#f50b86',
     '#ff6f00',
   ];
+
+  const rampScalerankAirports = flatten(
+    colors.map((c, i) => {
+      return [i, c];
+    })
+  );
+
   const AIRPORTS_LAYER = {
     id: 'airports',
     type: 'geojson',
@@ -47,26 +55,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'circle',
           paint: {
-            'circle-color': [
-              'match',
-              ['get', 'scalerank'],
-              ...flatten(
-                colors.map((c, i) => {
-                  return [i, c];
-                })
-              ),
-              '#DDD',
-            ],
+            'circle-color': ['match', ['get', 'scalerank'], ...rampScalerankAirports, '#DDD'],
             'circle-opacity': 0.5,
             'circle-radius': 5,
             'circle-stroke-color': [
               'match',
               ['get', 'scalerank'],
-              ...flatten(
-                colors.map((c, i) => {
-                  return [i, c];
-                })
-              ),
+              ...rampScalerankAirports,
               '#DDD',
             ],
             'circle-stroke-width': 1,
