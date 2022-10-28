@@ -19,7 +19,7 @@ const StoryMap = {
 export default StoryMap;
 
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
-  const { id, bounds, maxZoom, initialViewState } = args;
+  const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState(initialViewState);
 
@@ -37,13 +37,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           paint: {
             'circle-color': '#FFCC00',
             'circle-opacity': 0.5,
-          },
-        },
-        {
-          type: 'line',
-          paint: {
-            'line-color': '#FF0000',
-            'line-width': 3,
+            'circle-radius': 20,
+            'circle-stroke-color': '#FF0000',
+            'circle-stroke-width': 1,
           },
         },
       ],
@@ -54,7 +50,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <div className="relative w-full h-screen">
       <Map
         id={id}
-        maxZoom={maxZoom}
         bounds={bounds}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
@@ -99,5 +94,4 @@ Points01.args = {
   onMapLoad: ({ map, mapContainer }) => {
     console.info('onMapLoad: ', map, mapContainer);
   },
-  maxZoom: 4,
 };
