@@ -28,13 +28,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       type: 'geojson',
       data: AIRPORTS_DATA,
     },
-    images: [
-      {
-        id: 'airport',
-        src: '/images/airplane.svg',
-        options: {},
-      },
-    ],
     render: {
       layers: [
         {
@@ -46,7 +39,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             'circle-radius': 20,
           },
         },
-
         {
           type: 'heatmap',
           paint: {
@@ -100,14 +92,14 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const AirportHeatmap06 = Template.bind({});
-AirportHeatmap06.args = {
+export const AirportHeatmap = Template.bind({});
+AirportHeatmap.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
   initialViewState: {},
   bounds: {
-    bbox: [10.9588623046875, 10.5194091796875, 44.01257086123085, 43.6499881760459],
+    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
     options: { padding: 50 },
     viewportOptions: { transitionDuration: 0 },
   },

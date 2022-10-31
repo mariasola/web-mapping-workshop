@@ -74,14 +74,14 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const Airports01 = Template.bind({});
-Airports01.args = {
+export const Airports = Template.bind({});
+Airports.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
   initialViewState: {},
   bounds: {
-    bbox: [10.9588623046875, 10.5194091796875, 44.01257086123085, 43.6499881760459],
+    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
     options: { padding: 50 },
     viewportOptions: { transitionDuration: 0 },
   },

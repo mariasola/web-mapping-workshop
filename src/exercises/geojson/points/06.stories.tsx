@@ -87,14 +87,14 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const AirportImages06 = Template.bind({});
-AirportImages06.args = {
+export const AirportImages = Template.bind({});
+AirportImages.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
   initialViewState: {},
   bounds: {
-    bbox: [10.9588623046875, 10.5194091796875, 44.01257086123085, 43.6499881760459],
+    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
     options: { padding: 50 },
     viewportOptions: { transitionDuration: 0 },
   },
