@@ -43,7 +43,16 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             'icon-image': 'airport',
             'icon-ignore-placement': true,
             'icon-allow-overlap': true,
+            'icon-rotate': 315,
             'icon-size': 0.1,
+          },
+        },
+        {
+          type: 'circle',
+          paint: {
+            'circle-color': '#0000FF',
+            'circle-opacity': 0.3,
+            'circle-radius': 10,
           },
         },
       ],
