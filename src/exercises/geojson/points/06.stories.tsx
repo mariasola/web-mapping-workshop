@@ -44,7 +44,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             'icon-ignore-placement': true,
             'icon-allow-overlap': true,
             'icon-rotate': 315,
-            'icon-size': 0.1,
+            'icon-size': ['interpolate', ['linear'], ['zoom'], 0.18, 0.15, 0.2, 0.1],
           },
         },
         {
