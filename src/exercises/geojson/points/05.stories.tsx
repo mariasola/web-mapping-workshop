@@ -42,23 +42,35 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'heatmap',
           paint: {
-            'heatmap-weight': 1,
+            // Increase the heatmap weight based on frequency and property magnitude
+            'heatmap-weight': ['interpolate', ['linear'], ['get', 'scalerank'], 0, 0, 6, 1],
+            // Increase the heatmap color weight weight by zoom level
+            // heatmap-intensity is a multiplier on top of heatmap-weight
             'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 0, 1, 9, 3],
+            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+            // Begin color ramp at 0-stop with a 0-transparancy color
+            // to create a blur-like effect.
             'heatmap-color': [
               'interpolate',
               ['linear'],
               ['heatmap-density'],
               0,
-              'rgba(255, 194, 0, 1)',
-              0.33,
-              'rgba(235, 68, 68, 1)',
-              0.66,
-              'rgba(199, 43, 214, 1)',
+              'rgba(33,102,172,0)',
+              0.2,
+              'rgb(103,169,207)',
+              0.4,
+              'rgb(209,229,240)',
+              0.6,
+              'rgb(253,219,199)',
+              0.8,
+              'rgb(239,138,98)',
               1,
-              'rgba(210, 50, 169, 1)',
+              'rgb(178,24,43)',
             ],
-            'heatmap-radius': 50,
-            'heatmap-opacity': 1,
+            // Adjust the heatmap radius by zoom level
+            'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 0, 2, 9, 20],
+            // Transition from heatmap to circle layer by zoom level
+            'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 1, 9, 0],
           },
         },
       ],
