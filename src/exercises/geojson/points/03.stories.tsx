@@ -39,15 +39,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const aiportTypes = useMemo(() => uniq(AIRPORTS_DATA.features.map((f) => f.properties.type)), []);
 
   const typeAirportsRamp = useMemo(
-    () =>
-      aiportTypes
-        .map((a, i) => {
-          return {
-            [a]: colors[i],
-          };
-        })
-        .map((item) => Object.entries(item))
-        .flat(2),
+    () => aiportTypes.map((a, i) => Object.entries({ [a]: colors[i] })).flat(2),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [aiportTypes]
   );
