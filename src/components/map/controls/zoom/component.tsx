@@ -1,5 +1,7 @@
 import { FC, useCallback, MouseEvent } from 'react';
 
+import { useMap } from 'react-map-gl';
+
 import cx from 'classnames';
 
 import Icon from 'components/icon';
@@ -9,7 +11,9 @@ import ZOOM_OUT_SVG from 'svgs/map/zoom-out.svg?sprite';
 
 import type { ZoomControlProps } from './types';
 
-export const ZoomControl: FC<ZoomControlProps> = ({ mapRef, className }: ZoomControlProps) => {
+export const ZoomControl: FC<ZoomControlProps> = ({ id, className }: ZoomControlProps) => {
+  const { [id]: mapRef } = useMap();
+
   const zoom = mapRef?.getZoom();
   const minZoom = mapRef?.getMinZoom();
   const maxZoom = mapRef?.getMaxZoom();
@@ -19,11 +23,9 @@ export const ZoomControl: FC<ZoomControlProps> = ({ mapRef, className }: ZoomCon
       e.stopPropagation();
       if (!mapRef) return null;
 
-      if (zoom + 1 <= maxZoom) {
-        mapRef.zoomIn();
-      }
+      mapRef.zoomIn();
     },
-    [mapRef, zoom, maxZoom]
+    [mapRef]
   );
 
   const decreaseZoom = useCallback(
@@ -31,11 +33,9 @@ export const ZoomControl: FC<ZoomControlProps> = ({ mapRef, className }: ZoomCon
       e.stopPropagation();
       if (!mapRef) return null;
 
-      if (zoom + 1 >= minZoom) {
-        mapRef.zoomOut();
-      }
+      mapRef.zoomOut();
     },
-    [mapRef, zoom, minZoom]
+    [mapRef]
   );
 
   return (
@@ -48,25 +48,26 @@ export const ZoomControl: FC<ZoomControlProps> = ({ mapRef, className }: ZoomCon
       <button
         className={cx({
           'mb-0.5 p-0.5 rounded-t-3xl text-white bg-black': true,
-          'hover:bg-gray-700 active:bg-gray-600': zoom !== maxZoom,
-          'opacity-50 cursor-default': zoom === maxZoom,
+          'hover:bg-gray-700 active:bg-gray-600': zoom < maxZoom,
+          'opacity-50 cursor-default': zoom >= maxZoom,
         })}
         aria-label="Zoom in"
         type="button"
-        disabled={zoom === maxZoom}
+        disabled={zoom >= maxZoom}
         onClick={increaseZoom}
       >
         <Icon icon={ZOOM_IN_SVG} />
       </button>
+
       <button
         className={cx({
           'p-0.5 rounded-b-3xl text-white bg-black': true,
-          'hover:bg-gray-700 active:bg-gray-600': zoom !== minZoom,
-          'opacity-50 cursor-default': zoom === minZoom,
+          'hover:bg-gray-700 active:bg-gray-600': zoom > minZoom,
+          'opacity-50 cursor-default': zoom <= minZoom,
         })}
         aria-label="Zoom out"
         type="button"
-        disabled={zoom === minZoom}
+        disabled={zoom <= minZoom}
         onClick={decreaseZoom}
       >
         <Icon icon={ZOOM_OUT_SVG} />
