@@ -41,7 +41,6 @@ export const CustomMap: FC<CustomMapProps> = ({
    */
   const { [id]: mapRef } = useMap();
   const mapContainerRef = useRef(null);
-
   /**
    * STATE
    */
@@ -139,7 +138,6 @@ export const CustomMap: FC<CustomMapProps> = ({
       }
     };
   }, [bounds, isFlying]);
-
   return (
     <div
       ref={mapContainerRef}
