@@ -1,12 +1,10 @@
 import { useState } from 'react';
 
 import { Story } from '@storybook/react/types-6-0';
-// Layer manager
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import CartoProvider from '@vizzuality/layer-manager-provider-carto';
 import { LayerManager } from '@vizzuality/layer-manager-react';
 
-// Controls
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';

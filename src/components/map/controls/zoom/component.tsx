@@ -13,6 +13,7 @@ import type { ZoomControlProps } from './types';
 
 export const ZoomControl: FC<ZoomControlProps> = ({ id, className }: ZoomControlProps) => {
   const { [id]: mapRef } = useMap();
+
   const zoom = mapRef?.getZoom();
   const minZoom = mapRef?.getMinZoom();
   const maxZoom = mapRef?.getMaxZoom();
@@ -57,6 +58,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ id, className }: ZoomControl
       >
         <Icon icon={ZOOM_IN_SVG} />
       </button>
+
       <button
         className={cx({
           'p-0.5 rounded-b-3xl text-white bg-black': true,
