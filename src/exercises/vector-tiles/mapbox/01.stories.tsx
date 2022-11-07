@@ -8,7 +8,6 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
-import AIRPORTS_DATA from 'data/points.json';
 
 const StoryMap = {
   title: 'Exercises/Vector Tiles/Mapbox',
@@ -24,59 +23,56 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const [viewState, setViewState] = useState(initialViewState);
 
   const MAPBOX_LAYER = {
-    id: 'airports',
-    type: 'geojson',
+    id: 'vector-tiles-mapbox',
+    type: 'vector',
     source: {
-      type: 'geojson',
-      data: AIRPORTS_DATA,
-      cluster: true,
-      clusterMaxZoom: 14, // Max zoom to cluster points on
-      clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+      url: 'mapbox://layer-manager.1ecpue1k',
     },
     render: {
       layers: [
         {
-          type: 'circle',
-          id: 'clusters',
-          filter: ['has', 'point_count'],
+          type: 'fill',
+          'source-layer': 'Indicators',
           paint: {
-            'circle-stroke-color': '#000000',
-            'circle-opacity': 0.5,
-            'circle-radius': 20,
-            'circle-color': [
-              'step',
-              ['get', 'point_count'],
-              '#51bbd6',
-              25,
-              '#f1f075',
-              50,
-              '#f28cb1',
-            ],
+            'fill-color': '#77CCFF',
+            'fill-opacity': 0.5,
           },
         },
         {
-          id: 'cluster-count',
-          type: 'symbol',
-          filter: ['has', 'point_count'],
-          layout: {
-            'text-field': '{point_count_abbreviated}',
-            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 12,
+          type: 'line',
+          'source-layer': 'Indicators',
+          paint: {
+            'line-color': '#0044FF',
+            'line-width': 1,
           },
         },
       ],
     },
   };
 
+  const styles = {
+    code: { background: 'black', borderRadius: '4px', color: 'white' },
+    properties: {
+      margin: '10px',
+      background: 'pink',
+      borderRadius: '4px',
+      color: 'white',
+      padding: '10px',
+    },
+  };
+
   return (
     <div className="relative w-full h-screen">
-      Draw a tiles layer with a Mapbox tileset, center it on the map and display them as
-      <ul>
-        {/* <li>Circles</li>
-        <li>color: #ffCC00</li>
-        <li>border: #000000</li>
-        <li>radius: 20</li>
-        <li>opacity: 0.5</li> */}
+      <p>
+        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
+        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
+        on the map and display them with following styles:
+      </p>
+      <ul style={styles.properties}>
+        <li>color: #77CCFF</li>
+        <li>border: #0044FF</li>
+        <li>borderWidth: 1</li>
+        <li>opacity: 0.5</li>
       </ul>
       <Map
         id={id}
@@ -106,12 +102,12 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
 export const Mapbox01 = Template.bind({});
 Mapbox01.args = {
-  id: 'tiles-map',
+  id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
   initialViewState: {},
   bounds: {
-    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
+    bbox: [-170.875677, 26.606678, -62.418646, 67.415284],
     options: { padding: 50 },
     viewportOptions: { transitionDuration: 0 },
   },

@@ -51,7 +51,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           'source-layer': 'layer0',
           paint: {
             'fill-color': '#FFCC00',
-            'fill-opacity': 1,
+            'fill-opacity': 0.7,
           },
         },
         {
@@ -59,22 +59,46 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           'source-layer': 'layer0',
           paint: {
             'line-color': '#000000',
-            'line-opacity': 0.1,
+            'line-opacity': 0.2,
           },
         },
       ],
     },
   };
 
+  const OPTIONS = {
+    cartocss: '#wdpa_protected_areas {  polygon-opacity: 1.0; polygon-fill: #704489 }',
+    cartocss_version: '2.3.0',
+    sql: 'SELECT * FROM wdpa_protected_areas',
+  };
+
+  const styles = {
+    code: { background: 'black', borderRadius: '4px', color: 'white' },
+    properties: {
+      margin: '10px',
+      background: 'pink',
+      borderRadius: '4px',
+      color: 'white',
+      padding: '10px',
+    },
+  };
+
   return (
     <div className="relative w-full h-screen">
-      Draw a tiles layer with a CartoDB tileset, center it on the map and display them as
-      <ul>
-        {/* <li>Circles</li>
-        <li>color: #ffCC00</li>
+      Draw a vector-tiles layer with a protected areas CartoDB tileset, center it on the map and
+      display them with next styles.
+      <br />
+      You should use account <span style={styles.code}>&nbsp;&nbsp;wri-01 &nbsp;</span> and the
+      following options:{' '}
+      <span style={styles.code}>
+        &nbsp;&nbsp;cartocss: {OPTIONS.cartocss}; cartocss_version: {OPTIONS.cartocss_version};sql:{' '}
+        {OPTIONS.sql}&nbsp;&nbsp;
+      </span>
+      <ul style={styles.properties}>
+        <li>color: #FFCC00</li>
+        <li>opacity: 0.7</li>
         <li>border: #000000</li>
-        <li>radius: 20</li>
-        <li>opacity: 0.5</li> */}
+        <li>border opacity: 0.2</li>
       </ul>
       <Map
         id={id}
