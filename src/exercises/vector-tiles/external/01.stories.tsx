@@ -8,7 +8,6 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
-import AIRPORTS_DATA from 'data/points.json';
 
 const StoryMap = {
   title: 'Exercises/Vector Tiles/External',
@@ -24,44 +23,31 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const [viewState, setViewState] = useState(initialViewState);
 
   const EXTERNAL_LAYER = {
-    id: 'airports',
-    type: 'geojson',
+    id: 'vector-tiles-external',
+    type: 'vector',
     source: {
-      type: 'geojson',
-      data: AIRPORTS_DATA,
-      cluster: true,
-      clusterMaxZoom: 14, // Max zoom to cluster points on
-      clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+      type: 'vector',
+      tiles: [
+        'https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer/tile/{z}/{y}/{x}.pbf',
+      ],
     },
     render: {
       layers: [
         {
-          type: 'circle',
-          id: 'clusters',
-          filter: ['has', 'point_count'],
+          interactive: true,
+          type: 'fill',
+          'source-layer': 'Santa_Monica_Mountains_Parcels',
           paint: {
-            'circle-stroke-color': '#000000',
-            'circle-opacity': 0.5,
-            'circle-radius': 20,
-            'circle-color': [
-              'step',
-              ['get', 'point_count'],
-              '#51bbd6',
-              25,
-              '#f1f075',
-              50,
-              '#f28cb1',
-            ],
+            'fill-color': '#ccc',
           },
         },
         {
-          id: 'cluster-count',
-          type: 'symbol',
-          filter: ['has', 'point_count'],
-          layout: {
-            'text-field': '{point_count_abbreviated}',
-            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 12,
+          interactive: true,
+          type: 'line',
+          'source-layer': 'Santa_Monica_Mountains_Parcels',
+          paint: {
+            'line-color': '#000',
+            'line-width': 1,
           },
         },
       ],
@@ -106,12 +92,12 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
 export const External01 = Template.bind({});
 External01.args = {
-  id: 'tiles-map',
+  id: 'vector-tiles-external',
   className: '',
   viewport: {},
   initialViewState: {},
   bounds: {
-    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
+    bbox: [-118.790682, 33.950831, -118.367022, 34.160179],
     options: { padding: 50 },
     viewportOptions: { transitionDuration: 0 },
   },
