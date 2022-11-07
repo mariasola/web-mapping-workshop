@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import flatten from 'lodash/flatten';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -22,6 +24,35 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const [viewState, setViewState] = useState(initialViewState);
 
+  const colors = [
+    '#a3f307',
+    '#05f9e2',
+    '#e2f705',
+    '#f50b86',
+    '#ff6f00',
+    '#a3f307',
+    '#05f9e2',
+    '#e2f705',
+    '#f50b86',
+    '#ff6f00',
+    '#a3f307',
+    '#05f9e2',
+    '#e2f705',
+    '#f50b86',
+    '#ff6f00',
+    '#a3f307',
+    '#05f9e2',
+    '#e2f705',
+    '#f50b86',
+    '#ff6f00',
+  ];
+
+  const rampPopScore = flatten(
+    colors.map((c, i) => {
+      return [i, c];
+    })
+  );
+
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
     type: 'vector',
@@ -31,19 +62,14 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     render: {
       layers: [
         {
-          type: 'fill',
+          type: 'circle',
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': '#77CCFF',
-            'fill-opacity': 0.5,
-          },
-        },
-        {
-          type: 'line',
-          'source-layer': 'Indicators',
-          paint: {
-            'line-color': '#0044FF',
-            'line-width': 1,
+            'circle-color': ['match', ['get', 'pop_score'], ...rampPopScore, '#DDD'],
+            'circle-opacity': 0.5,
+            'circle-radius': 2,
+            'circle-stroke-color': ['match', ['get', 'pop_score'], ...rampPopScore, '#DDD'],
+            'circle-stroke-width': 1,
           },
         },
       ],
@@ -82,6 +108,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
           setViewState(v);
+        }}
+        onClick={(e) => {
+          console.log(e);
         }}
       >
         {(map) => {
