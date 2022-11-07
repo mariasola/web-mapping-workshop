@@ -38,7 +38,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           type: 'fill',
           'source-layer': 'Santa_Monica_Mountains_Parcels',
           paint: {
-            'fill-color': '#ccc',
+            'fill-color': '#77CCFF',
           },
         },
         {
@@ -46,7 +46,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           type: 'line',
           'source-layer': 'Santa_Monica_Mountains_Parcels',
           paint: {
-            'line-color': '#000',
+            'line-color': '#0044FF',
             'line-width': 1,
           },
         },

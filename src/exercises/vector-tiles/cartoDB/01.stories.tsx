@@ -2,13 +2,14 @@ import { useState } from 'react';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
+import CartoProvider from '@vizzuality/layer-manager-provider-carto';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
+const cartoProvider = new CartoProvider();
 
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
-import AIRPORTS_DATA from 'data/points.json';
 
 const StoryMap = {
   title: 'Exercises/Vector Tiles/Carto DB',
@@ -24,44 +25,41 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const [viewState, setViewState] = useState(initialViewState);
 
   const CARTODB_LAYER = {
-    id: 'airports',
-    type: 'geojson',
+    id: 'vector-tiles-cartodb',
+    type: 'vector',
     source: {
-      type: 'geojson',
-      data: AIRPORTS_DATA,
-      cluster: true,
-      clusterMaxZoom: 14, // Max zoom to cluster points on
-      clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+      type: 'vector',
+      provider: {
+        type: 'carto',
+        account: 'wri-01',
+        layers: [
+          {
+            options: {
+              cartocss: '#wdpa_protected_areas {  polygon-opacity: 1.0; polygon-fill: #704489 }',
+              cartocss_version: '2.3.0',
+              sql: 'SELECT * FROM wdpa_protected_areas',
+            },
+            type: 'cartodb',
+          },
+        ],
+      },
     },
     render: {
       layers: [
         {
-          type: 'circle',
-          id: 'clusters',
-          filter: ['has', 'point_count'],
+          type: 'fill',
+          'source-layer': 'layer0',
           paint: {
-            'circle-stroke-color': '#000000',
-            'circle-opacity': 0.5,
-            'circle-radius': 20,
-            'circle-color': [
-              'step',
-              ['get', 'point_count'],
-              '#51bbd6',
-              25,
-              '#f1f075',
-              50,
-              '#f28cb1',
-            ],
+            'fill-color': '#FFCC00',
+            'fill-opacity': 1,
           },
         },
         {
-          id: 'cluster-count',
-          type: 'symbol',
-          filter: ['has', 'point_count'],
-          layout: {
-            'text-field': '{point_count_abbreviated}',
-            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 12,
+          type: 'line',
+          'source-layer': 'layer0',
+          paint: {
+            'line-color': '#000000',
+            'line-opacity': 0.1,
           },
         },
       ],
@@ -90,7 +88,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {(map) => {
           return (
             <>
-              <LayerManager map={map} plugin={PluginMapboxGl}>
+              <LayerManager
+                map={map}
+                plugin={PluginMapboxGl}
+                providers={{
+                  [cartoProvider.name]: cartoProvider.handleData,
+                }}
+              >
                 <Layer key={CARTODB_LAYER.id} {...CARTODB_LAYER} />
               </LayerManager>
               <Controls>
@@ -106,7 +110,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
 export const CartoDB01 = Template.bind({});
 CartoDB01.args = {
-  id: 'tiles-map',
+  id: 'vector-tiles-cartodb',
   className: '',
   viewport: {},
   initialViewState: {},
