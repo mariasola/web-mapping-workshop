@@ -61,7 +61,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     code: { background: 'black', borderRadius: '4px', color: 'white' },
     properties: {
       margin: '10px',
-      background: 'pink',
+      background: '#D67CAE',
       borderRadius: '4px',
       color: 'white',
       padding: '10px',

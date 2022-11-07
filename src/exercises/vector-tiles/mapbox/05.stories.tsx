@@ -63,16 +63,26 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   return (
     <div className="relative w-full h-screen">
-      <p>
-        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
-        on the map and display them with following styles:
-      </p>
+      Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
+      <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it on
+      the map and display them as a heatmap with following styles:
       <ul style={styles.properties}>
-        <li>color: #77CCFF</li>
-        <li>border: #0044FF</li>
-        <li>borderWidth: 1</li>
+        <li>
+          <b>Circle</b>
+        </li>
+        <li>color: #ffCC00</li>
+        <li>border: #000000</li>
+        <li>radius: 20</li>
         <li>opacity: 0.5</li>
+        <br />
+        <li>
+          <b>Heatmap</b>
+        </li>
+        <li>color: #00CC00</li>
+        <li>intensity: 1</li>
+        <li>opacity: 1</li>
+        <li>radius: 50</li>
+        <li>weight: 1</li>
       </ul>
       <Map
         id={id}
@@ -100,8 +110,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const Mapbox01 = Template.bind({});
-Mapbox01.args = {
+export const Mapbox05 = Template.bind({});
+Mapbox05.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},

@@ -65,8 +65,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <div className="relative w-full h-screen">
       <p>
         Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
-        on the map and display them with following styles:
+        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, with a
+        color ramp base on an attribute number, center it on the map and display them with following
+        styles:
       </p>
       <ul style={styles.properties}>
         <li>color: #77CCFF</li>
@@ -100,8 +101,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const Mapbox01 = Template.bind({});
-Mapbox01.args = {
+export const Mapbox02 = Template.bind({});
+Mapbox02.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
