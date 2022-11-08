@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -19,6 +19,9 @@ export default StoryMap;
 
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
+
+  const mapRef = useRef(null);
+  const HOVER = useRef(null);
 
   const [viewState, setViewState] = useState(initialViewState);
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
@@ -83,6 +86,50 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         setCounty(i.properties.name);
       }
     });
+
+    if (e.features) {
+      // find the layer on hover where to add the feature state
+      const IndicatorsLayer = e.features.find((f) => f.layer.sourceLayer === 'Indicators');
+
+      if (IndicatorsLayer) {
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.id,
+              source: HOVER.current.layer.source,
+            },
+            { hover: false }
+          );
+        }
+
+        HOVER.current = IndicatorsLayer;
+
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.id,
+              source: HOVER.current.layer.source,
+            },
+            { hover: true }
+          );
+        }
+      } else {
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.id,
+              source: HOVER.current.layer.source,
+            },
+            { hover: false }
+          );
+        }
+        HOVER.current = null;
+      }
+    }
+  };
+
+  const handleMapLoad = ({ map }) => {
+    mapRef.current = map;
   };
 
   console.info({ county });
@@ -109,6 +156,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           setViewState(v);
         }}
         onMouseMove={handleMouseMove}
+        onMapLoad={handleMapLoad}
         interactiveLayerIds={layersInteractiveIds}
       >
         {(map) => {
