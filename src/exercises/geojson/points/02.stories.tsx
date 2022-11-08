@@ -72,6 +72,15 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
   return (
     <div className="relative w-full h-screen">
+      <div className="prose dark:prose-invert">
+        Draw a geojson point collection, fill it with a color ramp base on a number attribute,
+        center the map on it and display them with following styles:
+        <ul>
+          <li>color: base on an attribute number [...COLOR_RAMP]</li>
+          <li>border: #000000</li>
+          <li>opacity: 0.5</li>
+        </ul>
+      </div>
       <Map
         id={id}
         bounds={bounds}
@@ -98,8 +107,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const AirportScaleranks = Template.bind({});
-AirportScaleranks.args = {
+export const Points02 = Template.bind({});
+Points02.args = {
   id: 'airports-map',
   className: '',
   viewport: {},

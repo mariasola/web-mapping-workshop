@@ -70,6 +70,24 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
   return (
     <div className="relative w-full h-screen">
+      <div className="prose dark:prose-invert">
+        Draw a geojson point collection, center it on the map and display them as a heatmap with
+        following styles:
+        <ul>
+          <b>Circle</b>
+          <li>color: #ffCC00</li>
+          <li>border: #000000</li>
+          <li>radius: 20</li>
+          <li>opacity: 0.5</li>
+
+          <b>Heatmap</b>
+          <li>color: #00CC00</li>
+          <li>intensity: 1</li>
+          <li>opacity: 1</li>
+          <li>radius: 50</li>
+          <li>weight: 1</li>
+        </ul>
+      </div>
       <Map
         id={id}
         bounds={bounds}
@@ -96,8 +114,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const AirportHeatmap = Template.bind({});
-AirportHeatmap.args = {
+export const Points05 = Template.bind({});
+Points05.args = {
   id: 'airports-map',
   className: '',
   viewport: {},

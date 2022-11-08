@@ -61,6 +61,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   return (
     <div className="relative w-full h-screen">
+      <div className="prose dark:prose-invert">
+        Draw a geojson point collection, center it on the map and display them as images with
+        following styles:
+        <ul>
+          <li>color: #ffCC00</li>
+        </ul>
+      </div>
       <Map
         id={id}
         bounds={bounds}
@@ -87,8 +94,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const AirportImages = Template.bind({});
-AirportImages.args = {
+export const Points06 = Template.bind({});
+Points06.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
