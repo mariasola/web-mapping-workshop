@@ -21,6 +21,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState(initialViewState);
+  const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
@@ -49,21 +50,50 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       ],
     },
   };
-
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-    properties: {
-      margin: '10px',
-      background: '#D67CAE',
-      borderRadius: '4px',
-      color: 'white',
-      padding: '10px',
-    },
+  const onAfterAdd = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+      if (!layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => [
+          ...prevLayersInteractiveIds,
+          layerId,
+        ]);
+      }
+    });
   };
+
+  const onAfterRemove = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+
+      if (layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => {
+          const arr = prevLayersInteractiveIds.filter((e) => e !== layerId);
+
+          return arr;
+        });
+      }
+    });
+  };
+
+  const handleMouseMove = (e) => {
+    console.log(e.features);
+  };
+
+  // const styles = {
+  //   code: { background: 'black', borderRadius: '4px', color: 'white' },
+  //   properties: {
+  //     margin: '10px',
+  //     background: '#D67CAE',
+  //     borderRadius: '4px',
+  //     color: 'white',
+  //     padding: '10px',
+  //   },
+  // };
 
   return (
     <div className="relative w-full h-screen">
-      Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
+      {/* Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
       <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it on
       the map and display them as circle clusters with following styles.
       <br />
@@ -85,7 +115,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         <li>border: #000000</li>
         <li>radius: 50</li>
         <li>opacity: 1</li>
-      </ul>
+      </ul> */}
       <Map
         id={id}
         bounds={bounds}
@@ -94,12 +124,19 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
+        onMouseMove={handleMouseMove}
+        interactiveLayerIds={layersInteractiveIds}
       >
         {(map) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={MAPBOX_LAYER.id} {...MAPBOX_LAYER} />
+                <Layer
+                  key={MAPBOX_LAYER.id}
+                  onAfterAdd={onAfterAdd}
+                  onAfterRemove={onAfterRemove}
+                  {...MAPBOX_LAYER}
+                />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />

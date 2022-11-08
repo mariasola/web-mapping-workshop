@@ -112,7 +112,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
-        onClick={(e) => console.log('E', e.features)}
       >
         {(map) => {
           return (
