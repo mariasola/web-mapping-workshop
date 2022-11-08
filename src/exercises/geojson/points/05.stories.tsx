@@ -29,27 +29,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       data: AIRPORTS_DATA,
     },
     render: {
-      // layers: [
-      //   {
-      //     type: 'circle',
-      //     paint: {
-      //       'circle-color': '#ffCC00',
-      //       'circle-stroke-color': '#000000',
-      //       'circle-opacity': 0.5,
-      //       'circle-radius': 20,
-      //     },
-      //   },
-      //   {
-      //     type: 'heatmap',
-      //     paint: {
-      //       'heatmap-weight': 1,
-      //       'heatmap-intensity': 1,
-      //       'heatmap-color': '#00CC00',
-      //       'heatmap-radius': 50,
-      //       'heatmap-opacity': 1,
-      //     },
-      //   },
-      // ],
       layers: [
         {
           type: 'circle',
