@@ -29,6 +29,27 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       data: AIRPORTS_DATA,
     },
     render: {
+      // layers: [
+      //   {
+      //     type: 'circle',
+      //     paint: {
+      //       'circle-color': '#ffCC00',
+      //       'circle-stroke-color': '#000000',
+      //       'circle-opacity': 0.5,
+      //       'circle-radius': 20,
+      //     },
+      //   },
+      //   {
+      //     type: 'heatmap',
+      //     paint: {
+      //       'heatmap-weight': 1,
+      //       'heatmap-intensity': 1,
+      //       'heatmap-color': '#00CC00',
+      //       'heatmap-radius': 50,
+      //       'heatmap-opacity': 1,
+      //     },
+      //   },
+      // ],
       layers: [
         {
           type: 'circle',
@@ -68,7 +89,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
               'rgb(178,24,43)',
             ],
             // Adjust the heatmap radius by zoom level
-            'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 0, 2, 9, 20],
+            'heatmap-radius': 50,
             // Transition from heatmap to circle layer by zoom level
             'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 1, 9, 0],
           },
