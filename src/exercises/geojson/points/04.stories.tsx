@@ -40,7 +40,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           paint: {
             'circle-stroke-color': '#000000',
             'circle-opacity': 0.5,
-            'circle-radius': 20,
+            'circle-radius': ['step', ['get', 'point_count'], 16, 25, 18, 50, 20],
             'circle-color': [
               'step',
               ['get', 'point_count'],
@@ -60,7 +60,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             'text-allow-overlap': true,
             'text-field': '{point_count_abbreviated}',
             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 12,
+            'text-size': ['step', ['get', 'point_count'], 10, 25, 11, 50, 12],
           },
         },
       ],
