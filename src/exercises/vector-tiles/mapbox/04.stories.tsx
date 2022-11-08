@@ -87,42 +87,19 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   console.info({ county });
 
-  // const styles = {
-  //   code: { background: 'black', borderRadius: '4px', color: 'white' },
-  //   properties: {
-  //     margin: '10px',
-  //     background: '#D67CAE',
-  //     borderRadius: '4px',
-  //     color: 'white',
-  //     padding: '10px',
-  //   },
-  // };
+  const styles = {
+    code: { background: 'black', borderRadius: '4px', color: 'white' },
+  };
 
   return (
     <div className="relative w-full h-screen">
-      {/* Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-      <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it on
-      the map and display them as circle clusters with following styles.
-      <br />
-      Add a counter inside the circles.
-      <ul style={styles.properties}>
-        <li>
-          <b>Circle</b>
-        </li>
-
-        <li>color: #ffCC00</li>
-        <li>border: #000000</li>
-        <li>radius: 20</li>
-        <li>opacity: 0.5</li>
+      <div className="prose dark:prose-invert">
+        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
+        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
+        on the map and display a tooltip with the name of the county when hover on it.
         <br />
-        <li>
-          <b>Cluster</b>
-        </li>
-        <li>color: #00CC00</li>
-        <li>border: #000000</li>
-        <li>radius: 50</li>
-        <li>opacity: 1</li>
-      </ul> */}
+      </div>
+
       <Map
         id={id}
         bounds={bounds}

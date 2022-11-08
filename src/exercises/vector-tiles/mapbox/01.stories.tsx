@@ -52,28 +52,23 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const styles = {
     code: { background: 'black', borderRadius: '4px', color: 'white' },
-    properties: {
-      margin: '10px',
-      background: '#D67CAE',
-      borderRadius: '4px',
-      color: 'white',
-      padding: '10px',
-    },
   };
 
   return (
     <div className="relative w-full h-screen">
-      <p>
-        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
-        on the map and display them with following styles:
-      </p>
-      <ul style={styles.properties}>
-        <li>color: #77CCFF</li>
-        <li>border: #0044FF</li>
-        <li>borderWidth: 1</li>
-        <li>opacity: 0.5</li>
-      </ul>
+      <div className="prose dark:prose-invert">
+        <p>
+          Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
+          <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
+          on the map and display them with following styles:
+        </p>
+        <ul>
+          <li>color: #77CCFF</li>
+          <li>border: #0044FF</li>
+          <li>borderWidth: 1</li>
+          <li>opacity: 0.5</li>
+        </ul>
+      </div>
       <Map
         id={id}
         bounds={bounds}

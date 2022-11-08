@@ -59,25 +59,20 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const styles = {
     code: { background: 'black', borderRadius: '4px', color: 'white' },
-    properties: {
-      margin: '10px',
-      background: '#D67CAE',
-      borderRadius: '4px',
-      color: 'white',
-      padding: '10px',
-    },
   };
 
   return (
     <div className="relative w-full h-screen">
-      Draw a vector-tiles layer, with this url source{' '}
-      <span style={styles.code}>&nbsp;&nbsp;{SANTA_MONICA_TILES}&nbsp;&nbsp;</span> center it on the
-      map and display them with the following styles
-      <ul style={styles.properties}>
-        <li>color: #77CCFF</li>
-        <li>border: #0044FF</li>
-        <li>borderWidth: 1</li>
-      </ul>
+      <div className="prose dark:prose-invert">
+        Draw a vector-tiles layer, with this url source{' '}
+        <span style={styles.code}>&nbsp;&nbsp;{SANTA_MONICA_TILES}&nbsp;&nbsp;</span> center it on
+        the map and display them with the following styles
+        <ul>
+          <li>color: #77CCFF</li>
+          <li>border: #0044FF</li>
+          <li>borderWidth: 1</li>
+        </ul>
+      </div>
       <Map
         id={id}
         bounds={bounds}
