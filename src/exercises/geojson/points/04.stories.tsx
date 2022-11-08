@@ -115,4 +115,3 @@ AirportsCluster.args = {
     console.info('onMapLoad: ', map, mapContainer);
   },
 };
-
