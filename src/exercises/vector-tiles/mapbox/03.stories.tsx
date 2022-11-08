@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import flatten from 'lodash/flatten';
-
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -25,25 +23,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const [viewState, setViewState] = useState(initialViewState);
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
 
-  const colors = [
-    '#a3f307',
-    '#05f9e2',
-    '#e2f705',
-    '#f50b86',
-    '#ff6f00',
-    '#a3f307',
-    '#05f9e2',
-    '#e2f705',
-    '#f50b86',
-    '#ff6f00',
-  ];
-
-  const rampBwsCat = flatten(
-    colors.map((c, i) => {
-      return [i, c];
-    })
-  );
-
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
     type: 'vector',
@@ -56,7 +35,19 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           type: 'fill',
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': ['match', ['get', 'bws_cat'], ...rampBwsCat, '#DDD'],
+            'fill-color': [
+              'match',
+              ['get', 'name'],
+              'Alaska',
+              '#a3f307',
+              'Elmore',
+              '#05f9e2',
+              'Washington',
+              '#e2f705',
+              'California',
+              '#f50b86',
+              '#DDD',
+            ],
           },
         },
       ],
@@ -121,7 +112,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
-        onClick={(e) => console.log(e.features)}
+        onClick={(e) => console.log('E', e.features)}
       >
         {(map) => {
           return (
