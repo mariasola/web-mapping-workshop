@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import flatten from 'lodash/flatten';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -21,6 +23,26 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState(initialViewState);
+  const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
+
+  const colors = [
+    '#a3f307',
+    '#05f9e2',
+    '#e2f705',
+    '#f50b86',
+    '#ff6f00',
+    '#a3f307',
+    '#05f9e2',
+    '#e2f705',
+    '#f50b86',
+    '#ff6f00',
+  ];
+
+  const rampBwsCat = flatten(
+    colors.map((c, i) => {
+      return [i, c];
+    })
+  );
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
@@ -34,20 +56,37 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           type: 'fill',
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': '#77CCFF',
-            'fill-opacity': 0.5,
-          },
-        },
-        {
-          type: 'line',
-          'source-layer': 'Indicators',
-          paint: {
-            'line-color': '#0044FF',
-            'line-width': 1,
+            'fill-color': ['match', ['get', 'bws_cat'], ...rampBwsCat, '#DDD'],
           },
         },
       ],
     },
+  };
+
+  const onAfterAdd = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+      if (!layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => [
+          ...prevLayersInteractiveIds,
+          layerId,
+        ]);
+      }
+    });
+  };
+
+  const onAfterRemove = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+
+      if (layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => {
+          const arr = prevLayersInteractiveIds.filter((e) => e !== layerId);
+
+          return arr;
+        });
+      }
+    });
   };
 
   const styles = {
@@ -78,15 +117,22 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         bounds={bounds}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
+        interactiveLayerIds={layersInteractiveIds}
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
+        onClick={(e) => console.log(e.features)}
       >
         {(map) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={MAPBOX_LAYER.id} {...MAPBOX_LAYER} />
+                <Layer
+                  key={MAPBOX_LAYER.id}
+                  onAfterAdd={onAfterAdd}
+                  onAfterRemove={onAfterRemove}
+                  {...MAPBOX_LAYER}
+                />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />

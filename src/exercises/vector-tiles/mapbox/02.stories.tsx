@@ -23,7 +23,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState(initialViewState);
-  const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
 
   const colors = [
     '#a3f307',
@@ -36,19 +35,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     '#e2f705',
     '#f50b86',
     '#ff6f00',
-    '#a3f307',
-    '#05f9e2',
-    '#e2f705',
-    '#f50b86',
-    '#ff6f00',
-    '#a3f307',
-    '#05f9e2',
-    '#e2f705',
-    '#f50b86',
-    '#ff6f00',
   ];
 
-  const rampPopScore = flatten(
+  const rampBwsCat = flatten(
     colors.map((c, i) => {
       return [i, c];
     })
@@ -66,37 +55,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           type: 'fill',
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': ['match', ['get', 'bws_cat'], ...rampPopScore, '#DDD'],
+            'fill-color': ['match', ['get', 'bws_cat'], ...rampBwsCat, '#DDD'],
           },
         },
       ],
     },
-  };
-
-  const onAfterAdd = (layerModel) => {
-    layerModel.mapLayer.layers.forEach((l) => {
-      const { id: layerId } = l;
-      if (!layersInteractiveIds.includes(layerId)) {
-        setLayersInteractiveIds((prevLayersInteractiveIds) => [
-          ...prevLayersInteractiveIds,
-          layerId,
-        ]);
-      }
-    });
-  };
-
-  const onAfterRemove = (layerModel) => {
-    layerModel.mapLayer.layers.forEach((l) => {
-      const { id: layerId } = l;
-
-      if (layersInteractiveIds.includes(layerId)) {
-        setLayersInteractiveIds((prevLayersInteractiveIds) => {
-          const arr = prevLayersInteractiveIds.filter((e) => e !== layerId);
-
-          return arr;
-        });
-      }
-    });
   };
 
   const styles = {
@@ -129,7 +92,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         bounds={bounds}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
-        interactiveLayerIds={layersInteractiveIds}
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
@@ -138,12 +100,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer
-                  key={MAPBOX_LAYER.id}
-                  onAfterAdd={onAfterAdd}
-                  onAfterRemove={onAfterRemove}
-                  {...MAPBOX_LAYER}
-                />
+                <Layer key={MAPBOX_LAYER.id} {...MAPBOX_LAYER} />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
