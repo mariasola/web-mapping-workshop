@@ -89,14 +89,16 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
     if (e.features) {
       // find the layer on hover where to add the feature state
-      const IndicatorsLayer = e.features.find((f) => f.layer.sourceLayer === 'Indicators');
+      const IndicatorsLayer = e.features.find((f) => f.layer['source-layer'] === 'Indicators');
 
       if (IndicatorsLayer) {
         if (HOVER.current !== null) {
           mapRef.current.setFeatureState(
             {
-              id: HOVER.current.id,
+              id: HOVER.current.layer.id,
               source: HOVER.current.layer.source,
+              sourceLayer: HOVER.current.layer['source-layer'],
+              name: HOVER.current.layer.name,
             },
             { hover: false }
           );
@@ -107,8 +109,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         if (HOVER.current !== null) {
           mapRef.current.setFeatureState(
             {
-              id: HOVER.current.id,
+              id: HOVER.current.layer.id,
               source: HOVER.current.layer.source,
+              sourceLayer: HOVER.current.layer['source-layer'],
+              name: HOVER.current.layer.name,
             },
             { hover: true }
           );
@@ -117,8 +121,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         if (HOVER.current !== null) {
           mapRef.current.setFeatureState(
             {
-              id: HOVER.current.id,
+              id: HOVER.current.layer.id,
               source: HOVER.current.layer.source,
+              sourceLayer: HOVER.current.layer['source-layer'],
+              name: HOVER.current.layer.name,
             },
             { hover: false }
           );
@@ -132,7 +138,16 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     mapRef.current = map;
   };
 
-  console.info({ county });
+  console.info({
+    county,
+    current:
+      mapRef.current &&
+      mapRef.current?.getFeatureState({
+        sourceId: 'vector-tiles-mapbox',
+        sourceLayerId: 'Indicators',
+        featureId: 'vector-tiles-mapbox',
+      }),
+  });
 
   const styles = {
     code: { background: 'black', borderRadius: '4px', color: 'white' },
@@ -215,5 +230,8 @@ Mapbox04.args = {
   },
   onMapLoad: ({ map, mapContainer }) => {
     console.info('onMapLoad: ', map, mapContainer);
+  },
+  onHover: ({ map, mapContainer }) => {
+    console.info('onHover: ', map, mapContainer);
   },
 };
