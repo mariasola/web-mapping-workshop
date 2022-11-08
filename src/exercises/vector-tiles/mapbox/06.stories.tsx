@@ -30,9 +30,18 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
     render: {
       layers: [
+        // {
+        //   type: 'fill',
+
+        //   'source-layer': 'Indicators',
+        //   paint: {
+        //     'fill-color': 'red',
+        //     'fill-opacity': 0.5,
+        //   },
+        // },
         {
           type: 'fill',
-          filter: ['any', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
+          filter: ['all', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
           'source-layer': 'Indicators',
           paint: {
             'fill-color': '#77CCFF',
@@ -40,8 +49,26 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           },
         },
         {
+          type: 'fill',
+          filter: ['all', ['!=', 'bws_cat', 0], ['!=', 'pop_cat', 0]],
+          'source-layer': 'Indicators',
+          paint: {
+            'fill-color': '#ff0000',
+            'fill-opacity': 0.5,
+          },
+        },
+        {
           type: 'line',
-          filter: ['any', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
+          filter: ['all', ['!=', 'bws_cat', 0], ['!=', 'pop_cat', 0]],
+          'source-layer': 'Indicators',
+          paint: {
+            'fill-color': '#ff0000',
+            'line-width': 1,
+          },
+        },
+        {
+          type: 'line',
+          filter: ['all', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
           'source-layer': 'Indicators',
           paint: {
             'line-color': '#0044FF',
@@ -64,6 +91,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         highlight in dark blue those counties with{' '}
         <span style={styles.code}>&nbsp;bws_cat = 0&nbsp;</span> and{' '}
         <span style={styles.code}>&nbsp;pop_cat = 0&nbsp;</span>
+        and with red those which dont meet the requirement.
       </div>
 
       <Map
