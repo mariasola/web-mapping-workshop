@@ -44,7 +44,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           filter: ['all', ['!=', 'bws_cat', 0], ['!=', 'pop_cat', 0]],
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': '#ff0000',
+            'fill-color': '#FF0000',
             'fill-opacity': 0.5,
           },
         },

@@ -34,11 +34,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       layers: [
         {
           type: 'fill',
-
           filter: ['all', ['in', ['get', 'bws_cat'], ['literal', validBwsValues]]],
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': 'red',
+            'fill-color': '#FF0000',
           },
         },
       ],
