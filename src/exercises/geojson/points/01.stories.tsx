@@ -8,7 +8,7 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
-import AIRPORTS_DATA from 'data/points.json';
+import AIRPORTS_DATA from 'data/airports.json';
 
 const StoryMap = {
   title: 'Exercises/Geojson/Points',
