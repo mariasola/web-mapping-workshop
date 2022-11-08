@@ -23,6 +23,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState(initialViewState);
+  const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
 
   const colors = [
     '#a3f307',
@@ -62,18 +63,40 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     render: {
       layers: [
         {
-          type: 'circle',
+          type: 'fill',
           'source-layer': 'Indicators',
           paint: {
-            'circle-color': ['match', ['get', 'pop_score'], ...rampPopScore, '#DDD'],
-            'circle-opacity': 0.5,
-            'circle-radius': 2,
-            'circle-stroke-color': ['match', ['get', 'pop_score'], ...rampPopScore, '#DDD'],
-            'circle-stroke-width': 1,
+            'fill-color': ['match', ['get', 'bws_cat'], ...rampPopScore, '#DDD'],
           },
         },
       ],
     },
+  };
+
+  const onAfterAdd = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+      if (!layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => [
+          ...prevLayersInteractiveIds,
+          layerId,
+        ]);
+      }
+    });
+  };
+
+  const onAfterRemove = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+
+      if (layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => {
+          const arr = prevLayersInteractiveIds.filter((e) => e !== layerId);
+
+          return arr;
+        });
+      }
+    });
   };
 
   const styles = {
@@ -106,18 +129,21 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         bounds={bounds}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
+        interactiveLayerIds={layersInteractiveIds}
         onMapViewStateChange={(v) => {
           setViewState(v);
-        }}
-        onClick={(e) => {
-          console.log(e);
         }}
       >
         {(map) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={MAPBOX_LAYER.id} {...MAPBOX_LAYER} />
+                <Layer
+                  key={MAPBOX_LAYER.id}
+                  onAfterAdd={onAfterAdd}
+                  onAfterRemove={onAfterRemove}
+                  {...MAPBOX_LAYER}
+                />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
