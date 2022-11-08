@@ -217,7 +217,7 @@
         "timestamp": 1656459414,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer del Torn de l'Hospital",
         "name:es": "Calle Torno del Hospital",
         "oneway": "yes"
@@ -296,7 +296,7 @@
         "timestamp": 1591698766,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer del Triador",
         "name:es": "Calle Triador",
         "oneway": "yes"
@@ -435,7 +435,7 @@
         "cycleway": "shared_lane",
         "highway": "pedestrian",
         "lanes": "2",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer de l'Hospital",
         "name:ca": "Carrer de l'Hospital",
         "name:es": "Calle del Hospital",
@@ -627,7 +627,7 @@
         "access:conditional": "no @ (Mar 13-Mar 19)",
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer de Camarón",
         "name:es": "Calle Camarón",
         "oneway": "yes"
@@ -900,7 +900,7 @@
         "timestamp": 1504869553,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer de Balmes",
         "name:es": "Calle de Balmes",
         "oneway": "yes"
@@ -1015,7 +1015,7 @@
         "bicycle": "yes",
         "cycleway": "lane",
         "highway": "living_street",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer de Pintor Domingo",
         "name:es": "Calle Pintor Domingo",
         "oneway": "yes"
@@ -1060,7 +1060,7 @@
         "access:conditional": "no @ (Mar 13-Mar 19)",
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer d'Eixarchs",
         "name:ca": "Carrer d'Eixarchs",
         "name:es": "Calle Exarchs"
@@ -1106,7 +1106,7 @@
         "cycleway": "lane",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer del Peu de la Creu",
         "oneway": "yes"
       }
@@ -1322,7 +1322,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer de la Bosseria",
         "name:ca": "Carrer de la Bosseria",
         "name:es": "Calle Bolsería",
@@ -2612,7 +2612,7 @@
         "highway": "residential",
         "lanes": "1",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "motor_vehicle": "permit",
         "name": "Plaça de l'Ajuntament",
         "name:ca": "Plaça de l'Ajuntament",
@@ -3112,7 +3112,7 @@
         "emergency": "yes",
         "highway": "residential",
         "lanes": "1",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer de Sant Vicent Màrtir",
         "name:ca": "Carrer de Sant Vicent Màrtir",
         "name:es": "Calle de San Vicente Mártir",
@@ -3171,7 +3171,7 @@
         "highway": "residential",
         "lanes": "1",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Plaça de la Reina",
         "name:ca": "Plaça de la Reina",
         "name:es": "Plaza de la Reina",
@@ -3314,7 +3314,7 @@
         "timestamp": 1578181440,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer de Minyana",
         "name:ca": "Carrer de Minyana",
         "name:es": "Calle de Miñana"
@@ -3420,7 +3420,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "10",
         "name": "Carrer de Moratín",
         "name:ca": "Carrer de Moratín",
         "name:es": "Calle de Moratín",
@@ -3495,7 +3495,7 @@
         "cycleway": "lane",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer de la Nau",
         "name:ca": "Carrer de la Nau",
         "name:es": "Calle de la Nave",
@@ -3618,7 +3618,7 @@
         "timestamp": 1623085285,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer d'en Sala",
         "name:ca": "Carrer d'en Sala",
         "name:es": "Calle de En Sala",
@@ -3693,7 +3693,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer dels Llibrers",
         "name:ca": "Carrer dels Llibrers",
         "name:es": "Calle de los Libreros",
@@ -4372,7 +4372,7 @@
         "timestamp": 1592509508,
         "bicycle": "yes",
         "highway": "footway",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer de Jofrens"
       }
     },
@@ -4406,7 +4406,7 @@
         "timestamp": 1575237751,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer de la Peixateria",
         "name:ca": "Carrer de la Peixateria",
         "name:es": "Calle Pescadería"
@@ -4442,7 +4442,7 @@
         "timestamp": 1590863592,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer de la Sombreria",
         "name:es": "Calle Sombrerería",
         "surface": "paving_stones"
@@ -4537,7 +4537,7 @@
         "timestamp": 1575237751,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer dels Manyans",
         "name:ca": "Carrer dels Manyans",
         "name:es": "Calle Cerrajeros"
@@ -4630,7 +4630,7 @@
         "timestamp": 1656669070,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer de Sant Ferran",
         "name:ca": "Carrer de Sant Ferran",
         "name:es": "Calle San Fernando"
@@ -4672,7 +4672,7 @@
         "emergency": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "motor_vehicle": "permit",
         "motor_vehicle:conditional": "delivery @ (06:00-10:00)",
         "name": "Plaça del Mercat",
@@ -5145,7 +5145,7 @@
         "emergency": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "motor_vehicle": "permit",
         "motor_vehicle:conditional": "delivery @ (06:00-10:00)",
         "name": "Plaça del Mercat",
@@ -5247,7 +5247,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer de les Danses",
         "name:ca": "Carrer de les Danses",
         "name:es": "Calle de las Danzas",
@@ -5348,7 +5348,7 @@
         "timestamp": 1365184203,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "motor_vehicle": "yes",
         "name": "Carrer de Betlem",
         "name:es": "Calle de Belén",
@@ -5381,7 +5381,7 @@
         "timestamp": 1657290503,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer dels Burguerins",
         "oneway": "yes"
       }
@@ -5487,7 +5487,7 @@
         "timestamp": 1591314565,
         "bicycle": "yes",
         "highway": "footway",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "motor_vehicle": "no",
         "name": "Carrer del Comte de Montornés",
         "oneway": "no",
@@ -5575,7 +5575,7 @@
         "timestamp": 1591314565,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer del Pouet de San Vicent"
       }
     },
@@ -5636,7 +5636,7 @@
         "timestamp": 1590927053,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer de Sant Cristòfol",
         "name:ca": "Carrer de Sant Cristòfol",
         "name:es": "Calle de San Cristóbal",
@@ -5673,7 +5673,7 @@
         "timestamp": 1590927053,
         "bicycle": "yes",
         "highway": "living_street",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer del Miracle",
         "name:es": "Calle del Milagro",
         "oneway": "yes"
@@ -5818,7 +5818,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer d'En Gordo",
         "name:ca": "Carrer d'En Gordo",
         "name:es": "Calle Engordo",
@@ -5852,7 +5852,7 @@
         "bicycle": "yes",
         "cycleway": "lane",
         "highway": "living_street",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer del Poeta Liern",
         "name:ca": "Carrer del Poeta Liern",
         "oneway": "yes"
@@ -5886,7 +5886,7 @@
         "bicycle": "yes",
         "highway": "living_street",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer de Jovellanos",
         "name:es": "Calle de Jovellanos",
         "oneway": "yes",
@@ -5961,7 +5961,7 @@
         "timestamp": 1590927053,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer dels Banys de l'Almirall",
         "name:es": "Calle de los Baños del Almirante"
       }
@@ -6014,7 +6014,7 @@
         "bicycle": "yes",
         "cycleway": "lane",
         "highway": "living_street",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Plaça de Mossén Milà",
         "oneway": "yes"
       }
@@ -6180,7 +6180,7 @@
         "bicycle": "yes",
         "cycleway": "lane",
         "highway": "living_street",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "name": "Carrer del Músic José Iturbi",
         "name:es": "Calle Músico José Iturbi",
         "oneway": "yes",
@@ -6267,7 +6267,7 @@
         "timestamp": 1591364186,
         "bicycle": "yes",
         "highway": "footway",
-        "maxspeed": "30",
+        "maxspeed": "5",
         "motor_vehicle": "destination",
         "name": "Carrer de l'Almirall",
         "oneway": "yes"
@@ -6501,7 +6501,7 @@
         "cycleway:left": "shared_lane",
         "highway": "residential",
         "lanes": "1",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer Camí Nou de Picanya",
         "name:ca": "Carrer Camí Nou de Picanya",
         "name:es": "Calle Camino Nuevo de Picanya",
@@ -6695,7 +6695,7 @@
         "timestamp": 1665349945,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "motor_vehicle": "destination",
         "name": "Carrer dels Mestres",
         "name:ca": "Carrer dels Mestres",
@@ -6805,7 +6805,7 @@
         "timestamp": 1591364186,
         "bicycle": "yes",
         "highway": "footway",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "motor_vehicle": "destination",
         "name": "Plaça de Sant Esteve",
         "name:es": "Plaza de San Esteban",
@@ -6868,7 +6868,7 @@
         "timestamp": 1590853220,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "motor_vehicle": "destination",
         "name": "Carrer de l'Almodí",
         "name:ca": "Carrer de l'Almodí",
@@ -6907,7 +6907,7 @@
         "timestamp": 1441388304,
         "bicycle": "official",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer de la Llibertat",
         "noexit": "yes"
       }
@@ -7019,7 +7019,7 @@
         "timestamp": 1591364186,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer del Tosalet"
       }
     },
@@ -7135,7 +7135,7 @@
         "timestamp": 1591364186,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer del Pes de la Farina",
         "name:ca": "Carrer del Pes de la Farina",
         "name:es": "Calle del Peso de la Harina"
@@ -7176,7 +7176,7 @@
         "bicycle": "yes",
         "cycleway": "lane",
         "highway": "living_street",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer del Baró d'Herbers",
         "oneway": "yes"
       }
@@ -7215,7 +7215,7 @@
         "timestamp": 1462138283,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer d'Entença"
       }
     },
@@ -7241,7 +7241,7 @@
         "timestamp": 1556048678,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer del Cronista Jeroni Zurita"
       }
     },
@@ -7271,7 +7271,7 @@
         "timestamp": 1616342392,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Plaça de Santa Margarida"
       }
     },
@@ -7364,7 +7364,7 @@
         "timestamp": 1556048678,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer de Cruïlles",
         "oneway": "yes"
       }
@@ -7423,7 +7423,7 @@
         "timestamp": 1593880939,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer de Samaniego",
         "name:ca": "Carrer de Samaniego",
         "name:es": "Calle de Samaniego",
@@ -7595,7 +7595,7 @@
         "timestamp": 1553035025,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer de la Unió",
         "name:ca": "Carrer de la Unió",
         "name:es": "Calle de la Unión",
@@ -7637,7 +7637,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "25",
         "name": "Carrer de Navellos",
         "name:ca": "Carrer de Navellos",
         "name:es": "Calle de Navellos",
@@ -7671,7 +7671,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer del Mur de Santa Anna",
         "name:ca": "Carrer del Mur de Santa Anna",
         "name:es": "Calle del Muro de Santa Ana",
@@ -7940,7 +7940,7 @@
         "bicycle": "yes",
         "highway": "residential",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Guillem de Castro",
         "name:ca": "Carrer de Guillem de Castro",
         "name:es": "Calle de Guillem de Castro",
@@ -8962,7 +8962,7 @@
         "timestamp": 1591531157,
         "bicycle": "yes",
         "highway": "footway",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Plaça dels Furs",
         "name:ca": "Plaça dels Furs",
         "name:es": "Plaza de los Fueros"
@@ -8990,7 +8990,7 @@
         "timestamp": 1581098351,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer dels Cavallers",
         "name:ca": "Carrer dels Cavallers",
         "name:es": "Calle Caballeros",
@@ -9097,7 +9097,7 @@
         "bicycle": "yes",
         "bicycle:backward": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "motor_vehicle": "destination",
         "name": "Plaça de Manises",
         "name:ca": "Plaça de Manises",
@@ -9159,7 +9159,7 @@
         "timestamp": 1556048679,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer dels Valencians",
         "oneway": "yes"
       }
@@ -10371,7 +10371,7 @@
         "timestamp": 1495987078,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de la Mare Vella",
         "name:es": "Calle de la Mare Vella",
         "oneway": "yes"
@@ -10399,7 +10399,7 @@
         "timestamp": 1412171760,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer del Bisbe En Jeroni",
         "name:ca": "Carrer del Bisbe En Jeroni",
         "name:es": "Calle Obispo Don Jerónimo",
@@ -10428,7 +10428,7 @@
         "timestamp": 1461770915,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Plaça de Beneyto i Coll",
         "oneway": "yes"
       }
@@ -10510,7 +10510,7 @@
         "timestamp": 1653001403,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de la Concòrdia",
         "name:ca": "Carrer de la Concòrdia",
         "name:es": "Calle de la Concordia",
@@ -10634,7 +10634,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Roteros",
         "name:es": "Calle de Roteros",
         "oneway": "yes",
@@ -10672,7 +10672,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Roteros",
         "name:es": "Calle de Roteros",
         "oneway": "yes",
@@ -10798,7 +10798,7 @@
         "timestamp": 1495987079,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de l'Àngel Custodi",
         "name:es": "Calle del Ángel Custodio",
         "oneway": "yes"
@@ -10842,7 +10842,7 @@
         "timestamp": 1461770916,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de la Creu",
         "name:es": "Calle de la Cruz",
         "oneway": "yes"
@@ -10882,7 +10882,7 @@
         "timestamp": 1461533339,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer d'En Borrás",
         "oneway": "yes"
       }
@@ -10938,7 +10938,7 @@
         "access:conditional": "no @ (Mar 13-19)",
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Plaça de l'Àngel",
         "name:es": "Plaza del Ángel",
         "oneway": "yes"
@@ -10971,7 +10971,7 @@
         "access:conditional": "no @ (Mar 13-Mar 19)",
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Plaça de l'Àngel",
         "name:es": "Plaza del Ángel",
         "oneway": "yes"
@@ -11030,7 +11030,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Roteros",
         "name:es": "Calle de Roteros",
         "oneway": "yes",
@@ -11072,7 +11072,7 @@
         "bicycle": "yes",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Roteros",
         "name:es": "Calle de Roteros",
         "oneway": "yes",
@@ -11101,7 +11101,7 @@
         "timestamp": 1461770916,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer d'En Roda",
         "oneway": "yes"
       }
@@ -11132,7 +11132,7 @@
         "timestamp": 1596987071,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Palomino",
         "name:es": "Calle Palomino",
         "surface": "paving_stones"
@@ -11235,7 +11235,7 @@
         "bicycle": "yes",
         "highway": "living_street",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Plaça de l'Arbre",
         "name:ca": "Plaça de l'Arbre",
         "name:es": "Plaza del Árbol",
@@ -11463,7 +11463,7 @@
         "timestamp": 1590315761,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de la Palma",
         "name:es": "Calle de la Palma",
         "oneway": "yes"
@@ -11497,7 +11497,7 @@
         "cycleway": "lane",
         "highway": "pedestrian",
         "lit": "yes",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer del Pintor Fillol",
         "name:ca": "Carrer del Pintor Fillol",
         "name:es": "Calle del Pintor Fillol",
@@ -11535,7 +11535,7 @@
         "timestamp": 1590320807,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Fenollosa",
         "name:ca": "Carrer de Fenollosa",
         "name:es": "Calle Fenollosa"
@@ -11596,7 +11596,7 @@
         "timestamp": 1556207008,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Joan Plaça",
         "name:ca": "Carrer de Joan Plaça",
         "name:es": "Calle Juan Plaza"
@@ -11636,7 +11636,7 @@
         "timestamp": 1504869560,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de la Murtereta",
         "name:es": "Calle Mirto"
       }
@@ -11675,7 +11675,7 @@
         "timestamp": 1590522817,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Plaça del Dramaturg Faust Hernández Casajuana",
         "name:ca": "Plaça del Dramaturg Faust Hernández Casajuana",
         "name:es": "Plaza Dramaturgo Faust Hernández Casajuana"
@@ -11737,7 +11737,7 @@
         "timestamp": 1504869561,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer de Fos"
       }
     },
@@ -11763,7 +11763,7 @@
         "timestamp": 1504869561,
         "bicycle": "yes",
         "highway": "pedestrian",
-        "maxspeed": "30",
+        "maxspeed": "15",
         "name": "Carrer d'Arabista Rivera"
       }
     },
