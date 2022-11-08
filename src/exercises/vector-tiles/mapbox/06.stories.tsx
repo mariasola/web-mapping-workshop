@@ -30,15 +30,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
     render: {
       layers: [
-        // {
-        //   type: 'fill',
-
-        //   'source-layer': 'Indicators',
-        //   paint: {
-        //     'fill-color': 'red',
-        //     'fill-opacity': 0.5,
-        //   },
-        // },
         {
           type: 'fill',
           filter: ['all', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
