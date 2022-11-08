@@ -25,15 +25,24 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const RASTER_LAYER = {
     id: 'gain',
     name: 'Tree cover gain',
+    type: 'raster',
     config: {
       type: 'raster',
       tileSize: 256,
-      source: {
-        type: 'raster',
-        tiles: ['https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg'],
-        minzoom: 3,
-        maxzoom: 12,
-      },
+      tiles: ['https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg'],
+      minzoom: 3,
+      maxzoom: 12,
+    },
+    render: {
+      layers: [
+        {
+          id: 'simple-tiles',
+          type: 'raster',
+          source: 'raster-tiles',
+          minzoom: 0,
+          maxzoom: 22,
+        },
+      ],
     },
   };
 

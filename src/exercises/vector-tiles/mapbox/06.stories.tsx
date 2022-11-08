@@ -52,13 +52,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const styles = {
     code: { background: 'black', borderRadius: '4px', color: 'white' },
-    properties: {
-      margin: '10px',
-      background: '#D67CAE',
-      borderRadius: '4px',
-      color: 'white',
-      padding: '10px',
-    },
   };
 
   return (
@@ -66,7 +59,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
       <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it on
       the map and display them as a images with following styles:
-      <ul style={styles.properties}>
+      <ul>
         <li>color: #ffCC00</li>
       </ul>
       <Map

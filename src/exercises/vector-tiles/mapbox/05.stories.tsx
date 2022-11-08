@@ -33,6 +33,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'fill',
           'source-layer': 'Indicators',
+          filter: ['==', 'level', 1],
           paint: {
             'fill-color': '#77CCFF',
             'fill-opacity': 0.5,
@@ -41,6 +42,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'line',
           'source-layer': 'Indicators',
+          filter: ['==', 'level', 1],
           paint: {
             'line-color': '#0044FF',
             'line-width': 1,
@@ -52,38 +54,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const styles = {
     code: { background: 'black', borderRadius: '4px', color: 'white' },
-    properties: {
-      margin: '10px',
-      background: '#D67CAE',
-      borderRadius: '4px',
-      color: 'white',
-      padding: '10px',
-    },
   };
 
   return (
     <div className="relative w-full h-screen">
       Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-      <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it on
-      the map and display them as a heatmap with following styles:
-      <ul style={styles.properties}>
-        <li>
-          <b>Circle</b>
-        </li>
-        <li>color: #ffCC00</li>
-        <li>border: #000000</li>
-        <li>radius: 20</li>
-        <li>opacity: 0.5</li>
-        <br />
-        <li>
-          <b>Heatmap</b>
-        </li>
-        <li>color: #00CC00</li>
-        <li>intensity: 1</li>
-        <li>opacity: 1</li>
-        <li>radius: 50</li>
-        <li>weight: 1</li>
-      </ul>
+      <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, and remove
+      county borders by filtering features by level.
       <Map
         id={id}
         bounds={bounds}
