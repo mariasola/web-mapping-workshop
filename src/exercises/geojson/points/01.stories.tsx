@@ -1,7 +1,10 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import Map from 'components/map';
+
 const StoryMap = {
   title: 'Exercises/Geojson/Points',
+  component: Map,
   argTypes: {},
 };
 
