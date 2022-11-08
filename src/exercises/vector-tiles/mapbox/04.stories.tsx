@@ -22,6 +22,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const [viewState, setViewState] = useState(initialViewState);
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
+  const [county, setCounty] = useState(null);
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
@@ -77,8 +78,14 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   const handleMouseMove = (e) => {
-    console.log(e.features);
+    e.features.map((i) => {
+      if (i.properties.level === 2) {
+        setCounty(i.properties.name);
+      }
+    });
   };
+
+  console.info({ county });
 
   // const styles = {
   //   code: { background: 'black', borderRadius: '4px', color: 'white' },
@@ -145,6 +152,21 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
+      {/* <Tooltip
+        arrowProps={{
+          className: 'bg-white',
+          enabled: true,
+          size: 6,
+        }}
+        content={
+          <div className="px-2 py-1 text-gray-500 bg-white rounded">
+            <span>{county}</span>
+          </div>
+        }
+        portalProps={{
+          enabled: true,
+        }}
+      ></Tooltip> */}
     </div>
   );
 };
