@@ -32,6 +32,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       layers: [
         {
           type: 'fill',
+          filter: ['any', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
           'source-layer': 'Indicators',
           paint: {
             'fill-color': '#77CCFF',
@@ -40,6 +41,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         },
         {
           type: 'line',
+          filter: ['any', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
           'source-layer': 'Indicators',
           paint: {
             'line-color': '#0044FF',
@@ -56,12 +58,14 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   return (
     <div className="relative w-full h-screen">
-      Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-      <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it on
-      the map and display them as a images with following styles:
-      <ul>
-        <li>color: #ffCC00</li>
-      </ul>
+      <div className="prose dark:prose-invert">
+        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
+        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, and
+        highlight in dark blue those counties with{' '}
+        <span style={styles.code}>&nbsp;bws_cat = 0&nbsp;</span> and{' '}
+        <span style={styles.code}>&nbsp;pop_cat = 0&nbsp;</span>
+      </div>
+
       <Map
         id={id}
         bounds={bounds}

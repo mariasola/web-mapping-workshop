@@ -58,9 +58,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   return (
     <div className="relative w-full h-screen">
-      Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-      <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, and remove
-      county borders by filtering features by level.
+      <div className="prose dark:prose-invert">
+        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
+        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, and remove
+        county borders by filtering features by level.
+      </div>
       <Map
         id={id}
         bounds={bounds}
