@@ -11,7 +11,7 @@ import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
 
 const StoryMap = {
-  title: 'Exercises/Geojson',
+  title: 'Exercises/MapTemplate',
   component: Map,
   argTypes: {},
 };
@@ -58,8 +58,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const G00 = Template.bind({});
-G00.args = {
+export const MapTemplate = Template.bind({});
+MapTemplate.args = {
   id: 'map-storybook',
   className: '',
   viewport: {},
