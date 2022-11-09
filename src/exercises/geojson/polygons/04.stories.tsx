@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+
+import type { MapRef } from 'react-map-gl';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -8,7 +10,7 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
-import data from 'data/valencia.json';
+import data from 'data/provinces.json';
 
 const StoryMap = {
   title: 'Exercises/Geojson/Polygons',
@@ -18,8 +20,12 @@ const StoryMap = {
 export default StoryMap;
 
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
+  const mapRef = useRef<MapRef>(null);
+  const HOVER = useRef(null);
+
   const { id, bounds, initialViewState } = args;
   const [viewState, setViewState] = useState(initialViewState);
+  const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
 
   const LAYER = {
     id: 'spain-ccaa-hover',
@@ -94,6 +100,78 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
 
+  const onAfterAdd = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+      if (!layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => [
+          ...prevLayersInteractiveIds,
+          layerId,
+        ]);
+      }
+    });
+  };
+
+  const onAfterRemove = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+
+      if (layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => {
+          const arr = prevLayersInteractiveIds.filter((e) => e !== layerId);
+
+          return arr;
+        });
+      }
+    });
+  };
+
+  const handleMouseMove = (e) => {
+    if (e.features) {
+      // find the layer on hover where to add the feature state
+      const CCAALayer = e.features.find((f) => f.layer.source === 'spain-ccaa-hover');
+
+      if (CCAALayer) {
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.id,
+              source: HOVER.current.layer.source,
+            },
+            { hover: false }
+          );
+        }
+
+        HOVER.current = CCAALayer;
+
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.id,
+              source: HOVER.current.layer.source,
+            },
+            { hover: true }
+          );
+        }
+      } else {
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.id,
+              source: HOVER.current.layer.source,
+            },
+            { hover: false }
+          );
+        }
+        HOVER.current = null;
+      }
+    }
+  };
+
+  const handleMapLoad = ({ map }) => {
+    mapRef.current = map;
+  };
+
   return (
     <div className="relative w-full h-screen">
       <div className="prose dark:prose-invert">
@@ -117,12 +195,20 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
+        onMouseMove={handleMouseMove}
+        onMapLoad={handleMapLoad}
+        interactiveLayerIds={layersInteractiveIds}
       >
         {(map) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={LAYER.id} {...LAYER} />
+                <Layer
+                  key={LAYER.id}
+                  {...LAYER}
+                  onAfterAdd={onAfterAdd}
+                  onAfterRemove={onAfterRemove}
+                />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
@@ -135,9 +221,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const Polygons03 = Template.bind({});
-Polygons03.args = {
-  id: 'valencia-provinces',
+export const Polygons04 = Template.bind({});
+Polygons04.args = {
+  id: 'spain-provinces',
   className: '',
   viewport: {},
   initialViewState: {},
