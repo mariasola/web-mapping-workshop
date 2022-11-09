@@ -1,4 +1,3 @@
-import { themes } from '@storybook/theming';
 import { MapProvider } from 'react-map-gl';
 
 import '../src/styles/globals.css';
@@ -14,16 +13,13 @@ export const parameters = {
       ],
     },
   },
-  docs: {
-    theme: themes.dark,
-  },
 };
 
 export const decorators = [
   (Story) => {
     return (
       <MapProvider>
-        <div className='text-white'>{Story()}</div>
+        {Story()}
       </MapProvider>
     );
   },
