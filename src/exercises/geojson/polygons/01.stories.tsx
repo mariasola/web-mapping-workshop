@@ -6,6 +6,7 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -68,11 +69,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           , we want to show the provinces of Spain. We want to show the area of each province with a
           color and the boundary of each province with a black line.
         </p>
-        <pre lang="javascript">{`
-const color = '#ffCC00';
+        <Code>
+          {`const color = '#ffCC00';
 const border = '#000000';
-const opacity = 0.5;
-        `}</pre>
+const opacity = 0.5;`}
+        </Code>
       </div>
 
       <Map
