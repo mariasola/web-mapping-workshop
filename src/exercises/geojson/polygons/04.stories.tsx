@@ -1,6 +1,6 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 
-import type { MapRef } from 'react-map-gl';
+import type { MapRef, ViewState } from 'react-map-gl';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -19,13 +19,40 @@ const StoryMap = {
 
 export default StoryMap;
 
+const PROVINCES = [
+  { id: '1', color: '#0080FF' },
+  { id: '2', color: '#45B922' },
+  { id: '3', color: '#2E97D0' },
+  { id: '4', color: '#E7F317' },
+  { id: '5', color: '#5CAEA2' },
+  { id: '6', color: '#FFF300' },
+  { id: '7', color: '#5CA2A2' },
+  { id: '8', color: '#FFDC00' },
+  { id: '9', color: '#FFD000' },
+  { id: '10', color: '#FF0000' },
+  { id: '11', color: '#8B7345' },
+  { id: '12', color: '#FFAE00' },
+  { id: '13', color: '#2ED0D0' },
+  { id: '14', color: '#FF9700' },
+  { id: '15', color: '#738B3A' },
+  { id: '16', color: '#FF7000' },
+  { id: '17', color: '#FF5000' },
+  { id: '18', color: '#FF0080' },
+];
+
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const mapRef = useRef<MapRef>(null);
   const HOVER = useRef(null);
 
   const { id, bounds, initialViewState } = args;
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
+
+  const COLORS = useMemo(() => {
+    return PROVINCES.map(({ id: i, color }) => {
+      return [i, color];
+    }).flat();
+  }, []);
 
   const LAYER = {
     id: 'spain-ccaa-hover',
@@ -45,47 +72,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
               'case',
               ['boolean', ['feature-state', 'hover'], false],
               '#000000',
-              [
-                'match',
-                ['get', 'cod_ccaa'],
-                '1',
-                '#0080FF',
-                '2',
-                '#45B922',
-                '3',
-                '#2E97D0',
-                '4',
-                '#E7F317',
-                '5',
-                '#5CAEA2',
-                '6',
-                '#FFF300',
-                '7',
-                '#5CA2A2',
-                '8',
-                '#FFDC00',
-                '9',
-                '#FFD000',
-                '10',
-                '#FF0000',
-                '11',
-                '#8B7345',
-                '12',
-                '#FFAE00',
-                '13',
-                '#2ED0D0',
-                '14',
-                '#FF9700',
-                '15',
-                '#738B3A',
-                '16',
-                '#FF7000',
-                '17',
-                '#FF5000',
-                '18',
-                '#FF0080',
-                '#ccc',
-              ],
+              ['match', ['get', 'cod_ccaa'], ...COLORS, '#ccc'],
             ],
           },
         },
@@ -173,23 +160,46 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson polygon collection, center the map on it and color it with this and apply a
-        hover effect
+    <div className="relative flex w-full h-[calc(100vh_-_32px)] space-x-10">
+      <div className="prose">
+        <h2>Polygons 04</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/Vizzuality/web-mapping-workshop/blob/main/src/data/provinces.json"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , we want to show the provinces of Spain. We want to show the area of each province with a
+          color based on a category attribute and the boundary of each province with a black line.
+          Also we want a hover effect that changes the color of each province
+        </p>
         <ul>
-          <li>Polygon</li>
-          <li>color: base on an attribute category [...COLOR_RAMP]</li>
-          <li>border: #000000</li>
-          <li>opacity: 0.5</li>
-
-          <li>Hover</li>
-          <li>color: #000000</li>
+          <li>
+            color: color each province depending on the id, use the following colors
+            <code>
+              {`[{ id: '1', color: '#0080FF' },{ id: '2', color: '#45B922' },{ id: '3', color: '#2E97D0' },{ id: '4', color: '#E7F317' },{ id: '5', color: '#5CAEA2' },{ id: '6', color: '#FFF300' },{ id: '7', color: '#5CA2A2' },{ id: '8', color: '#FFDC00' },{ id: '9', color: '#FFD000' },{ id: '10', color: '#FF0000' },{ id: '11', color: '#8B7345' },{ id: '12', color: '#FFAE00' },{ id: '13', color: '#2ED0D0' },{ id: '14', color: '#FF9700' },{ id: '15', color: '#738B3A' },{ id: '16', color: '#FF7000' },{ id: '17', color: '#FF5000' },{ id: '18', color: '#FF0080' }];`}
+            </code>
+          </li>
+          <li>
+            hover: when the mouse is over a province, change the opacity to 1 and the color to{' '}
+            <code>{`#000000`}</code>
+          </li>
+          <li>
+            border: <code>{`#000000`}</code>
+          </li>
+          <li>
+            opacity: <code>{`0.5`}</code>
+          </li>
         </ul>
       </div>
+
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -226,7 +236,12 @@ Polygons04.args = {
   id: 'spain-provinces',
   className: '',
   viewport: {},
-  initialViewState: {},
+  initialViewState: {
+    bounds: [-13.392736, 35.469583, 7.701014, 43.460862],
+    fitBoundsOptions: {
+      padding: 50,
+    },
+  },
   bounds: {
     bbox: [-13.392736, 35.469583, 7.701014, 43.460862],
     options: { padding: 50 },

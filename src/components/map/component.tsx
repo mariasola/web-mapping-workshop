@@ -138,6 +138,7 @@ export const CustomMap: FC<CustomMapProps> = ({
       }
     };
   }, [bounds, isFlying]);
+
   return (
     <div
       ref={mapContainerRef}

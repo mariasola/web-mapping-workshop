@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -21,7 +23,7 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
   const populationValues = useMemo(
     () => data.features.map(({ properties: { population } }) => population),
     []
@@ -47,7 +49,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
               ['linear'],
               ['get', 'population'],
               minValue || 0,
-              '#fef0d9',
+              '#00ffcc',
               maxValue,
               '#004aFF',
             ],
@@ -66,18 +68,39 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson polygon collection, center the map on it and color it with this
+    <div className="relative flex w-full h-[calc(100vh_-_32px)] space-x-10">
+      <div className="prose">
+        <h2>Polygons 02</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/Vizzuality/web-mapping-workshop/blob/main/src/data/provinces.json"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , we want to show the provinces of Spain. We want to show the area of each province with a
+          color based on population and the boundary of each province with a black line.
+        </p>
+
         <ul>
-          <li>color: base on an attribute number [...COLOR_RAMP]</li>
-          <li>border: #000000</li>
-          <li>opacity: 0.5</li>
+          <li>
+            color: base on the population using this color ramp:{' '}
+            <code>{`['#00ffcc', '#004aFF']`}</code>
+          </li>
+          <li>
+            border: <code>{`#000000`}</code>
+          </li>
+          <li>
+            opacity: <code>{`0.5`}</code>
+          </li>
         </ul>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -106,7 +129,12 @@ Polygons02.args = {
   id: 'spain-provinces',
   className: '',
   viewport: {},
-  initialViewState: {},
+  initialViewState: {
+    bounds: [-13.392736, 35.469583, 7.701014, 43.460862],
+    fitBoundsOptions: {
+      padding: 50,
+    },
+  },
   bounds: {
     bbox: [-13.392736, 35.469583, 7.701014, 43.460862],
     options: { padding: 50 },

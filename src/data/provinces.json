@@ -10361,7 +10361,7 @@
       "properties": {
         "cod_prov": 33,
         "name": "Asturias",
-        "population": 1022000,
+        "population": 5022000,
         "cod_ccaa": "18",
         "cartodb_id": 33,
         "created_at": "2014-09-30T00:00:00Z",
@@ -19886,7 +19886,7 @@
       "properties": {
         "cod_prov": 15,
         "name": "A Coruña",
-        "population": 245468,
+        "population": 2245468,
         "cod_ccaa": "11",
         "cartodb_id": 15,
         "created_at": "2014-09-30T00:00:00Z",
@@ -24570,7 +24570,7 @@
       "properties": {
         "cod_prov": 17,
         "name": "Girona",
-        "population": 101932,
+        "population": 1201932,
         "cod_ccaa": "8",
         "cartodb_id": 17,
         "created_at": "2014-09-30T00:00:00Z",
