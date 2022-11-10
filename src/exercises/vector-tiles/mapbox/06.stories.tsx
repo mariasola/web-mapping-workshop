@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -20,7 +22,7 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
@@ -70,24 +72,20 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
 
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
-
   return (
     <>
       <div className="prose">
-        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, and
-        highlight in dark blue those counties with{' '}
-        <span style={styles.code}>&nbsp;bws_cat = 0&nbsp;</span> and{' '}
-        <span style={styles.code}>&nbsp;pop_cat = 0&nbsp;</span>
+        <h2>Vector tiles: Mapbox 06</h2>
+        Draw a vector-tiles layer with a Mapbox tileset, tileset ID
+        <pre>layer-manager.1ecpue1k</pre>, and highlight in dark blue those counties with{' '}
+        <pre>bws_cat = 0</pre> and <pre>pop_cat = 0</pre>
         and with red those which dont meet the requirement.
       </div>
 
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -116,11 +114,11 @@ Mapbox06.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-170.875677, 26.606678, -62.418646, 67.415284],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-170.875677, 26.606678, -62.418646, 68.515284],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

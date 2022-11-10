@@ -60,7 +60,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         <h2>Geojson: Lines 02</h2>
         <p>
           Draw a geojson linestring collection, center the map on it, color it with a{' '}
-          <b>color ramp</b> base on a <b>number attribute</b>, and display it with the following
+          <b>color ramp</b> based on a <b>number attribute</b>, and display it with the following
           styles:
         </p>
         <Code>

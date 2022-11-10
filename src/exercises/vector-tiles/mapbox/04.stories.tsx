@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -23,7 +25,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const mapRef = useRef(null);
   const HOVER = useRef(null);
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
+
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
   const [county, setCounty] = useState(null);
 
@@ -111,8 +114,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             {
               id: HOVER.current.layer.id,
               source: HOVER.current.layer.source,
-              sourceLayer: HOVER.current.layer['source-layer'],
-              name: HOVER.current.layer.name,
             },
             { hover: true }
           );
@@ -123,8 +124,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             {
               id: HOVER.current.layer.id,
               source: HOVER.current.layer.source,
-              sourceLayer: HOVER.current.layer['source-layer'],
-              name: HOVER.current.layer.name,
             },
             { hover: false }
           );
@@ -138,33 +137,22 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     mapRef.current = map;
   };
 
-  console.info({
-    county,
-    current:
-      mapRef.current &&
-      mapRef.current?.getFeatureState({
-        sourceId: 'vector-tiles-mapbox',
-        sourceLayerId: 'Indicators',
-        featureId: 'vector-tiles-mapbox',
-      }),
-  });
-
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
+  console.log({ county });
 
   return (
     <>
       <div className="prose">
-        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
-        on the map and display a tooltip with the name of the county when hover on it.
+        <h2>Vector tiles: Mapbox 04</h2>
+        Draw a vector tiles layer with a Mapbox tileset, tileset ID{' '}
+        <pre>layer-manager.1ecpue1k</pre>, center it on the map and display a{' '}
+        <b>tooltip with the name of the county when hover</b> on it.
         <br />
       </div>
 
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -192,21 +180,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-      {/* <Tooltip
-        arrowProps={{
-          className: 'bg-white',
-          enabled: true,
-          size: 6,
-        }}
-        content={
-          <div className="px-2 py-1 text-gray-500 bg-white rounded">
-            <span>{county}</span>
-          </div>
-        }
-        portalProps={{
-          enabled: true,
-        }}
-      ></Tooltip> */}
     </>
   );
 };
@@ -216,11 +189,11 @@ Mapbox04.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-170.875677, 26.606678, -62.418646, 67.415284],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-170.875677, 26.606678, -62.418646, 68.515284],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

@@ -85,7 +85,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           >
             Geojson
           </a>
-          , draw a point collection, fill it with a <b>color ramp</b> base on a{' '}
+          , draw a point collection, fill it with a <b>color ramp</b> based on a{' '}
           <b>number attribute</b>, center the map on it and display them with following styles:
         </p>
         <Code>

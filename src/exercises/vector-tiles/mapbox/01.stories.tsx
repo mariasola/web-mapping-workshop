@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -20,7 +23,7 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
@@ -50,28 +53,26 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
 
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
-
   return (
     <>
       <div className="prose">
+        <h2>Vector tiles: Mapbox 01</h2>
         <p>
-          Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-          <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
-          on the map and display them with following styles:
+          Draw a vector tiles layer with a Mapbox tileset, tileset ID{' '}
+          <pre>layer-manager.1ecpue1k</pre>, center it on the map and display it with following
+          styles:
         </p>
-        <ul>
-          <li>color: #77CCFF</li>
-          <li>border: #0044FF</li>
-          <li>borderWidth: 1</li>
-          <li>opacity: 0.5</li>
-        </ul>
+        <Code>
+          {`const border = '#0044FF';
+const borderWidth = 1;
+const color = '#77CCFF';
+const opacity = 0.5;`}
+        </Code>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -100,11 +101,11 @@ Mapbox01.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-170.875677, 26.606678, -62.418646, 67.415284],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-170.875677, 26.606678, -62.418646, 68.515284],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

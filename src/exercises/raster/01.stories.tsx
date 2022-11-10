@@ -48,10 +48,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   return (
     <>
       <div className="prose">
-        <h2>Rater tiles</h2>
-        <p></p>
-        Draw a raster layer with this url source:{' '}
-        <pre lang="javascript">{`
+        <h2>Raster tiles</h2>
+        <p>Draw a raster layer with this url source: </p>
+        <pre>{`
 https://earthengine.google.org/static/hansen_2013/gain_alpha/{z}/{x}/{y}.png
         `}</pre>
       </div>

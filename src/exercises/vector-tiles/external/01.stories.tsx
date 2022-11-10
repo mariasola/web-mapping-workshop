@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -20,7 +23,7 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
 
   const EXTERNAL_LAYER = {
     id: 'vector-tiles-external',
@@ -54,27 +57,27 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
 
-  const SANTA_MONICA_TILES =
-    'https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer/tile/{z}/{y}/{x}.pbf';
-
   return (
     <>
       <div className="prose">
+        <h2>Vector tiles: External 01</h2>
         <p>
-          Draw a vector-tiles layer, center it on the map and display them with the following
-          styles:
+          Draw a vector tiles layer, center it on the map and display it with the following styles:
         </p>
-        <pre lang="javascript">{`
-border: #0044FF
-borderWidth: 1
-color: #77CCFF
-        `}</pre>
+        <Code>
+          {`const border = '#0044FF';
+const borderWidth = 1;
+const color = '#77CCFF';`}
+        </Code>
         <p>You should use this url source:</p>
-        <pre>{SANTA_MONICA_TILES}</pre>
+        <pre>
+          {`https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer/tile/{z}/{y}/{x}.pbf`}
+        </pre>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -103,11 +106,11 @@ External01.args = {
   id: 'vector-tiles-external',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-118.790682, 33.950831, -118.367022, 34.160179],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-118.892506, 33.941821, -118.404644, 34.14693],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);
