@@ -2,9 +2,12 @@ import { useState } from 'react';
 
 import { ViewState } from 'react-map-gl';
 
+import flatten from 'lodash/flatten';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
+import chroma from 'chroma-js';
 
 import Code from 'components/code';
 import Map from 'components/map';
@@ -26,6 +29,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const [viewState, setViewState] = useState<Partial<ViewState>>();
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
 
+  const COLORS = chroma.scale(['#80ff80', '#00ffff', '#0066cc']).colors(50);
+
+  const rampUSAStates = flatten(
+    COLORS.map((c, i) => {
+      return [i, c];
+    })
+  );
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
     type: 'vector',
@@ -37,20 +47,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'fill',
           'source-layer': 'Indicators',
+          filter: ['==', 'level', 1],
           paint: {
-            'fill-color': [
-              'match',
-              ['get', 'name'],
-              'Alaska',
-              '#a3f307',
-              'Elmore',
-              '#05f9e2',
-              'Washington',
-              '#e2f705',
-              'California',
-              '#f50b86',
-              '#DDD',
-            ],
+            'fill-color': ['match', ['to-number', ['get', 'geoid']], ...rampUSAStates, '#DDD'],
           },
         },
       ],
@@ -87,14 +86,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <>
       <div className="prose">
         <h2>Vector tiles: Mapbox 03</h2>
-        Draw a vector tiles layer with a Mapbox tileset, with a<b>color ramp</b> based on an
-        attribute category, center it on the map and display them with following styles:
-        <Code>
-          {`const border = '#0044FF';
-const borderWidth = 1;
-const color = '#77CCFF';
-const opacity = 0.5;`}
-        </Code>
+        <p>
+          Draw a vector tiles layer with a Mapbox tileset, center it on the map and display them
+          with following color ramp based based on an attribute category:
+        </p>
+        <Code>{`const ramp = ['#80ff80', '#00ffff', '#0066cc'];`}</Code>
         <p>You should use this tileset ID:</p>
         <pre>layer-manager.1ecpue1k</pre>
       </div>
