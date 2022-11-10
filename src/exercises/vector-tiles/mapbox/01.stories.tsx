@@ -58,9 +58,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Vector tiles: Mapbox 01</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, tileset ID{' '}
-          <pre>layer-manager.1ecpue1k</pre>, center it on the map and display it with following
-          styles:
+          Draw a vector tiles layer with a Mapbox tileset, center it on the map and display it with
+          following styles:
         </p>
         <Code>
           {`const border = '#0044FF';
@@ -68,6 +67,8 @@ const borderWidth = 1;
 const color = '#77CCFF';
 const opacity = 0.5;`}
         </Code>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
       <Map
         id={id}

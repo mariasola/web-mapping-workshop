@@ -58,9 +58,12 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <>
       <div className="prose">
         <h2>Vector tiles: Mapbox 05</h2>
-        Draw a vector tiles layer with a Mapbox tileset, tileset ID{' '}
-        <pre>layer-manager.1ecpue1k</pre>, and <b>remove county borders</b> by filtering features by
-        level.
+        <p>
+          Draw a vector tiles layer with a Mapbox tileset, and <b>remove county borders</b> by
+          filtering features by level.
+        </p>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
       <Map
         id={id}

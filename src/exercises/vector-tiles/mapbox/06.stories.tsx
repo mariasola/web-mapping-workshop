@@ -76,10 +76,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <>
       <div className="prose">
         <h2>Vector tiles: Mapbox 06</h2>
-        Draw a vector-tiles layer with a Mapbox tileset, tileset ID
-        <pre>layer-manager.1ecpue1k</pre>, and highlight in dark blue those counties with{' '}
-        <pre>bws_cat = 0</pre> and <pre>pop_cat = 0</pre>
-        and with red those which dont meet the requirement.
+        <p>
+          Draw a vector-tiles layer with a Mapbox tileset, highlight in dark blue those counties
+          whose <b>bws_cat = 0 </b> and <b>pop_cat = 0</b>
+          and highlight in red those which dont meet the requirement.
+        </p>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
 
       <Map

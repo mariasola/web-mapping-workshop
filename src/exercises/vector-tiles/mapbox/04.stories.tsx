@@ -143,10 +143,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <>
       <div className="prose">
         <h2>Vector tiles: Mapbox 04</h2>
-        Draw a vector tiles layer with a Mapbox tileset, tileset ID{' '}
-        <pre>layer-manager.1ecpue1k</pre>, center it on the map and display a{' '}
-        <b>tooltip with the name of the county when hover</b> on it.
-        <br />
+        <p>
+          Draw a vector tiles layer with a Mapbox tileset, center it on the map and display a{' '}
+          <b>tooltip with the name of the county when hover</b> on it.
+          <br />
+        </p>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
 
       <Map

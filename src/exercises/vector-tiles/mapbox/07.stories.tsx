@@ -56,10 +56,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <>
       <div className="prose">
         <h2>Vector tiles: Mapbox 07</h2>
-        Draw a vector tiles layer with a Mapbox tileset, tileset ID{' '}
-        <pre>layer-manager.1ecpue1k</pre>, and highlight in black those counties with{' '}
-        <pre>bws_cat</pre>
-        greater than 2 and <pre>pop_cat</pre> smaller than 4 .
+        <p>
+          Draw a vector tiles layer with a Mapbox tileset, and highlight in black those counties
+          with <b>bws_cat</b>
+          greater than 2 and <b>pop_cat</b> smaller than 4 .
+        </p>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
 
       <Map

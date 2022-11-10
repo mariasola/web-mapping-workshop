@@ -75,8 +75,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Vector tiles: CartoDB 01</h2>
         <p>
-          Draw a vector tiles layer with a protected areas <b>CartoDB tileset</b>, center it on the
-          map and display it with next styles:
+          Draw a vector tiles layer with a protected areas CartoDB tileset, center it on the map and
+          display it with next styles:
           <Code>
             {`const border = '#000000';
 const borderOpacity = 0.2;

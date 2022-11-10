@@ -51,11 +51,12 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Vector tiles: Mapbox 08</h2>
         <p>
-          Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-          <pre>layer-manager.1ecpue1k</pre>, and highlight in green those counties that contain the
-          value of the <pre>bws_cat</pre> property in the following array of values{' '}
+          Draw a vector tiles layer with a Mapbox tileset, and highlight in green those counties
+          that contain the value of the <b>bws_cat</b> property in the following array of values:
           <pre>[0, 2, 3, 7, 8]</pre>
         </p>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
 
       <Map
