@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
-import { ViewState } from 'react-map-gl';
+import { MapRef, ViewState } from 'react-map-gl';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -22,6 +22,9 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
+  const mapRef = useRef<MapRef>(null);
+  const HOVER = useRef(null);
+
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
@@ -38,8 +41,12 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           type: 'fill',
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': '#77CCFF',
-            'fill-opacity': 0.5,
+            'fill-color': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              '#0044FF',
+              '#77CCFF',
+            ],
           },
         },
         {
@@ -79,6 +86,54 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     });
   };
 
+  const handleMouseMove = (e) => {
+    if (e.features) {
+      const IndicatorsLayer = e.features.find((f) => f.layer.source === 'vector-tiles-mapbox');
+
+      if (IndicatorsLayer) {
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.properties.geoid,
+              source: HOVER.current.layer.source,
+              sourceLayer: HOVER.current.layer['source-layer'],
+            },
+            { hover: false }
+          );
+        }
+
+        HOVER.current = IndicatorsLayer;
+
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.properties.geoid,
+              source: HOVER.current.layer.source,
+              sourceLayer: HOVER.current.layer['source-layer'],
+            },
+            { hover: true }
+          );
+        }
+      } else {
+        if (HOVER.current !== null) {
+          mapRef.current.setFeatureState(
+            {
+              id: HOVER.current.properties.geoid,
+              source: HOVER.current.layer.source,
+              sourceLayer: HOVER.current.layer['source-layer'],
+            },
+            { hover: false }
+          );
+        }
+        HOVER.current = null;
+      }
+    }
+  };
+
+  const handleMapLoad = ({ map }) => {
+    mapRef.current = map;
+  };
+
   return (
     <>
       <div className="prose">
@@ -99,6 +154,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         interactiveLayerIds={layersInteractiveIds}
+        onMouseMove={handleMouseMove}
+        onMapLoad={handleMapLoad}
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
