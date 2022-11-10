@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
-import { ViewState } from 'react-map-gl';
+import { Popup, ViewState } from 'react-map-gl';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -22,13 +22,12 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const mapRef = useRef(null);
-  const HOVER = useRef(null);
-
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
   const [county, setCounty] = useState(null);
+  const [tooltipPosition, setTooltipPosition] = useState(null);
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
@@ -83,62 +82,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     });
   };
 
-  const handleMouseMove = (e) => {
-    e.features.map((i) => {
-      if (i.properties.level === 2) {
-        setCounty(i.properties.name);
-      }
-    });
-
-    if (e.features) {
-      // find the layer on hover where to add the feature state
-      const IndicatorsLayer = e.features.find((f) => f.layer['source-layer'] === 'Indicators');
-
-      if (IndicatorsLayer) {
-        if (HOVER.current !== null) {
-          mapRef.current.setFeatureState(
-            {
-              id: HOVER.current.layer.id,
-              source: HOVER.current.layer.source,
-              sourceLayer: HOVER.current.layer['source-layer'],
-              name: HOVER.current.layer.name,
-            },
-            { hover: false }
-          );
-        }
-
-        HOVER.current = IndicatorsLayer;
-
-        if (HOVER.current !== null) {
-          mapRef.current.setFeatureState(
-            {
-              id: HOVER.current.layer.id,
-              source: HOVER.current.layer.source,
-            },
-            { hover: true }
-          );
-        }
-      } else {
-        if (HOVER.current !== null) {
-          mapRef.current.setFeatureState(
-            {
-              id: HOVER.current.layer.id,
-              source: HOVER.current.layer.source,
-            },
-            { hover: false }
-          );
-        }
-        HOVER.current = null;
-      }
-    }
-  };
-
-  const handleMapLoad = ({ map }) => {
-    mapRef.current = map;
-  };
-
-  console.log({ county });
-
   return (
     <>
       <div className="prose">
@@ -158,12 +101,17 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
+        interactiveLayerIds={layersInteractiveIds}
+        onMouseEnter={(e) => {
+          const selectedCounty = e.features.find((f) => f.properties.level === 2).properties.name;
+          setCounty(selectedCounty);
+          setTooltipPosition(e.lngLat);
+          setShowPopup(true);
+        }}
+        onMouseLeave={() => setShowPopup(false)}
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
-        onMouseMove={handleMouseMove}
-        onMapLoad={handleMapLoad}
-        interactiveLayerIds={layersInteractiveIds}
       >
         {(map) => {
           return (
@@ -179,6 +127,17 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
               <Controls>
                 <ZoomControl id={id} />
               </Controls>
+              {showPopup && (
+                <Popup
+                  longitude={tooltipPosition?.lng}
+                  latitude={tooltipPosition?.lat}
+                  anchor="bottom"
+                  closeButton={false}
+                  onClose={() => setShowPopup(false)}
+                >
+                  {county}
+                </Popup>
+              )}
             </>
           );
         }}
