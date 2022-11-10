@@ -10,6 +10,7 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
+
 const StoryMap = {
   title: 'Exercises/Vector Tiles/Mapbox',
   component: Map,
@@ -33,19 +34,38 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       layers: [
         {
           type: 'fill',
-          filter: ['all', ['>', 'bws_cat', 2], ['<', 'pop_cat', 4]],
+          filter: ['all', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': '#000000',
+            'fill-color': '#77CCFF',
+            'fill-opacity': 0.5,
+          },
+        },
+        {
+          type: 'fill',
+          filter: ['all', ['!=', 'bws_cat', 0], ['!=', 'pop_cat', 0]],
+          'source-layer': 'Indicators',
+          paint: {
+            'fill-color': '#FF0000',
+            'fill-opacity': 0.5,
           },
         },
         {
           type: 'line',
-          filter: ['all', ['>', 'bws_cat', 2], ['<', 'pop_cat', 4]],
+          filter: ['all', ['!=', 'bws_cat', 0], ['!=', 'pop_cat', 0]],
           'source-layer': 'Indicators',
           paint: {
-            'line-color': '#ffffff',
-            'line-width': 0.1,
+            'fill-color': '#ff0000',
+            'line-width': 1,
+          },
+        },
+        {
+          type: 'line',
+          filter: ['all', ['==', 'bws_cat', 0], ['==', 'pop_cat', 0]],
+          'source-layer': 'Indicators',
+          paint: {
+            'line-color': '#0044FF',
+            'line-width': 1,
           },
         },
       ],
@@ -57,9 +77,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Vector tiles: Mapbox 07</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, and highlight in black those counties
-          with <b>bws_cat</b>
-          greater than 2 and <b>pop_cat</b> smaller than 4 .
+          Draw a vector-tiles layer with a Mapbox tileset, highlight in dark blue those counties
+          whose <b>bws_cat = 0 </b> and <b>pop_cat = 0</b>
+          and highlight in red those which dont meet the requirement.
         </p>
         <p>You should use this tileset ID:</p>
         <pre>layer-manager.1ecpue1k</pre>

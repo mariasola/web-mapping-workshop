@@ -24,6 +24,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
+  const validBwsValues = [0, 2, 3, 7, 8];
+
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
     type: 'vector',
@@ -34,20 +36,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       layers: [
         {
           type: 'fill',
+          filter: ['all', ['in', ['get', 'bws_cat'], ['literal', validBwsValues]]],
           'source-layer': 'Indicators',
-          filter: ['==', 'level', 1],
           paint: {
-            'fill-color': '#77CCFF',
-            'fill-opacity': 0.5,
-          },
-        },
-        {
-          type: 'line',
-          'source-layer': 'Indicators',
-          filter: ['==', 'level', 1],
-          paint: {
-            'line-color': '#0044FF',
-            'line-width': 1,
+            'fill-color': '#FF0000',
           },
         },
       ],
@@ -57,14 +49,16 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   return (
     <>
       <div className="prose">
-        <h2>Vector tiles: Mapbox 06</h2>
+        <h2>Vector tiles: Mapbox 09</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, and <b>remove county borders</b> by
-          filtering features by level.
+          Draw a vector tiles layer with a Mapbox tileset, and highlight in green those counties
+          that contain the value of the <b>bws_cat</b> property in the following array of values:
+          <pre>[0, 2, 3, 7, 8]</pre>
         </p>
         <p>You should use this tileset ID:</p>
         <pre>layer-manager.1ecpue1k</pre>
       </div>
+
       <Map
         id={id}
         bounds={bounds}
@@ -92,8 +86,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const Mapbox06 = Template.bind({});
-Mapbox06.args = {
+export const Mapbox09 = Template.bind({});
+Mapbox09.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},

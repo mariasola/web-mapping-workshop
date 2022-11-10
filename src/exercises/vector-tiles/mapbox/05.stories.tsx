@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ViewState } from 'react-map-gl';
+import { Popup, ViewState } from 'react-map-gl';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -24,6 +24,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
+  const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
+  const [county, setCounty] = useState(null);
+  const [tooltipPosition, setTooltipPosition] = useState(null);
+
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
     type: 'vector',
@@ -35,7 +40,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'fill',
           'source-layer': 'Indicators',
-          filter: ['==', 'level', 1],
           paint: {
             'fill-color': '#77CCFF',
             'fill-opacity': 0.5,
@@ -44,7 +48,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'line',
           'source-layer': 'Indicators',
-          filter: ['==', 'level', 1],
           paint: {
             'line-color': '#0044FF',
             'line-width': 1,
@@ -53,24 +56,59 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       ],
     },
   };
+  const onAfterAdd = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+      if (!layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => [
+          ...prevLayersInteractiveIds,
+          layerId,
+        ]);
+      }
+    });
+  };
+
+  const onAfterRemove = (layerModel) => {
+    layerModel.mapLayer.layers.forEach((l) => {
+      const { id: layerId } = l;
+
+      if (layersInteractiveIds.includes(layerId)) {
+        setLayersInteractiveIds((prevLayersInteractiveIds) => {
+          const arr = prevLayersInteractiveIds.filter((e) => e !== layerId);
+
+          return arr;
+        });
+      }
+    });
+  };
 
   return (
     <>
       <div className="prose">
         <h2>Vector tiles: Mapbox 05</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, and <b>remove county borders</b> by
-          filtering features by level.
+          Draw a vector tiles layer with a Mapbox tileset, center it on the map and display a{' '}
+          <b>tooltip with the name of the county when hover</b> on it.
+          <br />
         </p>
         <p>You should use this tileset ID:</p>
         <pre>layer-manager.1ecpue1k</pre>
       </div>
+
       <Map
         id={id}
         bounds={bounds}
         initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
+        interactiveLayerIds={layersInteractiveIds}
+        onMouseEnter={(e) => {
+          const selectedCounty = e.features.find((f) => f.properties.level === 2).properties.name;
+          setCounty(selectedCounty);
+          setTooltipPosition(e.lngLat);
+          setShowPopup(true);
+        }}
+        onMouseLeave={() => setShowPopup(false)}
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
@@ -79,11 +117,27 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={MAPBOX_LAYER.id} {...MAPBOX_LAYER} />
+                <Layer
+                  key={MAPBOX_LAYER.id}
+                  onAfterAdd={onAfterAdd}
+                  onAfterRemove={onAfterRemove}
+                  {...MAPBOX_LAYER}
+                />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
               </Controls>
+              {showPopup && (
+                <Popup
+                  longitude={tooltipPosition?.lng}
+                  latitude={tooltipPosition?.lat}
+                  anchor="bottom"
+                  closeButton={false}
+                  onClose={() => setShowPopup(false)}
+                >
+                  {county}
+                </Popup>
+              )}
             </>
           );
         }}
@@ -111,5 +165,8 @@ Mapbox05.args = {
   },
   onMapLoad: ({ map, mapContainer }) => {
     console.info('onMapLoad: ', map, mapContainer);
+  },
+  onHover: ({ map, mapContainer }) => {
+    console.info('onHover: ', map, mapContainer);
   },
 };

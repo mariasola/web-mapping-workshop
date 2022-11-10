@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Popup, ViewState } from 'react-map-gl';
+import { ViewState } from 'react-map-gl';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -25,9 +25,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
-  const [county, setCounty] = useState(null);
-  const [tooltipPosition, setTooltipPosition] = useState(null);
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
@@ -87,8 +84,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Vector tiles: Mapbox 04</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, center it on the map and display a{' '}
-          <b>tooltip with the name of the county when hover</b> on it.
+          Draw a vector tiles layer with a Mapbox tileset, center it on the map and color the county
+          when <b>hover</b> on it.
           <br />
         </p>
         <p>You should use this tileset ID:</p>
@@ -102,13 +99,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         interactiveLayerIds={layersInteractiveIds}
-        onMouseEnter={(e) => {
-          const selectedCounty = e.features.find((f) => f.properties.level === 2).properties.name;
-          setCounty(selectedCounty);
-          setTooltipPosition(e.lngLat);
-          setShowPopup(true);
-        }}
-        onMouseLeave={() => setShowPopup(false)}
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
@@ -127,17 +117,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
               <Controls>
                 <ZoomControl id={id} />
               </Controls>
-              {showPopup && (
-                <Popup
-                  longitude={tooltipPosition?.lng}
-                  latitude={tooltipPosition?.lat}
-                  anchor="bottom"
-                  closeButton={false}
-                  onClose={() => setShowPopup(false)}
-                >
-                  {county}
-                </Popup>
-              )}
             </>
           );
         }}
