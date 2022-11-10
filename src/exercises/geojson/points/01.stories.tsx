@@ -47,7 +47,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   return (
-    <>
+    <div>
       <div className="prose">
         Draw a geojson point collection, center it on the map and display them as <b>circles</b>{' '}
         with the following styles:
@@ -80,7 +80,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </>
+    </div>
   );
 };
 
