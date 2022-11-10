@@ -6,6 +6,7 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -89,14 +90,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Animate a geojson linestring collection, center the map on it and color it with this
-        <ul>
-          <li>color: base on an attribute category [...COLOR_RAMP]</li>
-          <li>border: #000000</li>
-          <li>opacity: 0.5</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Geojson: Lines 04</h2>
+        <b>Animate</b> a geojson linestring collection, center the map on it and display it with the
+        following styles:
+        <Code>{`const color = '#FE4365';
+const opacity = 0.5;`}</Code>
       </div>
       <Map
         id={id}
@@ -127,7 +127,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 

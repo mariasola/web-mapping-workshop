@@ -6,6 +6,7 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -67,15 +68,25 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson point collection, fill it with a color ramp base on an string attribute,
-        center the map on it and display them with following styles:
-        <ul>
-          <li>color: base on an attribute category [...COLOR_RAMP]</li>
-          <li>border: #000000</li>
-          <li>opacity: 0.5</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Geojson: Points 03</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/codeforgermany/click_that_hood/blob/main/public/data/airports.geojson"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , draw a point collection, fill it with a <b>color ramp</b> base on an{' '}
+          <b>string attribute</b>, center the map on it and display them with following styles:
+        </p>
+        <Code>
+          {`const border = '#000000';
+const opacity = 0.5;`}
+        </Code>
       </div>
       <Map
         id={id}
@@ -99,7 +110,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 

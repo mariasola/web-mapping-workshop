@@ -57,21 +57,20 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const SANTA_MONICA_TILES =
     'https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer/tile/{z}/{y}/{x}.pbf';
 
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
-
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a vector-tiles layer, with this url source{' '}
-        <span style={styles.code}>&nbsp;&nbsp;{SANTA_MONICA_TILES}&nbsp;&nbsp;</span> center it on
-        the map and display them with the following styles
-        <ul>
-          <li>color: #77CCFF</li>
-          <li>border: #0044FF</li>
-          <li>borderWidth: 1</li>
-        </ul>
+    <>
+      <div className="prose">
+        <p>
+          Draw a vector-tiles layer, center it on the map and display them with the following
+          styles:
+        </p>
+        <pre lang="javascript">{`
+border: #0044FF
+borderWidth: 1
+color: #77CCFF
+        `}</pre>
+        <p>You should use this url source:</p>
+        <pre>{SANTA_MONICA_TILES}</pre>
       </div>
       <Map
         id={id}
@@ -95,7 +94,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 

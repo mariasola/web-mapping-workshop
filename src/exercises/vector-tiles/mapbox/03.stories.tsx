@@ -85,8 +85,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
+    <>
+      <div className="prose">
         Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
         <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, with a
         color ramp base on an attribute category, center it on the map and display them with
@@ -126,7 +126,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 

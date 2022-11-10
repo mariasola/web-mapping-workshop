@@ -66,38 +66,26 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
 
-  const OPTIONS = {
-    cartocss: '#wdpa_protected_areas {  polygon-opacity: 1.0; polygon-fill: #704489 }',
-    cartocss_version: '2.3.0',
-    sql: 'SELECT * FROM wdpa_protected_areas',
-  };
-
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
-
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a vector-tiles layer with a protected areas CartoDB tileset, center it on the map and
-        display them with next styles.
-        <br />
-        You should use account <span style={styles.code}>&nbsp;&nbsp;wri-01 &nbsp;</span> and the
-        following options:
-        <br />
-        <span style={styles.code}>
-          cartocss: {OPTIONS.cartocss}
-          <br />
-          cartocss_version: {OPTIONS.cartocss_version}
-          <br />
-          sql: {OPTIONS.sql}&nbsp;&nbsp;
-        </span>
-        <ul>
-          <li>color: #FFCC00</li>
-          <li>opacity: 0.7</li>
-          <li>border: #000000</li>
-          <li>border opacity: 0.2</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Vector tiles: CartoDB 01</h2>
+        <p>
+          Draw a vector-tiles layer with a protected areas CartoDB tileset, center it on the map and
+          display them with next styles:
+          <pre lang="javascript">{`
+color: #FFCC00
+opacity: 0.7
+border: #000000
+border opacity: 0.2
+        `}</pre>
+          You should use account: <pre>wri-01</pre> and the following options:
+          <pre lang="javascript">{`
+cartocss: {OPTIONS.cartocss}
+cartocss_version: {OPTIONS.cartocss_version}
+sql: {OPTIONS.sql}&nbsp;&nbsp;
+        `}</pre>
+        </p>
       </div>
       <Map
         id={id}
@@ -127,7 +115,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 

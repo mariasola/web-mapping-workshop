@@ -46,15 +46,14 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   return (
-    <div className="relative flex flex-col w-full h-[calc(100vh_-_32px)]">
-      <div className="prose max-w-none">
-        <h2>Raster tiles</h2>
-        <ul>
-          <li>
-            Draw a raster layer with this url source{' '}
-            <em>{`https://earthengine.google.org/static/hansen_2013/gain_alpha/{z}/{x}/{y}.png`}</em>
-          </li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Rater tiles</h2>
+        <p></p>
+        Draw a raster layer with this url source:{' '}
+        <pre lang="javascript">{`
+https://earthengine.google.org/static/hansen_2013/gain_alpha/{z}/{x}/{y}.png
+        `}</pre>
       </div>
 
       <div className="relative grow">
@@ -81,7 +80,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           }}
         </Map>
       </div>
-    </div>
+    </>
   );
 };
 

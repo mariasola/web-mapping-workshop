@@ -6,6 +6,7 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -84,18 +85,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           color based on population and the boundary of each province with a black line.
         </p>
 
-        <ul>
-          <li>
-            color: base on the population using this color ramp:{' '}
-            <code>{`['#00ffcc', '#004aFF']`}</code>
-          </li>
-          <li>
-            border: <code>{`#000000`}</code>
-          </li>
-          <li>
-            opacity: <code>{`0.5`}</code>
-          </li>
-        </ul>
+        <Code>
+          {`const colorRamp = ['#00ffcc', '#004aFF'];
+const border = '#000000';
+const opacity = 0.5;`}
+        </Code>
       </div>
       <Map
         id={id}

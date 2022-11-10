@@ -4,12 +4,12 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
 import AIRPORTS_DATA from 'data/airports.json';
-
 const StoryMap = {
   title: 'Exercises/Geojson/Points',
   argTypes: {},
@@ -60,13 +60,22 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson point collection, center it on the map and display them as images with
-        following styles:
-        <ul>
-          <li>color: #ffCC00</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Geojson: Points 06</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/codeforgermany/click_that_hood/blob/main/public/data/airports.geojson"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , draw a point collection, center it on the map and display them as <b>images</b> with
+          following styles:
+        </p>
+        <Code>{`const color = '#ffCC00';`}</Code>
       </div>
       <Map
         id={id}
@@ -90,7 +99,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 

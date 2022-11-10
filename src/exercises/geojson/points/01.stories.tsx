@@ -4,6 +4,7 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -47,16 +48,27 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   return (
-    <div>
+    <>
       <div className="prose">
-        Draw a geojson point collection, center it on the map and display them as <b>circles</b>{' '}
-        with the following styles:
-        <ul>
-          <li>color: #ffCC00</li>
-          <li>border: #000000</li>
-          <li>radius: 20</li>
-          <li>opacity: 0.5</li>
-        </ul>
+        <h2>Geojson: Points 01</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/codeforgermany/click_that_hood/blob/main/public/data/airports.geojson"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , draw a point collection, center it on the map and display them as <b>circles</b> with
+          the following styles:
+        </p>
+        <Code>
+          {`const color = '#ffCC00';
+const border = '#000000';
+const opacity = 0.5;
+const radius = 20;`}
+        </Code>
       </div>
       <Map
         id={id}
@@ -80,7 +92,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
