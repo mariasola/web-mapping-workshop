@@ -69,7 +69,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           , we want to show the provinces of Spain. We want to show the area of each province with a
           color and the boundary of each province with a black line.
         </p>
-
         <Code>
           {`const color = '#ffCC00';
 const border = '#000000';
