@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 
 import type { MapRef } from 'react-map-gl';
+import { ViewState } from 'react-map-gl';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -22,8 +23,9 @@ export default StoryMap;
 
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
+
   const mapRef = useRef<MapRef>(null);
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
 
   const LAYER = {
@@ -101,6 +103,7 @@ const opacity = 0.5;`}</Code>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         onMapLoad={handleMapLoad}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
@@ -136,11 +139,11 @@ Lines04.args = {
   id: 'valencia-provinces',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-0.477576, 39.389689, -0.257849, 39.542355],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-0.477576, 39.389689, -0.257849, 39.542355],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

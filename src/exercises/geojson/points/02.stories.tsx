@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import flatten from 'lodash/flatten';
 
 import { Story } from '@storybook/react/types-6-0';
@@ -23,8 +25,7 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
-
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
   const colors = [
     '#a3f307',
     '#05f9e2',
@@ -95,6 +96,7 @@ const opacity = 0.5;`}
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -123,11 +125,11 @@ Points02.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);
