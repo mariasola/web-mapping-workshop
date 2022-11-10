@@ -68,9 +68,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
   return (
-    <div className="relative flex w-full h-[calc(100vh_-_32px)] space-x-10">
+    <>
       <div className="prose">
-        <h2>Polygons 02</h2>
+        <h2>Geojson: Polygons 02</h2>
         <p>
           With this{' '}
           <a
@@ -120,7 +120,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -134,11 +134,6 @@ Polygons02.args = {
     fitBoundsOptions: {
       padding: 50,
     },
-  },
-  bounds: {
-    bbox: [-13.392736, 35.469583, 7.701014, 43.460862],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

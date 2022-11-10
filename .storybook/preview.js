@@ -1,4 +1,5 @@
 import { MapProvider } from 'react-map-gl';
+import Wrapper from 'components/wrapper';
 
 import '../src/styles/globals.css';
 
@@ -19,7 +20,9 @@ export const decorators = [
   (Story) => {
     return (
       <MapProvider>
-        {Story()}
+        <Wrapper>
+          {Story()}
+        </Wrapper>
       </MapProvider>
     );
   },

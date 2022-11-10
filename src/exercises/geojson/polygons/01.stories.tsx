@@ -53,9 +53,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
   return (
-    <div className="relative flex w-full h-[calc(100vh_-_32px)] space-x-10">
+    <>
       <div className="prose">
-        <h2>Polygons 01</h2>
+        <h2>Geojson: Polygons 01</h2>
         <p>
           With this{' '}
           <a
@@ -68,17 +68,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           , we want to show the provinces of Spain. We want to show the area of each province with a
           color and the boundary of each province with a black line.
         </p>
-        <ul>
-          <li>
-            color: <code>{`#ffCC00`}</code>
-          </li>
-          <li>
-            border: <code>{`#000000`}</code>
-          </li>
-          <li>
-            opacity: <code>{`0.5`}</code>
-          </li>
-        </ul>
+        <pre lang="javascript">{`
+const color = '#ffCC00';
+const border = '#000000';
+const opacity = 0.5;
+        `}</pre>
       </div>
 
       <Map
@@ -104,7 +98,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
