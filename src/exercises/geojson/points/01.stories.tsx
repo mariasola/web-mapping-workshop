@@ -41,7 +41,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             'circle-color': '#FFCC00',
             'circle-opacity': 0.5,
             'circle-radius': 5,
-            'circle-stroke-color': '#FF0000',
+            'circle-stroke-color': '#000000',
             'circle-stroke-width': 1,
           },
         },
@@ -69,7 +69,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           {`color = '#ffCC00';
 border = '#000000';
 opacity = 0.5;
-radius = 20;`}
+radius = 5;`}
         </Code>
       </div>
       <Map

@@ -104,22 +104,22 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             Geojson
           </a>
           , draw a point collection, center it on the map and display them as <b>circle clusters</b>{' '}
-          with a <b>count inside</b> and the following styles:
+          with a <b>count inside</b> and the following styles (when the property is an array of
+          values, the value must be interpolated with the `point_count`):
         </p>
         <b>Circle</b>
         <Code>
-          {`color = '#ffCC00';
+          {`color = ['#51bbd6','#f1f075','#f28cb1'];
 border = '#000000';
 opacity = 0.5;
-radius = 20;`}
+radius = [16, 18, 20];`}
         </Code>
-        <b>Cluster</b>
-        <Code>
-          {`color = '#00CC00';
-border = '#000000';
-opacity = 1;
-radius = 50;`}
-        </Code>
+        <b>Symbol</b>
+        <Code>{`fontSize = [10, 11, 12];`}</Code>
+        <b>Circle</b>
+        <Code>{`color = '#FFF';
+strokeWidth = 2;
+radius = 5;`}</Code>
       </div>
       <Map
         id={id}

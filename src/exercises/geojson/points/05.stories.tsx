@@ -90,19 +90,18 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         </p>
         <b>Circle</b>
         <Code>
-          {`color = '#ffCC00';
+          {`color = '#000000';
 border = '#000000';
 opacity = 0.5;
-radius = 2;`}
+radius = 5;`}
         </Code>
         <b>Heatmap</b>
         <Code>
-          {`color = '#00CC00';
-border = '#000000';
-intensity = 1;
-opacity = 1;
+          {`ramp = ['transparent','#67A9CF','#D1E5F0','#FDDBC7','#EF8A62','#B2182B'];
+intensity = [1, 3];
+opacity = [1, 0];
 radius = 10;
-weight = 1;`}
+weight = [0, 1];`}
         </Code>
       </div>
       <Map

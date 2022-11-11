@@ -29,9 +29,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         <div className="prose">
           <h2>Basic: Bounds 02</h2>
           <p>
-            Display a map and center making it animate to the final position with these bounds:{' '}
+            Display a map and center making it animate in 5000 ms to the final position with these
+            bounds:{' '}
           </p>
-          <Code>{`bounds = [28.969005,-27.926807,60.192150,-13.144044];`}</Code>
+          <Code>{`bounds = [28.969005,-27.926807,60.192150,-13.144044]`}</Code>
         </div>
       </div>
 

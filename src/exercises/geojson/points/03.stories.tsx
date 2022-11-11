@@ -86,8 +86,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           <b>string attribute</b>, center the map on it and display them with following styles:
         </p>
         <Code>
-          {`border = '#000000';
-opacity = 0.5;`}
+          {`opacity = 0.5;
+radius = 5;
+ramp = ['#e65154','#26b6ff','#67e6d1','#cd76d6','#ffca8c','#fff2b3','#ff8cd9','#c8f2a9','#d4b8ff'];`}
         </Code>
       </div>
       <Map
@@ -123,7 +124,7 @@ Points03.args = {
   className: '',
   viewport: {},
   initialViewState: {
-    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    bounds: [-194.335938, -63.548552, 154.335938, 63.548552],
     fitBoundsOptions: {
       padding: 50,
     },

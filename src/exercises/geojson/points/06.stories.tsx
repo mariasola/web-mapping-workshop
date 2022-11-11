@@ -124,9 +124,21 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             Geojson
           </a>
           , draw a point collection, center it on the map and display them as <b>images</b> with
-          following styles:
+          following styles: * when the property is an array of values, the value must be
+          interpolated with the `point_count` in case of color and radius, and with `zoom` in case
+          of iconSize:
         </p>
-        <Code>{`color = '#ffCC00';`}</Code>
+        <b>Circle</b>
+        <Code>{`color = ['#51bbd6','#f1f075', '#f28cb1];
+opacity = 0.5;
+radius = [16,18,20];
+strokeColor = '#000000';`}</Code>
+        <b>Symbol</b>
+        <Code>{`iconSize = [0.15, 0.1];`}</Code>
+        <b>Circle</b>
+        <Code>{`color = '#0000FF';
+opacity = 0.3;
+radius = 10;`}</Code>
       </div>
       <Map
         id={id}

@@ -27,16 +27,19 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
   const colors = [
-    '#a3f307',
-    '#05f9e2',
-    '#e2f705',
-    '#f50b86',
-    '#ff6f00',
-    '#a3f307',
-    '#05f9e2',
-    '#e2f705',
-    '#f50b86',
-    '#ff6f00',
+    '#FFF01F',
+    '#FFF01F',
+    '#E7EE4F',
+    '#7FFF00',
+    '#CCFF00',
+    '#1F51FF',
+    '#0FF0FC',
+    '#BC13FE',
+    '#8A2BE2',
+    '#FF1493',
+    '#EA00FF',
+    '#FF3131',
+    '#FF5E00',
   ];
 
   const rampScalerankAirports = flatten(
@@ -66,7 +69,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
               ...rampScalerankAirports,
               '#DDD',
             ],
-            'circle-stroke-width': 1,
           },
         },
       ],
@@ -89,8 +91,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           <b>number attribute</b>, center the map on it and display them with following styles:
         </p>
         <Code>
-          {`border = '#000000';
-opacity = 0.5;`}
+          {`opacity = 0.5;
+ramp = ['#FFF01F','#FFF01F','#E7EE4F','#7FFF00','#CCFF00','#1F51FF','#0FF0FC','#BC13FE','#8A2BE2','#FF1493','#EA00FF','#FF3131','#FF5E00'];];
+radius = 5;`}
         </Code>
       </div>
       <Map
@@ -126,7 +129,7 @@ Points02.args = {
   className: '',
   viewport: {},
   initialViewState: {
-    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    bounds: [-194.335938, -63.548552, 154.335938, 63.548552],
     fitBoundsOptions: {
       padding: 50,
     },
