@@ -50,9 +50,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Raster tiles</h2>
         <p>Draw a raster layer with this url source: </p>
-        <pre>{`
-https://earthengine.google.org/static/hansen_2013/gain_alpha/{z}/{x}/{y}.png
-        `}</pre>
+        <pre>{`https://earthengine.google.org/static/hansen_2013/gain_alpha/{z}/{x}/{y}.png`}</pre>
       </div>
 
       <div className="relative grow">

@@ -66,10 +66,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           the following styles:
         </p>
         <Code>
-          {`const color = '#ffCC00';
-const border = '#000000';
-const opacity = 0.5;
-const radius = 20;`}
+          {`color = '#ffCC00';
+border = '#000000';
+opacity = 0.5;
+radius = 20;`}
         </Code>
       </div>
       <Map

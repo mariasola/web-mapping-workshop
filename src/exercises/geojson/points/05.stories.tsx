@@ -53,17 +53,17 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
               ['linear'],
               ['heatmap-density'],
               0,
-              'rgba(33,102,172,0)',
+              'transparent',
               0.2,
-              'rgb(103,169,207)',
+              '#67A9CF',
               0.4,
-              'rgb(209,229,240)',
+              '#D1E5F0',
               0.6,
-              'rgb(253,219,199)',
+              '#FDDBC7',
               0.8,
-              'rgb(239,138,98)',
+              '#EF8A62',
               1,
-              'rgb(178,24,43)',
+              '#B2182B',
             ],
             'heatmap-radius': 10,
             'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 1, 9, 0],
@@ -90,19 +90,19 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         </p>
         <b>Circle</b>
         <Code>
-          {`const color = '#ffCC00';
-const border = '#000000';
-const opacity = 0.5;
-const radius = 2;`}
+          {`color = '#ffCC00';
+border = '#000000';
+opacity = 0.5;
+radius = 2;`}
         </Code>
         <b>Heatmap</b>
         <Code>
-          {`const color = '#00CC00';
-const border = '#000000';
-const intensity = 1;
-const opacity = 1;
-const radius = 10;
-const weight = 1;`}
+          {`color = '#00CC00';
+border = '#000000';
+intensity = 1;
+opacity = 1;
+radius = 10;
+weight = 1;`}
         </Code>
       </div>
       <Map

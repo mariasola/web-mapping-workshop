@@ -86,8 +86,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           <b>string attribute</b>, center the map on it and display them with following styles:
         </p>
         <Code>
-          {`const border = '#000000';
-const opacity = 0.5;`}
+          {`border = '#000000';
+opacity = 0.5;`}
         </Code>
       </div>
       <Map

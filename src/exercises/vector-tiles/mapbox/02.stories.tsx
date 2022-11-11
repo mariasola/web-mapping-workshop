@@ -75,10 +75,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         </p>
 
         <Code>
-          {`const border = '#0044FF';
-const borderWidth = 1;
-const color = '#77CCFF';
-const opacity = 0.5;`}
+          {`border = '#0044FF';
+borderWidth = 1;
+color = '#77CCFF';
+opacity = 0.5;`}
         </Code>
         <p>You should use this tileset ID:</p>
         <pre>layer-manager.1ecpue1k</pre>

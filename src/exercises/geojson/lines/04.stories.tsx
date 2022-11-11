@@ -97,8 +97,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         <h2>Geojson: Lines 04</h2>
         <b>Animate</b> a geojson linestring collection, center the map on it and display it with the
         following styles:
-        <Code>{`const color = '#FE4365';
-const opacity = 0.5;`}</Code>
+        <Code>{`color = '#FE4365';
+opacity = 0.5;`}</Code>
       </div>
       <Map
         id={id}

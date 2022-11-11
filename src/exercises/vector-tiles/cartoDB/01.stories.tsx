@@ -78,10 +78,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           Draw a vector tiles layer with a protected areas CartoDB tileset, center it on the map and
           display it with next styles:
           <Code>
-            {`const border = '#000000';
-const borderOpacity = 0.2;
-const color = '#FFCC00';
-const opacity = 0.7;`}
+            {`border = '#000000';
+borderOpacity = 0.2;
+color = '#FFCC00';
+opacity = 0.7;`}
           </Code>
           You should use account: <pre>wri-01</pre> and the following options:
           <Code>

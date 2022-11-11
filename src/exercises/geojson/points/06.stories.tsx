@@ -126,7 +126,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           , draw a point collection, center it on the map and display them as <b>images</b> with
           following styles:
         </p>
-        <Code>{`const color = '#ffCC00';`}</Code>
+        <Code>{`color = '#ffCC00';`}</Code>
       </div>
       <Map
         id={id}
