@@ -90,7 +90,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           Draw a vector tiles layer with a Mapbox tileset, center it on the map and display them
           with following color ramp based based on an attribute category:
         </p>
-        <Code>{`const ramp = ['#80ff80', '#00ffff', '#0066cc'];`}</Code>
+        <Code>{`ramp = ['#80ff80', '#00ffff', '#0066cc'];`}</Code>
         <p>You should use this tileset ID:</p>
         <pre>layer-manager.1ecpue1k</pre>
       </div>

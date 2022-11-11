@@ -70,8 +70,7 @@ Bounds02.args = {
   initialViewState: {},
   bounds: {
     bbox: [28.969005, -27.926807, 60.19215, -13.144044],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 50 },
+    options: { padding: 50, duration: 5000 },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

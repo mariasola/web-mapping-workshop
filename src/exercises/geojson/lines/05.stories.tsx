@@ -6,14 +6,15 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
+import data from 'data/valencia.json';
 
 const StoryMap = {
-  title: 'Exercises/Vector Tiles/Mapbox',
-  component: Map,
+  title: 'Exercises/Geojson/Lines',
   argTypes: {},
 };
 
@@ -24,41 +25,47 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
-  const validBwsValues = [0, 3, 8];
+  const stops = [0, '#FE4365', 0.2, '#FC9D9A', 0.6, '#F9CDAD', 0.9, '#C8C8A9', 1, '#83AF9B'];
 
-  const MAPBOX_LAYER = {
-    id: 'vector-tiles-mapbox',
+  const LAYER = {
+    id: 'valencia-routes-gradient',
     type: 'vector',
     source: {
-      url: 'mapbox://layer-manager.1ecpue1k',
+      data,
+      type: 'geojson',
+      lineMetrics: true,
     },
     render: {
       layers: [
         {
-          type: 'fill',
-          filter: ['all', ['in', ['get', 'bws_cat'], ['literal', validBwsValues]]],
-          'source-layer': 'Indicators',
+          type: 'line',
+          layout: {
+            'line-cap': 'square',
+            'line-join': 'round',
+          },
           paint: {
-            'fill-color': '#FF0000',
+            'line-width': 2,
+            'line-gradient': ['interpolate', ['linear'], ['line-progress'], ...stops],
           },
         },
       ],
     },
   };
-
   return (
     <>
       <div className="prose">
-        <h2>Vector tiles: Mapbox 09</h2>
+        <h2>Geojson: Lines 05</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, and highlight in green those counties
-          that contain the value of the <b>bws_cat</b> property in the following array of values:
-          <pre>[0, 2, 3, 7, 8]</pre>
+          Draw a geojson linestring collection, center the map on it and color it with a{' '}
+          <b>color ramp</b> based on a <b>string attribute</b>, and display it with the following
+          styles:
         </p>
-        <p>You should use this tileset ID:</p>
-        <pre>layer-manager.1ecpue1k</pre>
-      </div>
 
+        <Code>
+          {`const border = '#000000';
+const opacity = 0.5;`}
+        </Code>
+      </div>
       <Map
         id={id}
         bounds={bounds}
@@ -73,7 +80,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={MAPBOX_LAYER.id} {...MAPBOX_LAYER} />
+                <Layer key={LAYER.id} {...LAYER} />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
@@ -86,13 +93,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   );
 };
 
-export const Mapbox09 = Template.bind({});
-Mapbox09.args = {
-  id: 'vector-tiles-mapbox',
+export const Lines05 = Template.bind({});
+Lines05.args = {
+  id: 'valencia-provinces',
   className: '',
   viewport: {},
   initialViewState: {
-    bounds: [-170.875677, 26.606678, -62.418646, 68.515284],
+    bounds: [-0.477576, 39.389689, -0.257849, 39.542355],
     fitBoundsOptions: {
       padding: 50,
     },

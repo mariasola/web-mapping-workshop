@@ -38,8 +38,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     render: {
       layers: [
         {
-          type: 'circle',
           id: 'clusters',
+          metadata: {
+            position: 'top',
+          },
+          type: 'circle',
           filter: ['has', 'point_count'],
           paint: {
             'circle-stroke-color': '#000000',
@@ -58,13 +61,30 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         },
         {
           id: 'cluster-count',
+          metadata: {
+            position: 'top',
+          },
           type: 'symbol',
           filter: ['has', 'point_count'],
           layout: {
             'text-allow-overlap': true,
+            'text-ignore-placement': true,
             'text-field': '{point_count_abbreviated}',
             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
             'text-size': ['step', ['get', 'point_count'], 10, 25, 11, 50, 12],
+          },
+        },
+        {
+          id: 'no-cluster',
+          metadata: {
+            position: 'top',
+          },
+          type: 'circle',
+          filter: ['!', ['has', 'point_count']],
+          paint: {
+            'circle-color': '#FFF',
+            'circle-stroke-width': 2,
+            'circle-radius': 5,
           },
         },
       ],
@@ -88,17 +108,17 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         </p>
         <b>Circle</b>
         <Code>
-          {`const color = '#ffCC00';
-const border = '#000000';
-const opacity = 0.5;
-const radius = 20;`}
+          {`color = '#ffCC00';
+border = '#000000';
+opacity = 0.5;
+radius = 20;`}
         </Code>
         <b>Cluster</b>
         <Code>
-          {`const color = '#00CC00';
-const border = '#000000';
-const opacity = 1;
-const radius = 50;`}
+          {`color = '#00CC00';
+border = '#000000';
+opacity = 1;
+radius = 50;`}
         </Code>
       </div>
       <Map

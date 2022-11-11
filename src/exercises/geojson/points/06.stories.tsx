@@ -30,6 +30,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     source: {
       type: 'geojson',
       data: AIRPORTS_DATA,
+      cluster: true,
+      clusterMaxZoom: 14, // Max zoom to cluster points on
+      clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
     },
     images: [
       {
@@ -41,7 +44,48 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     render: {
       layers: [
         {
+          id: 'clusters',
+          metadata: {
+            position: 'top',
+          },
+          type: 'circle',
+          filter: ['has', 'point_count'],
+          paint: {
+            'circle-stroke-color': '#000000',
+            'circle-opacity': 0.5,
+            'circle-radius': ['step', ['get', 'point_count'], 16, 25, 18, 50, 20],
+            'circle-color': [
+              'step',
+              ['get', 'point_count'],
+              '#51bbd6',
+              25,
+              '#f1f075',
+              50,
+              '#f28cb1',
+            ],
+          },
+        },
+        {
+          id: 'cluster-count',
+          metadata: {
+            position: 'top',
+          },
           type: 'symbol',
+          filter: ['has', 'point_count'],
+          layout: {
+            'text-allow-overlap': true,
+            'text-ignore-placement': true,
+            'text-field': '{point_count_abbreviated}',
+            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+            'text-size': ['step', ['get', 'point_count'], 10, 25, 11, 50, 12],
+          },
+        },
+        {
+          metadata: {
+            position: 'top',
+          },
+          type: 'symbol',
+          filter: ['!', ['has', 'point_count']],
           layout: {
             'icon-image': 'airport',
             'icon-ignore-placement': true,
@@ -51,6 +95,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           },
         },
         {
+          metadata: {
+            position: 'top',
+          },
+          filter: ['!', ['has', 'point_count']],
           type: 'circle',
           paint: {
             'circle-color': '#0000FF',

@@ -25,8 +25,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
-  const stops = [0, '#FE4365', 0.2, '#FC9D9A', 0.6, '#F9CDAD', 0.9, '#C8C8A9', 1, '#83AF9B'];
-
   const LAYER = {
     id: 'valencia-routes-gradient',
     type: 'vector',
@@ -39,20 +37,16 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       layers: [
         {
           type: 'line',
-          layout: {
-            'line-cap': 'round',
-            'line-join': 'round',
-          },
           paint: {
-            'line-width': 5,
-            'line-opacity': 0.5,
-            'line-gradient': ['interpolate', ['linear'], ['line-progress'], ...stops],
-          },
-        },
-        {
-          type: 'line',
-          paint: {
-            'line-color': ['interpolate', ['linear'], ['get', 'maxspeed'], 0, 'red', 30, 'blue'],
+            'line-color': [
+              'interpolate',
+              ['linear'],
+              ['to-number', ['get', 'maxspeed']],
+              20,
+              'red',
+              30,
+              'blue',
+            ],
             'line-width': 1,
           },
           layout: {
