@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -20,7 +23,8 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
+
   const AIRPORTS_LAYER = {
     id: 'airports',
     type: 'geojson',
@@ -34,8 +38,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     render: {
       layers: [
         {
-          type: 'circle',
           id: 'clusters',
+          metadata: {
+            position: 'top',
+          },
+          type: 'circle',
           filter: ['has', 'point_count'],
           paint: {
             'circle-stroke-color': '#000000',
@@ -54,41 +61,70 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         },
         {
           id: 'cluster-count',
+          metadata: {
+            position: 'top',
+          },
           type: 'symbol',
           filter: ['has', 'point_count'],
           layout: {
             'text-allow-overlap': true,
+            'text-ignore-placement': true,
             'text-field': '{point_count_abbreviated}',
             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
             'text-size': ['step', ['get', 'point_count'], 10, 25, 11, 50, 12],
+          },
+        },
+        {
+          id: 'no-cluster',
+          metadata: {
+            position: 'top',
+          },
+          type: 'circle',
+          filter: ['!', ['has', 'point_count']],
+          paint: {
+            'circle-color': '#FFF',
+            'circle-stroke-width': 2,
+            'circle-radius': 5,
           },
         },
       ],
     },
   };
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson point collection, center it on the map and display them as circle clusters
-        with the following styles:
-        <ul>
-          <b>Circle</b>
-          <li>color: #ffCC00</li>
-          <li>border: #000000</li>
-          <li>radius: 20</li>
-          <li>opacity: 0.5</li>
-
-          <b>Cluster</b>
-          <li>color: #00CC00</li>
-          <li>border: #000000</li>
-          <li>radius: 50</li>
-          <li>opacity: 1</li>
-          <li>count inside</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Geojson: Points 04</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/codeforgermany/click_that_hood/blob/main/public/data/airports.geojson"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , draw a point collection, center it on the map and display them as <b>circle clusters</b>{' '}
+          with a <b>count inside</b> and the following styles:
+        </p>
+        <b>Circle</b>
+        <Code>
+          {`color = '#ffCC00';
+border = '#000000';
+opacity = 0.5;
+radius = 20;`}
+        </Code>
+        <b>Cluster</b>
+        <Code>
+          {`color = '#00CC00';
+border = '#000000';
+opacity = 1;
+radius = 50;`}
+        </Code>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -108,7 +144,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -117,11 +153,11 @@ Points04.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

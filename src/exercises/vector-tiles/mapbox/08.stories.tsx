@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -8,7 +10,6 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
-
 const StoryMap = {
   title: 'Exercises/Vector Tiles/Mapbox',
   component: Map,
@@ -20,9 +21,7 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
-
-  const validBwsValues = [0, 2, 3, 7, 8];
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
@@ -34,33 +33,42 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       layers: [
         {
           type: 'fill',
-          filter: ['all', ['in', ['get', 'bws_cat'], ['literal', validBwsValues]]],
+          filter: ['all', ['>', 'bws_cat', 2], ['<', 'pop_cat', 4]],
           'source-layer': 'Indicators',
           paint: {
-            'fill-color': '#FF0000',
+            'fill-color': '#000000',
+          },
+        },
+        {
+          type: 'line',
+          filter: ['all', ['>', 'bws_cat', 2], ['<', 'pop_cat', 4]],
+          'source-layer': 'Indicators',
+          paint: {
+            'line-color': '#ffffff',
+            'line-width': 0.1,
           },
         },
       ],
     },
   };
 
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
-
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, and
-        highlight in green those counties that contain the value of the{' '}
-        <span style={styles.code}>&nbsp;bws_cat&nbsp;</span> property in the following array of
-        values <span style={styles.code}>&nbsp;[0, 2, 3, 7, 8]&nbsp;</span>
+    <>
+      <div className="prose">
+        <h2>Vector tiles: Mapbox 08</h2>
+        <p>
+          Draw a vector tiles layer with a Mapbox tileset, and highlight in black those counties
+          with <b>bws_cat</b>
+          greater than 2 and <b>pop_cat</b> smaller than 4 .
+        </p>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
 
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -80,7 +88,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -89,11 +97,11 @@ Mapbox08.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-170.875677, 26.606678, -62.418646, 67.415284],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-170.875677, 26.606678, -62.418646, 68.515284],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 
+import { MapRef, ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -20,32 +22,39 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const mapRef = useRef(null);
+  const mapRef = useRef<MapRef>(null);
   const HOVER = useRef(null);
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
+
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
-  const [county, setCounty] = useState(null);
 
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
     type: 'vector',
     source: {
       url: 'mapbox://layer-manager.1ecpue1k',
+      promoteId: 'geoid',
     },
     render: {
       layers: [
         {
           type: 'fill',
           'source-layer': 'Indicators',
+          filter: ['==', 'level', 2],
           paint: {
-            'fill-color': '#77CCFF',
-            'fill-opacity': 0.5,
+            'fill-color': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              '#0044FF',
+              '#77CCFF',
+            ],
           },
         },
         {
           type: 'line',
           'source-layer': 'Indicators',
+          filter: ['==', 'level', 2],
           paint: {
             'line-color': '#0044FF',
             'line-width': 1,
@@ -81,24 +90,16 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   const handleMouseMove = (e) => {
-    e.features.map((i) => {
-      if (i.properties.level === 2) {
-        setCounty(i.properties.name);
-      }
-    });
-
     if (e.features) {
-      // find the layer on hover where to add the feature state
-      const IndicatorsLayer = e.features.find((f) => f.layer['source-layer'] === 'Indicators');
+      const IndicatorsLayer = e.features.find((f) => f.layer.source === 'vector-tiles-mapbox');
 
       if (IndicatorsLayer) {
         if (HOVER.current !== null) {
           mapRef.current.setFeatureState(
             {
-              id: HOVER.current.layer.id,
+              id: HOVER.current.properties.geoid,
               source: HOVER.current.layer.source,
               sourceLayer: HOVER.current.layer['source-layer'],
-              name: HOVER.current.layer.name,
             },
             { hover: false }
           );
@@ -109,10 +110,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         if (HOVER.current !== null) {
           mapRef.current.setFeatureState(
             {
-              id: HOVER.current.layer.id,
+              id: HOVER.current.properties.geoid,
               source: HOVER.current.layer.source,
               sourceLayer: HOVER.current.layer['source-layer'],
-              name: HOVER.current.layer.name,
             },
             { hover: true }
           );
@@ -121,10 +121,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         if (HOVER.current !== null) {
           mapRef.current.setFeatureState(
             {
-              id: HOVER.current.layer.id,
+              id: HOVER.current.properties.geoid,
               source: HOVER.current.layer.source,
               sourceLayer: HOVER.current.layer['source-layer'],
-              name: HOVER.current.layer.name,
             },
             { hover: false }
           );
@@ -138,41 +137,31 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     mapRef.current = map;
   };
 
-  console.info({
-    county,
-    current:
-      mapRef.current &&
-      mapRef.current?.getFeatureState({
-        sourceId: 'vector-tiles-mapbox',
-        sourceLayerId: 'Indicators',
-        featureId: 'vector-tiles-mapbox',
-      }),
-  });
-
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
-
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, center it
-        on the map and display a tooltip with the name of the county when hover on it.
-        <br />
+    <>
+      <div className="prose">
+        <h2>Vector tiles: Mapbox 04</h2>
+        <p>
+          Draw a vector tiles layer with a Mapbox tileset, center it on the map and color the county
+          when <b>hover</b> on it.
+          <br />
+        </p>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
 
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
+        interactiveLayerIds={layersInteractiveIds}
+        onMouseMove={handleMouseMove}
+        onMapLoad={handleMapLoad}
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
-        onMouseMove={handleMouseMove}
-        onMapLoad={handleMapLoad}
-        interactiveLayerIds={layersInteractiveIds}
       >
         {(map) => {
           return (
@@ -192,22 +181,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-      {/* <Tooltip
-        arrowProps={{
-          className: 'bg-white',
-          enabled: true,
-          size: 6,
-        }}
-        content={
-          <div className="px-2 py-1 text-gray-500 bg-white rounded">
-            <span>{county}</span>
-          </div>
-        }
-        portalProps={{
-          enabled: true,
-        }}
-      ></Tooltip> */}
-    </div>
+    </>
   );
 };
 
@@ -216,11 +190,11 @@ Mapbox04.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-170.875677, 26.606678, -62.418646, 67.415284],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-170.875677, 26.606678, -62.418646, 68.515284],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

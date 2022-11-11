@@ -22,28 +22,30 @@ export default StoryMap;
 
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
+
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
+  const stops = [0, '#FE4365', 0.2, '#FC9D9A', 0.6, '#F9CDAD', 0.9, '#C8C8A9', 1, '#83AF9B'];
+
   const LAYER = {
-    id: 'valencia-provinces',
+    id: 'valencia-routes-gradient',
     type: 'vector',
     source: {
       data,
       type: 'geojson',
+      lineMetrics: true,
     },
     render: {
       layers: [
         {
-          id: 'route',
           type: 'line',
           layout: {
+            'line-cap': 'square',
             'line-join': 'round',
-            'line-cap': 'round',
           },
           paint: {
-            'line-color': '#ffCC00',
-            'line-width': 5,
-            'line-opacity': 0.5,
+            'line-width': 2,
+            'line-gradient': ['interpolate', ['linear'], ['line-progress'], ...stops],
           },
         },
       ],
@@ -52,15 +54,16 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   return (
     <>
       <div className="prose">
-        <h2>Geojson: Lines 01</h2>
+        <h2>Geojson: Lines 05</h2>
         <p>
-          Draw a geojson linestring collection, center it on the map and display it as <b>lines</b>{' '}
-          with the followng styles:
+          Draw a geojson linestring collection, center the map on it and color it with a{' '}
+          <b>color ramp</b> based on a <b>string attribute</b>, and display it with the following
+          styles:
         </p>
+
         <Code>
-          {`const color = '#ffCC00';
-const opacity = 0.5;
-const width = 5;`}
+          {`const border = '#000000';
+const opacity = 0.5;`}
         </Code>
       </div>
       <Map
@@ -90,8 +93,8 @@ const width = 5;`}
   );
 };
 
-export const Lines01 = Template.bind({});
-Lines01.args = {
+export const Lines05 = Template.bind({});
+Lines05.args = {
   id: 'valencia-provinces',
   className: '',
   viewport: {},

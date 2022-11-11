@@ -1,9 +1,15 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
+import flatten from 'lodash/flatten';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
+import chroma from 'chroma-js';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -20,9 +26,16 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
   const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
 
+  const COLORS = chroma.scale(['#80ff80', '#00ffff', '#0066cc']).colors(50);
+
+  const rampUSAStates = flatten(
+    COLORS.map((c, i) => {
+      return [i, c];
+    })
+  );
   const MAPBOX_LAYER = {
     id: 'vector-tiles-mapbox',
     type: 'vector',
@@ -34,20 +47,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'fill',
           'source-layer': 'Indicators',
+          filter: ['==', 'level', 1],
           paint: {
-            'fill-color': [
-              'match',
-              ['get', 'name'],
-              'Alaska',
-              '#a3f307',
-              'Elmore',
-              '#05f9e2',
-              'Washington',
-              '#e2f705',
-              'California',
-              '#f50b86',
-              '#DDD',
-            ],
+            'fill-color': ['match', ['to-number', ['get', 'geoid']], ...rampUSAStates, '#DDD'],
           },
         },
       ],
@@ -80,27 +82,22 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     });
   };
 
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
-
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a vector-tiles layer with a Mapbox tileset, tileset ID{' '}
-        <span style={styles.code}>&nbsp;&nbsp;layer-manager.1ecpue1k&nbsp;&nbsp;</span>, with a
-        color ramp base on an attribute category, center it on the map and display them with
-        following styles:
-        <ul>
-          <li>color: #77CCFF</li>
-          <li>border: #0044FF</li>
-          <li>borderWidth: 1</li>
-          <li>opacity: 0.5</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Vector tiles: Mapbox 03</h2>
+        <p>
+          Draw a vector tiles layer with a Mapbox tileset, center it on the map and display them
+          with following color ramp based based on an attribute category:
+        </p>
+        <Code>{`ramp = ['#80ff80', '#00ffff', '#0066cc'];`}</Code>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         interactiveLayerIds={layersInteractiveIds}
@@ -126,7 +123,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -135,11 +132,11 @@ Mapbox03.args = {
   id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-170.875677, 26.606678, -62.418646, 67.415284],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-170.875677, 26.606678, -62.418646, 68.515284],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

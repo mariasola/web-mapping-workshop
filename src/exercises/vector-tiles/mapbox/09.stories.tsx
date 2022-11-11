@@ -6,15 +6,14 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
-import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
-import data from 'data/valencia.json';
 
 const StoryMap = {
-  title: 'Exercises/Geojson/Lines',
+  title: 'Exercises/Vector Tiles/Mapbox',
+  component: Map,
   argTypes: {},
 };
 
@@ -22,47 +21,44 @@ export default StoryMap;
 
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
+
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
-  const LAYER = {
-    id: 'valencia-provinces',
+  const validBwsValues = [0, 3, 8];
+
+  const MAPBOX_LAYER = {
+    id: 'vector-tiles-mapbox',
     type: 'vector',
     source: {
-      data,
-      type: 'geojson',
+      url: 'mapbox://layer-manager.1ecpue1k',
     },
     render: {
       layers: [
         {
-          id: 'route',
-          type: 'line',
-          layout: {
-            'line-join': 'round',
-            'line-cap': 'round',
-          },
+          type: 'fill',
+          filter: ['all', ['in', ['get', 'bws_cat'], ['literal', validBwsValues]]],
+          'source-layer': 'Indicators',
           paint: {
-            'line-color': '#ffCC00',
-            'line-width': 5,
-            'line-opacity': 0.5,
+            'fill-color': '#FF0000',
           },
         },
       ],
     },
   };
+
   return (
     <>
       <div className="prose">
-        <h2>Geojson: Lines 01</h2>
+        <h2>Vector tiles: Mapbox 09</h2>
         <p>
-          Draw a geojson linestring collection, center it on the map and display it as <b>lines</b>{' '}
-          with the followng styles:
+          Draw a vector tiles layer with a Mapbox tileset, and highlight in green those counties
+          that contain the value of the <b>bws_cat</b> property in the following array of values:
+          <pre>[0, 2, 3, 7, 8]</pre>
         </p>
-        <Code>
-          {`const color = '#ffCC00';
-const opacity = 0.5;
-const width = 5;`}
-        </Code>
+        <p>You should use this tileset ID:</p>
+        <pre>layer-manager.1ecpue1k</pre>
       </div>
+
       <Map
         id={id}
         bounds={bounds}
@@ -77,7 +73,7 @@ const width = 5;`}
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={LAYER.id} {...LAYER} />
+                <Layer key={MAPBOX_LAYER.id} {...MAPBOX_LAYER} />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
@@ -90,13 +86,13 @@ const width = 5;`}
   );
 };
 
-export const Lines01 = Template.bind({});
-Lines01.args = {
-  id: 'valencia-provinces',
+export const Mapbox09 = Template.bind({});
+Mapbox09.args = {
+  id: 'vector-tiles-mapbox',
   className: '',
   viewport: {},
   initialViewState: {
-    bounds: [-0.477576, 39.389689, -0.257849, 39.542355],
+    bounds: [-170.875677, 26.606678, -62.418646, 68.515284],
     fitBoundsOptions: {
       padding: 50,
     },

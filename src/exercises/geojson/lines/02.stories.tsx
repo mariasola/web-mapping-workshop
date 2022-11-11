@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -19,7 +22,9 @@ export default StoryMap;
 
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
-  const [viewState, setViewState] = useState(initialViewState);
+
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
+
   const layers = [-1, 0, 1, 0].map((x, i) => ({
     id: 'valencia-routes-' + i,
     type: 'line',
@@ -50,18 +55,23 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson linestring collection, center the map on it and color it with this
-        <ul>
-          <li>color: base on an attribute number [...COLOR_RAMP]</li>
-          <li>border: #000000</li>
-          <li>opacity: 0.5</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Geojson: Lines 02</h2>
+        <p>
+          Draw a geojson linestring collection, center the map on it, color it with a{' '}
+          <b>color ramp</b> based on a <b>number attribute</b>, and display it with the following
+          styles:
+        </p>
+        <Code>
+          {`const border = '#000000';
+const opacity = 0.5;`}
+        </Code>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -81,7 +91,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -90,11 +100,11 @@ Lines02.args = {
   id: 'valencia-provinces',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-0.477576, 39.389689, -0.257849, 39.542355],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-0.477576, 39.389689, -0.257849, 39.542355],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

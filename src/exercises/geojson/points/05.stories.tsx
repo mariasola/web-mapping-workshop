@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -20,7 +23,8 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
+
   const AIRPORTS_LAYER = {
     id: 'airports',
     type: 'geojson',
@@ -33,10 +37,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'circle',
           paint: {
-            'circle-color': '#ffCC00',
+            'circle-color': '#000000',
             'circle-stroke-color': '#000000',
             'circle-opacity': 0.5,
-            'circle-radius': 20,
+            'circle-radius': 5,
           },
         },
         {
@@ -61,7 +65,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
               1,
               'rgb(178,24,43)',
             ],
-            'heatmap-radius': 50,
+            'heatmap-radius': 10,
             'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 1, 9, 0],
           },
         },
@@ -69,28 +73,42 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson point collection, center it on the map and display them as a heatmap with
-        following styles:
-        <ul>
-          <b>Circle</b>
-          <li>color: #ffCC00</li>
-          <li>border: #000000</li>
-          <li>radius: 20</li>
-          <li>opacity: 0.5</li>
-
-          <b>Heatmap</b>
-          <li>color: #00CC00</li>
-          <li>intensity: 1</li>
-          <li>opacity: 1</li>
-          <li>radius: 50</li>
-          <li>weight: 1</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Geojson: Points 05</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/codeforgermany/click_that_hood/blob/main/public/data/airports.geojson"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , draw a point collection, center it on the map and display them as a <b>heatmap</b> with
+          following styles:
+        </p>
+        <b>Circle</b>
+        <Code>
+          {`const color = '#ffCC00';
+const border = '#000000';
+const opacity = 0.5;
+const radius = 2;`}
+        </Code>
+        <b>Heatmap</b>
+        <Code>
+          {`const color = '#00CC00';
+const border = '#000000';
+const intensity = 1;
+const opacity = 1;
+const radius = 10;
+const weight = 1;`}
+        </Code>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -110,7 +128,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -119,11 +137,11 @@ Points05.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

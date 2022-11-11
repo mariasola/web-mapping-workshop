@@ -1,11 +1,15 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import CartoProvider from '@vizzuality/layer-manager-provider-carto';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
+
 const cartoProvider = new CartoProvider();
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -22,7 +26,7 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
 
   const CARTODB_LAYER = {
     id: 'vector-tiles-cartodb',
@@ -66,42 +70,31 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
 
-  const OPTIONS = {
-    cartocss: '#wdpa_protected_areas {  polygon-opacity: 1.0; polygon-fill: #704489 }',
-    cartocss_version: '2.3.0',
-    sql: 'SELECT * FROM wdpa_protected_areas',
-  };
-
-  const styles = {
-    code: { background: 'black', borderRadius: '4px', color: 'white' },
-  };
-
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a vector-tiles layer with a protected areas CartoDB tileset, center it on the map and
-        display them with next styles.
-        <br />
-        You should use account <span style={styles.code}>&nbsp;&nbsp;wri-01 &nbsp;</span> and the
-        following options:
-        <br />
-        <span style={styles.code}>
-          cartocss: {OPTIONS.cartocss}
-          <br />
-          cartocss_version: {OPTIONS.cartocss_version}
-          <br />
-          sql: {OPTIONS.sql}&nbsp;&nbsp;
-        </span>
-        <ul>
-          <li>color: #FFCC00</li>
-          <li>opacity: 0.7</li>
-          <li>border: #000000</li>
-          <li>border opacity: 0.2</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Vector tiles: CartoDB 01</h2>
+        <p>
+          Draw a vector tiles layer with a protected areas CartoDB tileset, center it on the map and
+          display it with next styles:
+          <Code>
+            {`const border = '#000000';
+const borderOpacity = 0.2;
+const color = '#FFCC00';
+const opacity = 0.7;`}
+          </Code>
+          You should use account: <pre>wri-01</pre> and the following options:
+          <Code>
+            {`cartocss: '#wdpa_protected_areas {  polygon-opacity: 1.0; polygon-fill: #704489 }',
+cartocss_version: '2.3.0',
+sql: 'SELECT * FROM wdpa_protected_areas',`}
+          </Code>
+        </p>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -127,7 +120,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -136,11 +129,11 @@ CartoDB01.args = {
   id: 'vector-tiles-cartodb',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

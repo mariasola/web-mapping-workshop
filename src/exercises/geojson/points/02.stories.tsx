@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import flatten from 'lodash/flatten';
 
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -22,8 +25,7 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
-
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
   const colors = [
     '#a3f307',
     '#05f9e2',
@@ -71,19 +73,30 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     },
   };
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson point collection, fill it with a color ramp base on a number attribute,
-        center the map on it and display them with following styles:
-        <ul>
-          <li>color: base on an attribute number [...COLOR_RAMP]</li>
-          <li>border: #000000</li>
-          <li>opacity: 0.5</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Geojson: Points 02</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/codeforgermany/click_that_hood/blob/main/public/data/airports.geojson"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , draw a point collection, fill it with a <b>color ramp</b> based on a{' '}
+          <b>number attribute</b>, center the map on it and display them with following styles:
+        </p>
+        <Code>
+          {`const border = '#000000';
+const opacity = 0.5;`}
+        </Code>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -103,7 +116,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -112,11 +125,11 @@ Points02.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);

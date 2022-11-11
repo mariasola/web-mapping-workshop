@@ -1,15 +1,17 @@
 import { useState } from 'react';
 
+import { ViewState } from 'react-map-gl';
+
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
 import AIRPORTS_DATA from 'data/airports.json';
-
 const StoryMap = {
   title: 'Exercises/Geojson/Points',
   argTypes: {},
@@ -20,13 +22,17 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const [viewState, setViewState] = useState(initialViewState);
+  const [viewState, setViewState] = useState<Partial<ViewState>>();
+
   const AIRPORTS_LAYER = {
     id: 'airports',
     type: 'geojson',
     source: {
       type: 'geojson',
       data: AIRPORTS_DATA,
+      cluster: true,
+      clusterMaxZoom: 14, // Max zoom to cluster points on
+      clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
     },
     images: [
       {
@@ -38,7 +44,48 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     render: {
       layers: [
         {
+          id: 'clusters',
+          metadata: {
+            position: 'top',
+          },
+          type: 'circle',
+          filter: ['has', 'point_count'],
+          paint: {
+            'circle-stroke-color': '#000000',
+            'circle-opacity': 0.5,
+            'circle-radius': ['step', ['get', 'point_count'], 16, 25, 18, 50, 20],
+            'circle-color': [
+              'step',
+              ['get', 'point_count'],
+              '#51bbd6',
+              25,
+              '#f1f075',
+              50,
+              '#f28cb1',
+            ],
+          },
+        },
+        {
+          id: 'cluster-count',
+          metadata: {
+            position: 'top',
+          },
           type: 'symbol',
+          filter: ['has', 'point_count'],
+          layout: {
+            'text-allow-overlap': true,
+            'text-ignore-placement': true,
+            'text-field': '{point_count_abbreviated}',
+            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+            'text-size': ['step', ['get', 'point_count'], 10, 25, 11, 50, 12],
+          },
+        },
+        {
+          metadata: {
+            position: 'top',
+          },
+          type: 'symbol',
+          filter: ['!', ['has', 'point_count']],
           layout: {
             'icon-image': 'airport',
             'icon-ignore-placement': true,
@@ -48,6 +95,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           },
         },
         {
+          metadata: {
+            position: 'top',
+          },
+          filter: ['!', ['has', 'point_count']],
           type: 'circle',
           paint: {
             'circle-color': '#0000FF',
@@ -60,17 +111,27 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   };
 
   return (
-    <div className="relative w-full h-screen">
-      <div className="prose dark:prose-invert">
-        Draw a geojson point collection, center it on the map and display them as images with
-        following styles:
-        <ul>
-          <li>color: #ffCC00</li>
-        </ul>
+    <>
+      <div className="prose">
+        <h2>Geojson: Points 06</h2>
+        <p>
+          With this{' '}
+          <a
+            href="https://github.com/codeforgermany/click_that_hood/blob/main/public/data/airports.geojson"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Geojson
+          </a>
+          , draw a point collection, center it on the map and display them as <b>images</b> with
+          following styles:
+        </p>
+        <Code>{`const color = '#ffCC00';`}</Code>
       </div>
       <Map
         id={id}
         bounds={bounds}
+        initialViewState={initialViewState}
         viewState={viewState}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
@@ -90,7 +151,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           );
         }}
       </Map>
-    </div>
+    </>
   );
 };
 
@@ -99,11 +160,11 @@ Points06.args = {
   id: 'airports-map',
   className: '',
   viewport: {},
-  initialViewState: {},
-  bounds: {
-    bbox: [-154.335938, -63.548552, 154.335938, 63.548552],
-    options: { padding: 50 },
-    viewportOptions: { transitionDuration: 0 },
+  initialViewState: {
+    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    fitBoundsOptions: {
+      padding: 50,
+    },
   },
   onMapViewportChange: (viewport) => {
     console.info('onMapViewportChange: ', viewport);
