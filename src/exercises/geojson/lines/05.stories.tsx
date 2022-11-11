@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { ViewState } from 'react-map-gl';
 
-import flatten from 'lodash/flatten';
-
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -13,10 +11,10 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
-import AIRPORTS_DATA from 'data/airports.json';
+import data from 'data/valencia.json';
 
 const StoryMap = {
-  title: 'Exercises/Geojson/Points',
+  title: 'Exercises/Geojson/Lines',
   argTypes: {},
 };
 
@@ -26,49 +24,28 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
-  const colors = [
-    '#FFF01F',
-    '#FFF01F',
-    '#E7EE4F',
-    '#7FFF00',
-    '#CCFF00',
-    '#1F51FF',
-    '#0FF0FC',
-    '#BC13FE',
-    '#8A2BE2',
-    '#FF1493',
-    '#EA00FF',
-    '#FF3131',
-    '#FF5E00',
-  ];
 
-  const rampScalerankAirports = flatten(
-    colors.map((c, i) => {
-      return [i, c];
-    })
-  );
+  const stops = [0, '#FE4365', 0.2, '#FC9D9A', 0.6, '#F9CDAD', 0.9, '#C8C8A9', 1, '#83AF9B'];
 
-  const AIRPORTS_LAYER = {
-    id: 'airports',
-    type: 'geojson',
+  const LAYER = {
+    id: 'valencia-routes-gradient',
+    type: 'vector',
     source: {
+      data,
       type: 'geojson',
-      data: AIRPORTS_DATA,
+      lineMetrics: true,
     },
     render: {
       layers: [
         {
-          type: 'circle',
+          type: 'line',
+          layout: {
+            'line-cap': 'square',
+            'line-join': 'round',
+          },
           paint: {
-            'circle-color': ['match', ['get', 'scalerank'], ...rampScalerankAirports, '#DDD'],
-            'circle-opacity': 0.5,
-            'circle-radius': 5,
-            'circle-stroke-color': [
-              'match',
-              ['get', 'scalerank'],
-              ...rampScalerankAirports,
-              '#DDD',
-            ],
+            'line-width': 2,
+            'line-gradient': ['interpolate', ['linear'], ['line-progress'], ...stops],
           },
         },
       ],
@@ -77,23 +54,16 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   return (
     <>
       <div className="prose">
-        <h2>Geojson: Points 02</h2>
+        <h2>Geojson: Lines 05</h2>
         <p>
-          With this{' '}
-          <a
-            href="https://github.com/codeforgermany/click_that_hood/blob/main/public/data/airports.geojson"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Geojson
-          </a>
-          , draw a point collection, fill it with a <b>color ramp</b> based on a{' '}
-          <b>number attribute</b>, center the map on it and display them with following styles:
+          Draw a geojson linestring collection, center the map on it and color it with a{' '}
+          <b>color ramp</b> based on a <b>string attribute</b>, and display it with the following
+          styles:
         </p>
+
         <Code>
-          {`opacity = 0.5;
-ramp = ['#FFF01F','#FFF01F','#E7EE4F','#7FFF00','#CCFF00','#1F51FF','#0FF0FC','#BC13FE','#8A2BE2','#FF1493','#EA00FF','#FF3131','#FF5E00'];];
-radius = 5;`}
+          {`border = '#000000';
+opacity = 0.5;`}
         </Code>
       </div>
       <Map
@@ -110,7 +80,7 @@ radius = 5;`}
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer key={AIRPORTS_LAYER.id} {...AIRPORTS_LAYER} />
+                <Layer key={LAYER.id} {...LAYER} />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
@@ -123,13 +93,13 @@ radius = 5;`}
   );
 };
 
-export const Points02 = Template.bind({});
-Points02.args = {
-  id: 'airports-map',
+export const Lines05 = Template.bind({});
+Lines05.args = {
+  id: 'valencia-provinces',
   className: '',
   viewport: {},
   initialViewState: {
-    bounds: [-237.65625, -78.836065, 238.007813, 78.767792],
+    bounds: [-0.477576, 39.389689, -0.257849, 39.542355],
     fitBoundsOptions: {
       padding: 50,
     },

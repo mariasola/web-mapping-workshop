@@ -86,9 +86,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         </p>
 
         <Code>
-          {`const colorRamp = ['#00ffcc', '#004aFF'];
-const border = '#000000';
-const opacity = 0.5;`}
+          {`colorRamp = ['#00ffcc', '#004aFF'];
+border = '#000000';
+opacity = 0.5;`}
         </Code>
       </div>
       <Map

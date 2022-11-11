@@ -87,10 +87,11 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Vector tiles: Mapbox 03</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, center it on the map and display them
-          with following color ramp based based on an attribute category:
+          Draw a vector tiles layer with a Mapbox tileset, filter by level to show only the USA
+          states and display them with following <b>color ramp scale</b> based on `name`{' '}
+          <b>string attribute</b>.
         </p>
-        <Code>{`ramp = ['#80ff80', '#00ffff', '#0066cc'];`}</Code>
+        <Code>{`rampScale = ['#80ff80', '#00ffff', '#0066cc'];`}</Code>
         <p>You should use this tileset ID:</p>
         <pre>layer-manager.1ecpue1k</pre>
       </div>

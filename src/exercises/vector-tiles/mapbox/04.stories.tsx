@@ -142,8 +142,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Vector tiles: Mapbox 04</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, center it on the map and color the county
-          when <b>hover</b> on it.
+          Draw a vector tiles layer with a Mapbox tileset, center it on the map and color the
+          counties when <b>hover</b> on it.
           <br />
         </p>
         <p>You should use this tileset ID:</p>

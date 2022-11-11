@@ -12,7 +12,6 @@ import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import { CustomMapProps } from 'components/map/types';
 import AIRPORTS_DATA from 'data/airports.json';
-
 const StoryMap = {
   title: 'Exercises/Geojson/Points',
   argTypes: {},
@@ -32,50 +31,44 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       type: 'geojson',
       data: AIRPORTS_DATA,
     },
+    images: [
+      {
+        id: 'airport',
+        src: '/images/airplane.svg',
+        options: {},
+      },
+    ],
     render: {
       layers: [
         {
           type: 'circle',
           paint: {
-            'circle-color': '#000000',
-            'circle-stroke-color': '#000000',
-            'circle-opacity': 0.5,
-            'circle-radius': 5,
-          },
-        },
-        {
-          type: 'heatmap',
-          paint: {
-            'heatmap-weight': ['interpolate', ['linear'], ['get', 'scalerank'], 0, 0, 6, 1],
-            'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 0, 1, 9, 3],
-            'heatmap-color': [
+            'circle-color': [
               'interpolate',
               ['linear'],
-              ['heatmap-density'],
-              0,
-              'transparent',
-              0.2,
-              '#67A9CF',
-              0.4,
-              '#D1E5F0',
-              0.6,
-              '#FDDBC7',
-              0.8,
-              '#EF8A62',
+              ['zoom'],
               1,
-              '#B2182B',
+              '#FF0000',
+              2,
+              '#FFFF00',
+              3,
+              '#00FF00',
+              4,
+              '#FFC0CB',
+              5,
+              '#0000FF',
             ],
-            'heatmap-radius': 10,
-            'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 1, 9, 0],
+            'circle-radius': 3,
           },
         },
       ],
     },
   };
+
   return (
     <>
       <div className="prose">
-        <h2>Geojson: Points 05</h2>
+        <h2>Geojson: Points 07</h2>
         <p>
           With this{' '}
           <a
@@ -85,24 +78,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           >
             Geojson
           </a>
-          , draw a point collection, center it on the map and display them as a <b>heatmap</b> with
-          following styles:
+          , draw a point collection, center it on the map and display them so that they gradually
+          change color as you zoom in, using the following color ramp:
         </p>
-        <b>Circle</b>
-        <Code>
-          {`color = '#000000';
-border = '#000000';
-opacity = 0.5;
-radius = 5;`}
-        </Code>
-        <b>Heatmap</b>
-        <Code>
-          {`ramp = ['transparent','#67A9CF','#D1E5F0','#FDDBC7','#EF8A62','#B2182B'];
-intensity = [1, 3];
-opacity = [1, 0];
-radius = 10;
-weight = [0, 1];`}
-        </Code>
+        <Code>{`ramp = ['#FF0000', '#FFFF00', '#00FF00', '#FFC0CB', '#0000FF']`}</Code>
       </div>
       <Map
         id={id}
@@ -131,8 +110,8 @@ weight = [0, 1];`}
   );
 };
 
-export const Points05 = Template.bind({});
-Points05.args = {
+export const Points07 = Template.bind({});
+Points07.args = {
   id: 'airports-map',
   className: '',
   viewport: {},

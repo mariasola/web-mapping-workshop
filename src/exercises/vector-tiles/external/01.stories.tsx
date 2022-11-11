@@ -65,9 +65,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           Draw a vector tiles layer, center it on the map and display it with the following styles:
         </p>
         <Code>
-          {`const border = '#0044FF';
-const borderWidth = 1;
-const color = '#77CCFF';`}
+          {`border = '#0044FF';
+borderWidth = 1;
+color = '#77CCFF';`}
         </Code>
         <p>You should use this url source:</p>
         <pre>

@@ -41,7 +41,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
             'circle-color': '#FFCC00',
             'circle-opacity': 0.5,
             'circle-radius': 5,
-            'circle-stroke-color': '#FF0000',
+            'circle-stroke-color': '#000000',
             'circle-stroke-width': 1,
           },
         },
@@ -66,10 +66,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           the following styles:
         </p>
         <Code>
-          {`const color = '#ffCC00';
-const border = '#000000';
-const opacity = 0.5;
-const radius = 20;`}
+          {`color = '#ffCC00';
+border = '#000000';
+opacity = 0.5;
+radius = 5;`}
         </Code>
       </div>
       <Map
@@ -105,7 +105,7 @@ Points01.args = {
   className: '',
   viewport: {},
   initialViewState: {
-    bounds: [-154.335938, -63.548552, 154.335938, 63.548552],
+    bounds: [-237.65625, -78.836065, 238.007813, 78.767792],
     fitBoundsOptions: {
       padding: 50,
     },

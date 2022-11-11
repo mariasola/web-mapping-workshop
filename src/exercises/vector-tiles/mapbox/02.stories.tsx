@@ -70,15 +70,13 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Vector tiles: Mapbox 02</h2>
         <p>
-          Draw a vector tiles layer with a Mapbox tileset, with a <b>color ramp</b> based on an{' '}
-          <b>attribute number</b>, center it on the map and display it them with following styles:
+          Draw a vector tiles layer with a Mapbox tileset, with the following <b>color ramp</b>{' '}
+          based on `bws_cat`
+          <b>number attribute </b>.
         </p>
 
         <Code>
-          {`const border = '#0044FF';
-const borderWidth = 1;
-const color = '#77CCFF';
-const opacity = 0.5;`}
+          {`ramp = ['#a3f307','#05f9e2','#e2f705','#f50b86','#ff6f00','#a3f307','#05f9e2','#e2f705','#f50b86','#ff6f00'];`}
         </Code>
         <p>You should use this tileset ID:</p>
         <pre>layer-manager.1ecpue1k</pre>

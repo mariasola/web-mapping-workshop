@@ -4,6 +4,7 @@ import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { LayerManager } from '@vizzuality/layer-manager-react';
 
+import Code from 'components/code';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
@@ -28,9 +29,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         <div className="prose">
           <h2>Basic: Bounds 02</h2>
           <p>
-            Display a map and center making it animate to the final position with these bounds:{' '}
+            Display a map and center making it animate in 5000 ms to the final position with these
+            bounds:{' '}
           </p>
-          <pre>[28.969005,-27.926807,60.192150,-13.144044]</pre>
+          <Code>{`bounds = [28.969005,-27.926807,60.192150,-13.144044]`}</Code>
         </div>
       </div>
 

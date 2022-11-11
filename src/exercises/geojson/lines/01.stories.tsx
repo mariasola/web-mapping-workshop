@@ -58,9 +58,9 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           with the followng styles:
         </p>
         <Code>
-          {`const color = '#ffCC00';
-const opacity = 0.5;
-const width = 5;`}
+          {`color = '#ffCC00';
+opacity = 0.5;
+width = 5;`}
         </Code>
       </div>
       <Map

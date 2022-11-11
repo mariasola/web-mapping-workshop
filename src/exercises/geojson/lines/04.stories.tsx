@@ -55,6 +55,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <>
       <div className="prose">
         <h2>Geojson: Lines 04</h2>
+
         <p>
           Draw a geojson linestring collection, center the map on it and color it with a{' '}
           <b>color ramp</b> based on a <b>the line progression</b>
