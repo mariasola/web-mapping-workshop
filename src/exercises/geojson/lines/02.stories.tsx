@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 import { ViewState } from 'react-map-gl';
 
@@ -20,38 +20,54 @@ const StoryMap = {
 
 export default StoryMap;
 
+const HIGHWAYS = [
+  { id: 'pedestrian', color: '#0080FF' },
+  { id: 'living_street', color: '#45B922' },
+  { id: 'residential', color: '#2E97D0' },
+  { id: 'tertiary', color: '#E7F317' },
+  { id: 'footway', color: '#5CAEA2' },
+  { id: 'primary_link', color: '#FFF300' },
+  { id: 'primary', color: '#5CA2A2' },
+  { id: 'trunk', color: '#FFDC00' },
+  { id: 'trunk_link', color: '#FFD000' },
+  { id: 'cycleway', color: '#FF0000' },
+  { id: 'service', color: '#8B7345' },
+  { id: 'unclassified', color: '#FFAE00' },
+  { id: 'track', color: '#2ED0D0' },
+  { id: 'steps', color: '#FF9700' },
+  { id: 'proposed', color: '#738B3A' },
+];
+
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
-  const layers = [-1, 0, 1, 0].map((x, i) => ({
-    id: 'valencia-routes-' + i,
-    type: 'line',
-    source: {
-      type: 'geojson',
-      data: data,
-    },
-    layout: {
-      'line-cap': i === 3 ? 'butt' : 'square',
-    },
-    paint: {
-      'line-color': i === 3 ? '#ffCC00' : '#000000',
-      'line-width': i === 3 ? 5 : 3,
-      'line-opacity': 0.5,
-      'line-offset': x * 3,
-    },
-  }));
+  const STOPS = useMemo(() => {
+    return HIGHWAYS.map((h) => [h.id, h.color]).flat();
+  }, []);
 
   const LAYER = {
-    id: 'valencia-provinces',
+    id: 'valencia-routes-gradient',
     type: 'vector',
     source: {
       data,
       type: 'geojson',
+      lineMetrics: true,
     },
     render: {
-      layers,
+      layers: [
+        {
+          type: 'line',
+          paint: {
+            'line-color': ['match', ['get', 'highway'], ...STOPS, 'green'],
+            'line-width': 1,
+          },
+          layout: {
+            'line-cap': 'square',
+          },
+        },
+      ],
     },
   };
   return (
@@ -59,13 +75,30 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Geojson: Lines 02</h2>
         <p>
-          Draw a geojson linestring collection, center the map on it, color it with a{' '}
-          <b>color ramp</b> based on a <b>number attribute</b>, and display it with the following
+          Draw a geojson linestring collection, center the map on it and color it with a{' '}
+          <b>color ramp</b> based on <b>the highway type</b>, and display it with the following
           styles:
         </p>
+
         <Code>
-          {`const border = '#000000';
-const opacity = 0.5;`}
+          {`width= 1;
+HIGHWAYS = [
+  { id: 'pedestrian', color: '#0080FF' },
+  { id: 'living_street', color: '#45B922' },
+  { id: 'residential', color: '#2E97D0' },
+  { id: 'tertiary', color: '#E7F317' },
+  { id: 'footway', color: '#5CAEA2' },
+  { id: 'primary_link', color: '#FFF300' },
+  { id: 'primary', color: '#5CA2A2' },
+  { id: 'trunk', color: '#FFDC00' },
+  { id: 'trunk_link', color: '#FFD000' },
+  { id: 'cycleway', color: '#FF0000' },
+  { id: 'service', color: '#8B7345' },
+  { id: 'unclassified', color: '#FFAE00' },
+  { id: 'track', color: '#2ED0D0' },
+  { id: 'steps', color: '#FF9700' },
+  { id: 'proposed', color: '#738B3A' },
+];`}
         </Code>
       </div>
       <Map

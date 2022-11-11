@@ -1,6 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
-import type { MapRef } from 'react-map-gl';
 import { ViewState } from 'react-map-gl';
 
 import { Story } from '@storybook/react/types-6-0';
@@ -24,9 +23,9 @@ export default StoryMap;
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
-  const mapRef = useRef<MapRef>(null);
   const [viewState, setViewState] = useState<Partial<ViewState>>();
-  const [layersInteractiveIds, setLayersInteractiveIds] = useState([]);
+
+  const stops = [0, '#FE4365', 0.2, '#FC9D9A', 0.6, '#F9CDAD', 0.9, '#C8C8A9', 1, '#83AF9B'];
 
   const LAYER = {
     id: 'valencia-routes-gradient',
@@ -39,89 +38,49 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     render: {
       layers: [
         {
-          id: 'valencia-routes-gradient',
-          filter: [
-            'all',
-            ['==', '$type', 'LineString'],
-            ['==', 'name', 'Avinguda de Peris i Valero'],
-          ],
           type: 'line',
           layout: {
-            'line-cap': 'round',
+            'line-cap': 'square',
             'line-join': 'round',
           },
           paint: {
-            'line-width': 5,
-            'line-opacity': 0.5,
-            'line-color': '#FE4365',
-            'line-dasharray': [0, 2, 2],
+            'line-width': 2,
+            'line-gradient': ['interpolate', ['linear'], ['line-progress'], ...stops],
           },
         },
       ],
     },
   };
-
-  const handleMapLoad = ({ map }) => {
-    mapRef.current = map;
-  };
-
-  const onAfterAdd = (layerModel) => {
-    layerModel.mapLayer.layers.forEach((l) => {
-      const { id: layerId } = l;
-      if (!layersInteractiveIds.includes(layerId)) {
-        setLayersInteractiveIds((prevLayersInteractiveIds) => [
-          ...prevLayersInteractiveIds,
-          layerId,
-        ]);
-      }
-    });
-  };
-
-  const onAfterRemove = (layerModel) => {
-    layerModel.mapLayer.layers.forEach((l) => {
-      const { id: layerId } = l;
-
-      if (layersInteractiveIds.includes(layerId)) {
-        setLayersInteractiveIds((prevLayersInteractiveIds) => {
-          const arr = prevLayersInteractiveIds.filter((e) => e !== layerId);
-
-          return arr;
-        });
-      }
-    });
-  };
-
   return (
     <>
       <div className="prose">
         <h2>Geojson: Lines 04</h2>
-        <b>Animate</b> a geojson linestring collection, center the map on it and display it with the
-        following styles:
-        <Code>{`const color = '#FE4365';
-const opacity = 0.5;`}</Code>
+        <p>
+          Draw a geojson linestring collection, center the map on it and color it with a{' '}
+          <b>color ramp</b> based on a <b>the line progression</b>
+        </p>
+
+        <Code>
+          {`width = 2;
+stops = [0, '#FE4365', 0.2, '#FC9D9A', 0.6, '#F9CDAD', 0.9, '#C8C8A9', 1, '#83AF9B'];
+  `}
+        </Code>
       </div>
       <Map
         id={id}
         bounds={bounds}
         initialViewState={initialViewState}
         viewState={viewState}
-        onMapLoad={handleMapLoad}
         mapboxAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
         onMapViewStateChange={(v) => {
           setViewState(v);
         }}
-        interactiveLayerIds={layersInteractiveIds}
       >
         {(map) => {
           return (
             <>
               <LayerManager map={map} plugin={PluginMapboxGl}>
-                <Layer
-                  key={LAYER.id}
-                  {...LAYER}
-                  onAfterAdd={onAfterAdd}
-                  onAfterRemove={onAfterRemove}
-                />
+                <Layer key={LAYER.id} {...LAYER} />
               </LayerManager>
               <Controls>
                 <ZoomControl id={id} />
