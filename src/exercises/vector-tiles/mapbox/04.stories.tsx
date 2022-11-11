@@ -34,12 +34,14 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     type: 'vector',
     source: {
       url: 'mapbox://layer-manager.1ecpue1k',
+      promoteId: 'geoid',
     },
     render: {
       layers: [
         {
           type: 'fill',
           'source-layer': 'Indicators',
+          filter: ['==', 'level', 2],
           paint: {
             'fill-color': [
               'case',
@@ -52,6 +54,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'line',
           'source-layer': 'Indicators',
+          filter: ['==', 'level', 2],
           paint: {
             'line-color': '#0044FF',
             'line-width': 1,
