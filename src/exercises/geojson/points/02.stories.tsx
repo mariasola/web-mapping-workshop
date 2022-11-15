@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { ViewState } from 'react-map-gl';
 
-import flatten from 'lodash/flatten';
-
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -26,27 +24,6 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
-  const colors = [
-    '#FFF01F',
-    '#FFF01F',
-    '#E7EE4F',
-    '#7FFF00',
-    '#CCFF00',
-    '#1F51FF',
-    '#0FF0FC',
-    '#BC13FE',
-    '#8A2BE2',
-    '#FF1493',
-    '#EA00FF',
-    '#FF3131',
-    '#FF5E00',
-  ];
-
-  const rampScalerankAirports = flatten(
-    colors.map((c, i) => {
-      return [i, c];
-    })
-  );
 
   const AIRPORTS_LAYER = {
     id: 'airports',
@@ -60,14 +37,25 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'circle',
           paint: {
-            'circle-color': ['match', ['get', 'scalerank'], ...rampScalerankAirports, '#DDD'],
+            'circle-color': [
+              'interpolate',
+              ['linear'],
+              ['get', 'scalerank'],
+              2,
+              '#FF3131',
+              9,
+              '#1F51FF',
+            ],
             'circle-opacity': 0.5,
             'circle-radius': 5,
             'circle-stroke-color': [
-              'match',
+              'interpolate',
+              ['linear'],
               ['get', 'scalerank'],
-              ...rampScalerankAirports,
-              '#DDD',
+              2,
+              '#FF3131',
+              9,
+              '#1F51FF',
             ],
           },
         },
@@ -87,8 +75,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           >
             Geojson
           </a>
-          , draw a point collection, fill it with a <b>color ramp</b> based on a{' '}
-          <b>number attribute</b>, center the map on it and display them with following styles:
+          , draw a point collection, fill it with a <b>color ramp</b> based on the <b>scalerank</b>,
+          center the map on it and display them with following styles:
         </p>
         <Code>
           {`opacity = 0.5;

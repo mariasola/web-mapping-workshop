@@ -107,7 +107,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           with a <b>count inside</b> and the following styles (when the property is an array of
           values, the value must be interpolated with the `point_count`):
         </p>
-        <b>Circle</b>
+        <b>Cluster</b>
         <Code>
           {`color = ['#51bbd6','#f1f075','#f28cb1'];
 border = '#000000';

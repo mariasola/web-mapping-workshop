@@ -71,8 +71,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         <h2>Vector tiles: Mapbox 02</h2>
         <p>
           Draw a vector tiles layer with a Mapbox tileset, with the following <b>color ramp</b>{' '}
-          based on `bws_cat`
-          <b>number attribute </b>.
+          based on <b>`bws_cat`</b>.
         </p>
 
         <Code>

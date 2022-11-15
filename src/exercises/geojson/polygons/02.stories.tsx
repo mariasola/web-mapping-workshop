@@ -86,7 +86,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         </p>
 
         <Code>
-          {`colorRamp = ['#00ffcc', '#004aFF'];
+          {`bounds = [-13.392736, 35.469583, 7.701014, 43.460862];
+colorRamp = ['#00ffcc', '#004aFF'];
 border = '#000000';
 opacity = 0.5;`}
         </Code>

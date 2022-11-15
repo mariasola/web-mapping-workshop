@@ -128,7 +128,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           interpolated with the `point_count` in case of color and radius, and with `zoom` in case
           of iconSize:
         </p>
-        <b>Circle</b>
+        <b>Cluster</b>
         <Code>{`color = ['#51bbd6','#f1f075', '#f28cb1];
 opacity = 0.5;
 radius = [16,18,20];
