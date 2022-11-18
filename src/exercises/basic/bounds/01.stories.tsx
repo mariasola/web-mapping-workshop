@@ -29,7 +29,7 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
     <>
       <div className="prose">
         <h2>Basic: Bounds 01</h2>
-        <p>Display a map and center directly in these bounds: </p>
+        <p>Display a map and center it directly in these bounds with no animation: </p>
         <Code>{`bounds = [28.969005,-27.926807,60.192150,-13.144044]`}</Code>
       </div>
       <div className="relative grow">

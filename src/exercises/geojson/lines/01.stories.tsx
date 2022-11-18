@@ -54,11 +54,20 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       <div className="prose">
         <h2>Geojson: Lines 01</h2>
         <p>
-          Draw a geojson linestring collection, center it on the map and display it as <b>lines</b>{' '}
-          with the followng styles:
+          With this{' '}
+          <a
+            href="https://github.com/Vizzuality/web-mapping-workshop/blob/main/src/data/valencia.json"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Geojson
+          </a>
+          {', '}
+          center it on the map and display it as <b>lines</b> with the followng styles:
         </p>
         <Code>
-          {`color = '#ffCC00';
+          {`bounds = [-0.477576, 39.389689, -0.257849, 39.542355];
+color = '#ffCC00';
 opacity = 0.5;
 width = 5;`}
         </Code>

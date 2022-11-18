@@ -99,9 +99,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         </p>
 
         <Code>
-          {`colors = [{ id: '1', color: '#0080FF' },{ id: '2', color: '#45B922' },{ id: '3', color: '#2E97D0' },{ id: '4', color: '#E7F317' },{ id: '5', color: '#5CAEA2' },{ id: '6', color: '#FFF300' },{ id: '7', color: '#5CA2A2' },{ id: '8', color: '#FFDC00' },{ id: '9', color: '#FFD000' },{ id: '10', color: '#FF0000' },{ id: '11', color: '#8B7345' },{ id: '12', color: '#FFAE00' },{ id: '13', color: '#2ED0D0' },{ id: '14', color: '#FF9700' },{ id: '15', color: '#738B3A' },{ id: '16', color: '#FF7000' },{ id: '17', color: '#FF5000' },{ id: '18', color: '#FF0080' }];
+          {`bounds = [-13.392736, 35.469583, 7.701014, 43.460862];
 border = '#000000';
-opacity = 0.5;`}
+opacity = 0.5;
+PROVINCES = [{ id: '1', color: '#0080FF' },{ id: '2', color: '#45B922' },{ id: '3', color: '#2E97D0' },{ id: '4', color: '#E7F317' },{ id: '5', color: '#5CAEA2' },{ id: '6', color: '#FFF300' },{ id: '7', color: '#5CA2A2' },{ id: '8', color: '#FFDC00' },{ id: '9', color: '#FFD000' },{ id: '10', color: '#FF0000' },{ id: '11', color: '#8B7345' },{ id: '12', color: '#FFAE00' },{ id: '13', color: '#2ED0D0' },{ id: '14', color: '#FF9700' },{ id: '15', color: '#738B3A' },{ id: '16', color: '#FF7000' },{ id: '17', color: '#FF5000' },{ id: '18', color: '#FF0080' }];`}
         </Code>
       </div>
       <Map

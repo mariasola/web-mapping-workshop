@@ -70,7 +70,8 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           color and the boundary of each province with a black line.
         </p>
         <Code>
-          {`color = '#ffCC00';
+          {`bounds = [-13.392736, 35.469583, 7.701014, 43.460862];
+color = '#ffCC00';
 border = '#000000';
 opacity = 0.5;`}
         </Code>

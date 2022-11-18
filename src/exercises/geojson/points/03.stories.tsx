@@ -2,8 +2,6 @@ import { useMemo, useState } from 'react';
 
 import { ViewState } from 'react-map-gl';
 
-import uniq from 'lodash/uniq';
-
 import { Story } from '@storybook/react/types-6-0';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { Layer, LayerManager } from '@vizzuality/layer-manager-react';
@@ -22,30 +20,53 @@ const StoryMap = {
 
 export default StoryMap;
 
+const AIRPORT_TYPES = [
+  {
+    id: 'mid',
+    color: '#e65154',
+  },
+  {
+    id: 'military mid',
+    color: '#26b6ff',
+  },
+  {
+    id: 'major',
+    color: '#67e6d1',
+  },
+  {
+    id: 'small',
+    color: '#cd76d6',
+  },
+  {
+    id: 'mid and military',
+    color: '#ffca8c',
+  },
+  {
+    id: 'major and military',
+    color: '#fff2b3',
+  },
+  {
+    id: 'military',
+    color: '#ff8cd9',
+  },
+  {
+    id: 'military major',
+    color: '#c8f2a9',
+  },
+  {
+    id: 'spaceport',
+    color: '#d4b8ff',
+  },
+];
+
 const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
   const { id, bounds, initialViewState } = args;
 
   const [viewState, setViewState] = useState<Partial<ViewState>>();
 
-  const colors = [
-    '#e65154',
-    '#26b6ff',
-    '#67e6d1',
-    '#cd76d6',
-    '#ffca8c',
-    '#fff2b3',
-    '#ff8cd9',
-    '#c8f2a9',
-    '#d4b8ff',
-  ];
-
-  const aiportTypes = useMemo(() => uniq(AIRPORTS_DATA.features.map((f) => f.properties.type)), []);
-
-  const typeAirportsRamp = useMemo(
-    () => aiportTypes.map((a, i) => Object.entries({ [a]: colors[i] })).flat(2),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [aiportTypes]
-  );
+  const AIRPORTS_STOPS = useMemo(() => {
+    return AIRPORT_TYPES.map((a) => [a.id, a.color]).flat();
+  }, []);
 
   const AIRPORTS_LAYER = {
     id: 'airports',
@@ -59,10 +80,10 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
         {
           type: 'circle',
           paint: {
-            'circle-color': ['match', ['get', 'type'], ...typeAirportsRamp, '#DDD'],
+            'circle-color': ['match', ['get', 'type'], ...AIRPORTS_STOPS, '#DDD'],
             'circle-opacity': 0.5,
             'circle-radius': 5,
-            'circle-stroke-color': ['match', ['get', 'type'], ...typeAirportsRamp, '#DDD'],
+            'circle-stroke-color': ['match', ['get', 'type'], ...AIRPORTS_STOPS, '#DDD'],
             'circle-stroke-width': 1,
           },
         },
@@ -82,13 +103,23 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
           >
             Geojson
           </a>
-          , draw a point collection, fill it with a <b>color ramp</b> based on an{' '}
-          <b>string attribute</b>, center the map on it and display them with following styles:
+          , draw a point collection, fill it with a <b>color ramp</b> based on the <b>type</b>,
+          center the map on it and display them with following styles:
         </p>
         <Code>
           {`opacity = 0.5;
 radius = 5;
-ramp = ['#e65154','#26b6ff','#67e6d1','#cd76d6','#ffca8c','#fff2b3','#ff8cd9','#c8f2a9','#d4b8ff'];`}
+AIRPORT_TYPES = [
+  { id: 'mid', color: '#e65154',},
+  { id: 'military mid', color: '#26b6ff',},
+  { id: 'major', color: '#67e6d1',},
+  { id: 'small', color: '#cd76d6',},
+  { id: 'mid and military', color: '#ffca8c',},
+  { id: 'major and military', color: '#fff2b3',},
+  { id: 'military', color: '#ff8cd9',},
+  { id: 'military major', color: '#c8f2a9',},
+  { id: 'spaceport', color: '#d4b8ff',},
+];`}
         </Code>
       </div>
       <Map

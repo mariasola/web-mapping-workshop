@@ -70,18 +70,27 @@ const Template: Story<CustomMapProps> = (args: CustomMapProps) => {
       ],
     },
   };
+
   return (
     <>
       <div className="prose">
         <h2>Geojson: Lines 02</h2>
         <p>
-          Draw a geojson linestring collection, center the map on it and color it with a{' '}
-          <b>color ramp</b> based on <b>the highway type</b>, and display it with the following
-          styles:
+          With this{' '}
+          <a
+            href="https://github.com/Vizzuality/web-mapping-workshop/blob/main/src/data/valencia.json"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Geojson
+          </a>
+          {', '} center the map on it and color it with a <b>color ramp</b> based on{' '}
+          <b>the highway type</b>, and display it with the following styles:
         </p>
 
         <Code>
-          {`width= 1;
+          {`bounds = [-0.477576, 39.389689, -0.257849, 39.542355];
+width= 1;
 HIGHWAYS = [
   { id: 'pedestrian', color: '#0080FF' },
   { id: 'living_street', color: '#45B922' },
